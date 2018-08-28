@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- Positive Traits -->
+<!-- Work -->
+
+  <TraitDef>
+    <defName>SYR_GreenThumb</defName>
+	<commonality>1.5</commonality>
+    <degreeDatas>
+      <li>
+        <label>green thumb</label>
+        <description>[PAWN_nameDef] is really good with plants. [PAWN_pronoun] not only works faster, but also manages to get more out of each plant. However, mining is really not [PAWN_possessive] thing.</description>
+        <statOffsets>
+		  <PlantWorkSpeed>0.20</PlantWorkSpeed>
+          <PlantHarvestYield>0.20</PlantHarvestYield>
+		  <MiningSpeed>-0.33</MiningSpeed>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+	<conflictingTraits>
+	  <li>SYR_Digger</li>
+	</conflictingTraits>
+    <requiredWorkTags>
+      <li>PlantWork</li>
+    </requiredWorkTags>
+  </TraitDef>
+  
+  <TraitDef>
+    <defName>SYR_Digger</defName>
+	<commonality>1.5</commonality>
+    <degreeDatas>
+      <li>
+        <label>digger</label>
+        <description>[PAWN_nameDef] is really good with rocks and minerals. [PAWN_pronoun] not only works faster, but also manages to find every last piece of ore. However, caring for plants is really not [PAWN_possessive] thing.</description>
+        <statOffsets>
+		  <MiningSpeed>0.20</MiningSpeed>
+          <MiningYield>0.20</MiningYield>
+		  <PlantWorkSpeed>-0.33</PlantWorkSpeed>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+	<conflictingTraits>
+	  <li>SYR_GreenThumb</li>
+	</conflictingTraits>
+    <requiredWorkTags>
+      <li>Mining</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_Chef</defName>
+	<commonality>1.0</commonality>
+    <degreeDatas>
+      <li>
+        <label>chef</label>
+        <description>[PAWN_nameDef] has a natural talent for cooking. [PAWN_pronoun] will prepare meals faster and you can be almost certain to not get food poisoning from them. Best yet [PAWN_pronoun] knows how to properly cut and prepare meat to not waste anything. As long as it doesn't involve moving parts or fabrics [PAWN_pronoun] will do fine at other tasks too.</description>
+        <statOffsets>
+		  <CookSpeed>0.5</CookSpeed>
+		  <FoodPoisonChance>-0.5</FoodPoisonChance>
+		  <ButcheryFleshEfficiency>0.2</ButcheryFleshEfficiency>
+		  <TailoringSpeed>-0.33</TailoringSpeed>
+		  <SmithingSpeed>-0.33</SmithingSpeed>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+	<conflictingTraits>
+	  <li>SYR_Tinkerer</li>
+	</conflictingTraits>
+    <requiredWorkTags>
+      <li>Cooking</li>
+    </requiredWorkTags>
+  </TraitDef>
+  
+  <TraitDef>
+    <defName>SYR_Tinkerer</defName>
+	<commonality>1.0</commonality>
+    <degreeDatas>
+      <li>
+        <label>tinkerer</label>
+        <description>[PAWN_nameDef] can never stop imagining and building gadgets. [PAWN_pronoun] will craft anything complex faster than others. If your goal is not to get food poisoning, you shouldn't send [PAWN_objective] cooking though. [PAWN_pronoun] will also only get inspired in creativity or working.</description>
+        <statOffsets>
+		  <TailoringSpeed>0.5</TailoringSpeed>
+		  <SmithingSpeed>0.5</SmithingSpeed>
+		  <FoodPoisonChance>1.0</FoodPoisonChance>
+        </statOffsets>
+		<disallowedInspirations>
+          <li>Frenzy_Shoot</li>
+          <li>Frenzy_Go</li>
+          <li>Inspired_Trade</li>
+          <li>Inspired_Recruitment</li>
+          <li>Inspired_Surgery</li>
+        </disallowedInspirations>
+      </li>
+    </degreeDatas>
+	<conflictingTraits>
+	  <li>SYR_Chef</li>
+	</conflictingTraits>
+    <requiredWorkTags>
+      <li>Crafting</li>
+    </requiredWorkTags>
+  </TraitDef>
+  
+  <TraitDef>
+    <defName>SYR_Scientist</defName>
+	<commonality>1.0</commonality>
+    <degreeDatas>
+      <li>
+        <label>scientist</label>
+        <description>[PAWN_nameDef] has a past of working in the lab and thus knows his chemicals and how to solve problems. If possible [PAWN_pronoun] should be kept away from constructing and unskilled labor however.</description>
+        <statOffsets>
+		  <ResearchSpeed>0.25</ResearchSpeed>
+		  <DrugCookingSpeed>0.5</DrugCookingSpeed>
+		  <DrugSynthesisSpeed>0.5</DrugSynthesisSpeed>
+		  <SmoothingSpeed>-0.33</SmoothingSpeed>
+		  <ConstructionSpeed>-0.33</ConstructionSpeed>
+		  <UnskilledLaborSpeed>-0.33</UnskilledLaborSpeed>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+	<conflictingTraits>
+	  <li>SYR_Architect</li>
+	</conflictingTraits>
+    <requiredWorkTags>
+      <li>Intellectual</li>
+    </requiredWorkTags>
+  </TraitDef>
+  
+  <TraitDef>
+    <defName>SYR_Architect</defName>
+	<commonality>1.25</commonality>
+    <degreeDatas>
+      <li>
+        <label>architect</label>
+        <description>[PAWN_nameDef] knows not only how to design buildings, but is also proficient in getting the construction done. [PAWN_pronoun] doesn't do well with drugs. Due to some error in the matrix [PAWN_pronoun] is in no way bad at researching though.</description>
+        <statOffsets>
+		  <ConstructionSpeed>0.5</ConstructionSpeed>
+		  <SmoothingSpeed>0.5</SmoothingSpeed>
+		  <DrugCookingSpeed>-0.33</DrugCookingSpeed>
+		  <DrugSynthesisSpeed>-0.33</DrugSynthesisSpeed>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+	<conflictingTraits>
+	  <li>SYR_Scientist</li>
+	</conflictingTraits>
+    <requiredWorkTags>
+      <li>ManualSkilled</li>
+    </requiredWorkTags>
+  </TraitDef>
+  
+  <TraitDef>
+    <defName>SYR_Peculiar</defName>
+	<commonality>0.75</commonality>
+    <degreeDatas>
+      <li>
+        <label>peculiar</label>
+        <description>[PAWN_nameDef] is weird, to say the least. [PAWN_pronoun] thinks differently and [PAWN_possessive] ideas are usually more entertaining than useful - that however can also be a blessing in the right circumstances. [PAWN_pronoun] doesn't mind boring work either, as [PAWN_pronoun] will find a way to make it interesting for [PAWN_objective].</description>
+        <statOffsets>
+		  <SculptingSpeed>1.0</SculptingSpeed>
+		  <UnskilledLaborSpeed>0.5</UnskilledLaborSpeed>
+		  <ResearchSpeed>-0.2</ResearchSpeed>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+	<conflictingTraits>
+	  <li>SYR_Scientist</li>
+	</conflictingTraits>
+    <requiredWorkTags>
+      <li>Artistic</li>
+    </requiredWorkTags>
+  </TraitDef>
+  
+  <TraitDef>
+    <defName>SYR_GoodFortune</defName>
+	<commonality>1.0</commonality>
+    <degreeDatas>
+      <li Class="SyrTraits.RandomInspirationMtbDays">
+        <label>good fortune</label>
+        <description>[PAWN_nameDef] seems to have rented all the good fortune on this Rimworld.</description>
+		<statOffsets>
+		  <MiningYield>+0.20</MiningYield>
+		  <AnimalGatherYield>+0.20</AnimalGatherYield>
+		  <PlantHarvestYield>+0.20</PlantHarvestYield>
+		</statOffsets>
+		<randomInspirationMtbDays>30</randomInspirationMtbDays>
+	  </li>
+    </degreeDatas>
+	<requiredWorkTags>
+      <li>ManualDumb</li>
+	  <li>ManualSkilled</li>
+    </requiredWorkTags>
+  </TraitDef>
+  
+  <TraitDef>
+	<defName>SYR_Haggler</defName>
+	<commonality>1.0</commonality>
+	<degreeDatas>
+	  <li>
+		<label>haggler</label>
+		<description>[PAWN_nameDef] always gets the best deals, except when dealing with animals.</description>
+		<statOffsets>
+		  <TradePriceImprovement>0.33</TradePriceImprovement>
+		  <NegotiationAbility>0.33</NegotiationAbility>
+		  <TameAnimalChance>-0.25</TameAnimalChance>
+		  <TrainAnimalChance>-0.25</TrainAnimalChance>
+		</statOffsets>
+	  </li>      
+	</degreeDatas>
+	<conflictingTraits>
+	  <li>SYR_AnimalAffinity</li>
+	</conflictingTraits>
+	<requiredWorkTags>
+	  <li>Social</li>
+	</requiredWorkTags>
+  </TraitDef>
+	
+  <TraitDef>
+	<defName>SYR_AnimalAffinity</defName>
+	<commonality>1.0</commonality>
+	<degreeDatas>
+	  <li>
+		<label>animal affinity</label>
+		<description>[PAWN_nameDef] has a special connection to animals and understands them better than most people. Animals also tend to understand what [PAWN_pronoun] wants from them. Unfortunately this ability doesn't translate well to people.</description>
+		<statOffsets>
+		  <TameAnimalChance>0.33</TameAnimalChance>
+		  <TrainAnimalChance>0.33</TrainAnimalChance>
+		  <TradePriceImprovement>-0.25</TradePriceImprovement>
+		  <NegotiationAbility>-0.25</NegotiationAbility>
+		</statOffsets>
+	  </li>      
+	</degreeDatas>
+	<conflictingTraits>
+	  <li>SYR_Haggler</li>
+	</conflictingTraits>
+	<requiredWorkTags>
+	  <li>Animals</li>
+	</requiredWorkTags>
+  </TraitDef>
+  
+  <TraitDef>
+	<defName>SYR_MedicalTraining</defName>
+	<commonality>1.0</commonality>
+	<degreeDatas>
+	  <li>
+		<label>medical training</label>
+		<description>[PAWN_nameDef] has had training in first aid and knows how to tend wounds as well as common illnesses. [PAWN_pronoun] doesn't do well under pressure though.</description>
+		<statOffsets>
+		  <MedicalTendSpeed>0.25</MedicalTendSpeed>
+		  <MedicalTendQuality>0.25</MedicalTendQuality>
+          <MentalBreakThreshold>0.05</MentalBreakThreshold>
+		</statOffsets>
+	  </li>      
+	</degreeDatas>
+	<requiredWorkTags>
+	  <li>Caring</li>
+	</requiredWorkTags>
+  </TraitDef>
+
+<!-- Combat -->
+  
+  <TraitDef>
+    <defName>SYR_Hotblooded</defName>
+	<commonality>1.0</commonality>
+    <degreeDatas>
+      <li>
+        <label>hotblooded</label>
+        <description>Fighting has always been the go-to solution for [PAWN_nameDef]. [PAWN_possessive] hands are always ready for action. While this can come in handy in life or death situations, it can be troublesome outside of them.</description>
+        <socialFightChanceFactor>4</socialFightChanceFactor>
+        <statOffsets>
+		  <WorkSpeedGlobal>0.2</WorkSpeedGlobal>
+          <AimingDelayFactor>-0.25</AimingDelayFactor>
+          <MeleeHitChance>2</MeleeHitChance>
+		  <MeleeDodgeChance>5</MeleeDodgeChance>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+	<conflictingTraits>
+	  <li>Bloodlust</li>
+	</conflictingTraits>
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+  </TraitDef>
+  
+</Defs>

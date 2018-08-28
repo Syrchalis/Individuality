@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <IndividualityTooltip>View natural variations</IndividualityTooltip>
+  <SyrTraitsSettingsCategory>Individuality</SyrTraitsSettingsCategory>
+  <SyrTraitsSexualityCommonality>Commonality of sexual orientations (sum does not need to be 100%)</SyrTraitsSexualityCommonality>
+  <SyrTraitsSexualityCommonalityStraight>Straight</SyrTraitsSexualityCommonalityStraight>
+  <SyrTraitsSexualityCommonalityBi>Bi</SyrTraitsSexualityCommonalityBi>
+  <SyrTraitsSexualityCommonalityGay>Gay</SyrTraitsSexualityCommonalityGay>
+  <SexualityPawn>Sexuality</SexualityPawn>
+  <RomanceFactor>Extrovertedness</RomanceFactor>
+  <PsychicFactor>Sensitivity to psychic phenomena</PsychicFactor>
+  <BodyWeight>Body weight variation</BodyWeight>
+
+</LanguageData>

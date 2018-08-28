@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>[SYR] Traits</name>
+    <author>Syrchalis</author>
+    <targetVersion>0.19.1998</targetVersion>
+	<url>https://ludeon.com/forums/index.php?topic=42913.0</url>
+    <description>Adds new traits and rebalances vanilla traits. 
+	
+Design goal is to make every trait have up- and downsides, but these do not need to be equal. There is still good and bad traits. You can find something positive about every trait and something negative about every trait. </description>
+</ModMetaData>
