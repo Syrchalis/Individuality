@@ -22,7 +22,30 @@ namespace SyrTraits
             }
             PsychicFactor = GenMath.RoundTo(num, 0.25f);
             BodyWeight = GenMath.RoundTo(Rand.Range(-10, 10), 5);
-        }
+            Pawn pawn = parent as Pawn;
+            if (pawn != null)
+            {
+                if (pawn.story.bodyType == BodyTypeDefOf.Fat)
+                {
+                    BodyWeight += GenMath.RoundTo(Rand.Range(20, 40), 5);
+                }
+                if (pawn.story.bodyType == BodyTypeDefOf.Hulk)
+                {
+                    BodyWeight += GenMath.RoundTo(Rand.Range(10, 20), 5);
+                }
+                if (pawn.story.bodyType == BodyTypeDefOf.Thin)
+                {
+                    BodyWeight += GenMath.RoundTo(Rand.Range(-20, -10), 5);
+                }
+                if (pawn.story.bodyType == BodyTypeDefOf.Female)
+                {
+                    BodyWeight += GenMath.RoundTo(Rand.Range(-10, 0), 5);
+                }
+                if (BodyWeight < -30)
+                {
+                    BodyWeight = -30;
+                }
+            }
 
         public CompProperties_Individuality Props
         {
@@ -64,35 +87,6 @@ namespace SyrTraits
             Scribe_Values.Look(ref BodyWeight, "bodyWeight", -999, false);
             Scribe_Values.Look(ref RomanceFactor, "romanceFactor", 0f, false);
             Scribe_Values.Look(ref PsychicFactor, "psychicFactor", -2f, false);
-        }
-
-        public override void CompTickRare()
-        {
-            base.CompTickRare();
-            Pawn pawn = parent as Pawn;
-            if (pawn != null)
-            {
-                if (pawn.story.bodyType == BodyTypeDefOf.Fat)
-                {
-                    BodyWeight += GenMath.RoundTo(Rand.Range(20, 40), 5);
-                }
-                if (pawn.story.bodyType == BodyTypeDefOf.Hulk)
-                {
-                    BodyWeight += GenMath.RoundTo(Rand.Range(10, 20), 5);
-                }
-                if (pawn.story.bodyType == BodyTypeDefOf.Thin)
-                {
-                    BodyWeight += GenMath.RoundTo(Rand.Range(-20, -10), 5);
-                }
-                if (pawn.story.bodyType == BodyTypeDefOf.Female)
-                {
-                    BodyWeight += GenMath.RoundTo(Rand.Range(-10, 0), 5);
-                }
-                if (BodyWeight < -30)
-                {
-                    BodyWeight = -30;
-                }
-            }
         }
 
         public float BodyWeight;
