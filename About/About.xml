@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-    <name>[SYR] Traits</name>
+    <name>[SYR] Individualty</name>
     <author>Syrchalis</author>
-    <targetVersion>0.19.1998</targetVersion>
-	<url>https://ludeon.com/forums/index.php?topic=42913.0</url>
-    <description>Adds new traits and rebalances vanilla traits. 
+    <targetVersion>0.19.2009</targetVersion>
+	<url>https://ludeon.com/forums/index.php?topic=43449</url>
+    <description>Adds new traits, rebalances vanilla traits and allows pawns to have randomized stats. 
 	
-Design goal is to make every trait have up- and downsides, but these do not need to be equal. There is still good and bad traits. You can find something positive about every trait and something negative about every trait. </description>
+Pawns will now have a random body weight, random psychic sensitivity (replaces the corresponding traits), random confidence (chance they try to romance others) and a random sexuality (replaces gay trait) - the latter includes bisexual. Please do not request Kinsey Scale or more sexuality types.
+	
+Design goal is to make every trait have up- and downsides, but these do not need to be equal. There is still good and bad traits. You can find something positive about most traits and something negative about most traits. Some traits that are just slightly bad/good will not have an up/downside added (like kind, creepy breathing etc.).
+
+The new traits are mostly work-related traits that make pawns better in one area and worse in another. Generally the improvement is bigger than the penalty, so they can be considered good traits.
+
+Please do not ask for Prepare Carefully compatibility, it's a lot of work. Just accept that these things are random (for now).</description>
 </ModMetaData>

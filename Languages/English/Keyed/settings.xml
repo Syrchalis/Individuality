@@ -7,9 +7,15 @@
   <SyrTraitsSexualityCommonalityStraight>Straight</SyrTraitsSexualityCommonalityStraight>
   <SyrTraitsSexualityCommonalityBi>Bi</SyrTraitsSexualityCommonalityBi>
   <SyrTraitsSexualityCommonalityGay>Gay</SyrTraitsSexualityCommonalityGay>
+  <IndividualityWindow>Individuality</IndividualityWindow>
   <SexualityPawn>Sexuality</SexualityPawn>
-  <RomanceFactor>Extrovertedness</RomanceFactor>
-  <PsychicFactor>Sensitivity to psychic phenomena</PsychicFactor>
-  <BodyWeight>Body weight variation</BodyWeight>
+  <SexualityPawnTooltip>Which genders this person is attracted to</SexualityPawnTooltip>
+  <RomanceFactor>Confidence</RomanceFactor>
+  <RomanceFactorTooltip>How likely this person is to try to romance someone, on a scale from one to ten</RomanceFactorTooltip>
+  <PsychicFactor>Natural psychic sensitivity</PsychicFactor>
+  <PsychicFactorTooltip>This person's natural sensitivity to psychic phenomena</PsychicFactorTooltip>
+  <BodyWeight>Body weight</BodyWeight>
+  <BodyWeightTooltip>The weight of this person</BodyWeightTooltip>
+  <BodyWeightOffset>Natural body shape</BodyWeightOffset>
 
 </LanguageData>
