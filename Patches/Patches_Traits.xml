@@ -13,6 +13,17 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/..</xpath>
+		<value>
+			<comps>
+			  <li>
+				<compClass>SyrTraits.CompIndividuality</compClass>
+			  </li>
+			</comps>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
 		<xpath>*/TraitDef[defName = "Gay" or defName = "PsychicSensitivity"]</xpath>
 		<value>
 			<ignoreConfigErrors>true</ignoreConfigErrors>
