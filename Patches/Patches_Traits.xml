@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
 
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/ThingDef/race[intelligence="Humanlike"]/..</xpath>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/../comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/../comps</xpath>
+		<value>
+		  <li>
+			<compClass>SyrTraits.CompIndividuality</compClass>
+		  </li>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/..</xpath>
 		<value>
 			<comps>
 			  <li>
@@ -10,10 +20,21 @@
 			  </li>
 			</comps>
 		</value>
-	</Operation>
-	
-	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/..</xpath>
+    </nomatch>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/../comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/../comps</xpath>
+		<value>
+		  <li>
+			<compClass>SyrTraits.CompIndividuality</compClass>
+		  </li>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/..</xpath>
 		<value>
 			<comps>
 			  <li>
@@ -21,7 +42,8 @@
 			  </li>
 			</comps>
 		</value>
-	</Operation>
+    </nomatch>
+  </Operation>
 	
 	<Operation Class="PatchOperationAdd">
 		<xpath>*/TraitDef[defName = "Gay" or defName = "PsychicSensitivity"]</xpath>
