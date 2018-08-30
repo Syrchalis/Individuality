@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
 
-  <Operation Class="PatchOperationConditional">
+  <!--<Operation Class="PatchOperationConditional">
   <success>Always</success>
     <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/../comps</xpath>
     <match Class="PatchOperationAdd">
@@ -25,7 +25,6 @@
   </Operation>
   
   <Operation Class="PatchOperationConditional">
-  <success>Always</success>
     <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/../comps</xpath>
     <match Class="PatchOperationAdd">
       <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/../comps</xpath>
@@ -45,7 +44,7 @@
 			</comps>
 		</value>
     </nomatch>
-  </Operation>
+  </Operation>-->
 	
 	<Operation Class="PatchOperationAdd">
 		<xpath>*/TraitDef[defName = "Gay" or defName = "PsychicSensitivity"]</xpath>
