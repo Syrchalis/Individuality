@@ -14,34 +14,36 @@ namespace SyrTraits
     {
         public static void DrawIndividualityCard(Rect rect, Pawn pawn)
         {
-            if (pawn != null)
+            CompIndividuality comp = pawn.TryGetComp<CompIndividuality>();
+            if (pawn != null && comp != null)
             {
                 //GUI.BeginGroup(rect);
+                
                 Text.Font = GameFont.Medium;
                 Rect rect1 = new Rect(20f, 10f, rect.width - 20f, rect.height - 30f);
-                Widgets.Label(rect1, "IndividualityWindow".Translate());
+                Widgets.Label(rect1, "IndividualityWindow".Translate() + " - " + pawn.Name.ToStringShort);
                 Text.Font = GameFont.Small;
                 float num = rect1.y + 30f;
                 Rect rect2 = new Rect(20f, num, rect.width - 20f, 24f);
-                Widgets.Label(rect2, "SexualityPawn".Translate() + ": " + pawn.TryGetComp<CompIndividuality>().sexuality);
+                Widgets.Label(rect2, "SexualityPawn".Translate() + ": " + comp.sexuality);
                 TipSignal SexualityPawnTooltip = "SexualityPawnTooltip".Translate();
                 TooltipHandler.TipRegion(rect2, SexualityPawnTooltip);
                 num += rect2.height + 2f;
                 //if (Prefs.DevMode)
                 //{
                     Rect rect3 = new Rect(20f, num, rect.width - 20f, 24f);
-                    Widgets.Label(rect3, "RomanceFactor".Translate() + ": " + (pawn.TryGetComp<CompIndividuality>().RomanceFactor * 10));
+                    Widgets.Label(rect3, "RomanceFactor".Translate() + ": " + (comp.RomanceFactor * 10));
                     TipSignal RomanceFactorTooltip = "RomanceFactorTooltip".Translate();
                     TooltipHandler.TipRegion(rect3, RomanceFactorTooltip);
                     num += rect3.height + 2f;
                 //}
                 Rect rect4 = new Rect(20f, num, rect.width - 20f, 24f);
-                Widgets.Label(rect4, "BodyWeight".Translate() + ": " + (pawn.TryGetComp<CompIndividuality>().BodyWeight + 70) + " kg (" + pawn.story.bodyType + ")");
+                Widgets.Label(rect4, "BodyWeight".Translate() + ": " + (comp.BodyWeight + 70) + " kg (" + pawn.story.bodyType + ")");
                 TipSignal BodyWeightTooltip = "BodyWeightTooltip".Translate();
                 TooltipHandler.TipRegion(rect4, BodyWeightTooltip);
                 num += rect4.height + 2f;
                 Rect rect5 = new Rect(20f, num, rect.width - 20f, 24f);
-                Widgets.Label(rect5, "PsychicFactor".Translate() + ": " + pawn.TryGetComp<CompIndividuality>().PsychicFactor.ToStringByStyle(ToStringStyle.PercentZero, ToStringNumberSense.Offset));
+                Widgets.Label(rect5, "PsychicFactor".Translate() + ": " + comp.PsychicFactor.ToStringByStyle(ToStringStyle.PercentZero, ToStringNumberSense.Offset));
                 TipSignal PsychicFactorTooltip = "PsychicFactorTooltip".Translate();
                 TooltipHandler.TipRegion(rect5, PsychicFactorTooltip);
                 //GUI.EndGroup();

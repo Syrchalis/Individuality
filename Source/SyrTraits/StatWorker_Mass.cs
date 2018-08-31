@@ -14,7 +14,8 @@ namespace SyrTraits
     {
         public override float GetValueUnfinalized(StatRequest req, bool applyPostProcess = true)
         {
-            if (req.Thing?.def.race?.Humanlike ?? false)
+            CompIndividuality comp = req.Thing.TryGetComp<CompIndividuality>();
+            if (comp != null)
             {
                 return base.GetValueUnfinalized(req, applyPostProcess) + req.Thing.TryGetComp<CompIndividuality>().BodyWeight;
             }
@@ -26,9 +27,10 @@ namespace SyrTraits
         public override string GetExplanationUnfinalized(StatRequest req, ToStringNumberSense numberSense)
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine("BodyWeightOffset".Translate() + ": " + stat.ValueToString(req.Thing.TryGetComp<CompIndividuality>().BodyWeight, numberSense));
-            if (req.Thing?.def.race?.Humanlike ?? false)
+            CompIndividuality comp = req.Thing.TryGetComp<CompIndividuality>();
+            if (comp != null)
             {
+                stringBuilder.AppendLine("BodyWeightOffset".Translate() + ": " + stat.ValueToString(comp.BodyWeight));
                 return base.GetExplanationUnfinalized(req, numberSense) + "\n" + stringBuilder.ToString().TrimEndNewlines();
             }
             else

@@ -35,67 +35,77 @@ namespace SyrTraits
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
-            if (sexuality == Sexuality.None)
+            if (parent.def.defName == "ChjDroid")
             {
-                sexuality = RandomSexualityByWeight();
+                disabled = true;
+                RomanceFactor = 0f;
+                PsychicFactor = 0f;
+                sexuality = Sexuality.None;
+                BodyWeight = 0f;
             }
-            if (sexuality == Sexuality.None)
+            if (!disabled)
             {
-                sexuality = RandomSexualityByWeight();
+                if (sexuality == Sexuality.None)
+                {
+                    sexuality = RandomSexualityByWeight();
+                }
+                if (RomanceFactor == -1f)
+                {
+                    RomanceFactor = GenMath.RoundTo(Rand.Range(0.1f, 1f), 0.1f);
+                }
+                if (PsychicFactor < -2f)
+                {
+                    PsychicFactor = GenMath.RoundTo(Rand.Range(-1f, 0.8f), 0.2f);
+                }
+                Pawn pawn = parent as Pawn;
+                if (pawn != null)
+                {
+                    if (pawn.story.bodyType == BodyTypeDefOf.Fat)
+                        BodyWeight = GenMath.RoundTo(Rand.Range(20, 50), 5);
+                    else if (pawn.story.bodyType == BodyTypeDefOf.Hulk)
+                        BodyWeight = GenMath.RoundTo(Rand.Range(10, 30), 5);
+                    else if (pawn.story.bodyType == BodyTypeDefOf.Thin)
+                        BodyWeight = GenMath.RoundTo(Rand.Range(-30, -10), 5);
+                    else if (pawn.story.bodyType == BodyTypeDefOf.Female)
+                        BodyWeight = GenMath.RoundTo(Rand.Range(-10, 0), 5);
+                    BodyWeight = Mathf.Clamp(BodyWeight, -30, 50);
+                }
+                if (BodyWeight == -39)
+                {
+                    BodyWeight = Rand.Range(-10, 10);
+                }
             }
-            if (RomanceFactor == -999f)
-            {
-                RomanceFactor = GenMath.RoundTo(Rand.Range(0.25f, 1f), 0.1f);
-            }
-            if (PsychicFactor < -999f)
-            {
-                PsychicFactor = GenMath.RoundTo(Rand.Range(-1f, 1f), 0.1f);
-            }
-            Pawn pawn = parent as Pawn;
-            if (pawn != null)
-            {
-                if (pawn.story.bodyType == BodyTypeDefOf.Fat)
-                    BodyWeight = GenMath.RoundTo(Rand.Range(20, 50), 5);
-                else if (pawn.story.bodyType == BodyTypeDefOf.Hulk)
-                    BodyWeight = GenMath.RoundTo(Rand.Range(10, 30), 5);
-                else if (pawn.story.bodyType == BodyTypeDefOf.Thin)
-                    BodyWeight = GenMath.RoundTo(Rand.Range(-30, -10), 5);
-                else if (pawn.story.bodyType == BodyTypeDefOf.Female)
-                    BodyWeight = GenMath.RoundTo(Rand.Range(-10, 0), 5);
-                BodyWeight = Mathf.Clamp(BodyWeight, -30, 50);
-            }
-            if (BodyWeight == -999)
-            {
-                BodyWeight = Rand.Range(-10, 10);
-            }
-
         }
 
         public override void PostExposeData()
         {
             base.PostExposeData();
             Scribe_Values.Look(ref sexuality, "sexuality", Sexuality.None, false);
-            Scribe_Values.Look(ref BodyWeight, "bodyWeight", -999, false);
-            Scribe_Values.Look(ref RomanceFactor, "romanceFactor", -999f, false);
-            Scribe_Values.Look(ref PsychicFactor, "psychicFactor", -999f, false);
-            if (sexuality == Sexuality.None)
+            Scribe_Values.Look(ref BodyWeight, "bodyWeight", -39, false);
+            Scribe_Values.Look(ref RomanceFactor, "romanceFactor", -1f, false);
+            Scribe_Values.Look(ref PsychicFactor, "psychicFactor", -2f, false);
+            if (!disabled)
             {
-                sexuality = RandomSexualityByWeight();
-            }
-            if (RomanceFactor == -999f)
-            {
-                RomanceFactor = GenMath.RoundTo(Rand.Range(0.25f, 1f), 0.1f);
-            }
-            if (PsychicFactor < -999f)
-            {
-                PsychicFactor = GenMath.RoundTo(Rand.Range(-1f, 1f), 0.1f);
-            }
-            if (BodyWeight == -999)
-            {
-                BodyWeight = Rand.Range(-10, 10);
+                if (sexuality == Sexuality.None)
+                {
+                    sexuality = RandomSexualityByWeight();
+                }
+                if (RomanceFactor == -1f)
+                {
+                    RomanceFactor = GenMath.RoundTo(Rand.Range(0.1f, 1f), 0.1f);
+                }
+                if (PsychicFactor < -2f)
+                {
+                    PsychicFactor = GenMath.RoundTo(Rand.Range(-1f, 0.8f), 0.2f);
+                }
+                if (BodyWeight == -39)
+                {
+                    BodyWeight = Rand.Range(-10, 10);
+                }
             }
         }
 
+        public bool disabled = false;
         public float BodyWeight;
         public float PsychicFactor;
         public float RomanceFactor;

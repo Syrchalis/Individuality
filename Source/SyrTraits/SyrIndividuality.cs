@@ -29,6 +29,8 @@ namespace SyrTraits
             {
                 Listing_Standard listing_Standard = new Listing_Standard();
                 listing_Standard.Begin(inRect);
+                listing_Standard.Label("SyrTraitsTraitCount".Translate());
+                listing_Standard.IntRange(ref SyrIndividualitySettings.traitCount, 0, 5);
                 listing_Standard.Label("SyrTraitsSexualityCommonality".Translate());
                 listing_Standard.Label("SyrTraitsSexualityCommonalityStraight".Translate() + ": " + SyrIndividualitySettings.commonalityStraight.ToStringByStyle(ToStringStyle.PercentZero));
                 SyrIndividualitySettings.commonalityStraight = listing_Standard.Slider(GenMath.RoundTo(SyrIndividualitySettings.commonalityStraight, 0.05f), 0f, (1f - SyrIndividualitySettings.commonalityBi - SyrIndividualitySettings.commonalityGay));

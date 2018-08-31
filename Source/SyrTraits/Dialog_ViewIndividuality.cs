@@ -27,6 +27,7 @@ namespace SyrTraits
             closeOnClickedOutside = true;
             absorbInputAroundWindow = false;
             forcePause = true;
+            preventCameraMotion = false;
             if (Event.current.type == EventType.KeyDown && (Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.Escape))
             {
                 flag = true;
@@ -35,11 +36,24 @@ namespace SyrTraits
             Rect windowRect = inRect.ContractedBy(17f);
             Rect mainRect = new Rect(windowRect.x, windowRect.y, windowRect.width, windowRect.height - 20f);
             Rect okRect = new Rect(inRect.width / 3, mainRect.yMax + 10f, inRect.width / 3f, 30f);
-            IndividualityCardUtility.DrawIndividualityCard(mainRect, pawn);
+            if (Current.ProgramState == ProgramState.Playing)
+            {
+                IndividualityCardUtility.DrawIndividualityCard(mainRect, Find.Selector.SingleSelectedThing as Pawn);
+            }
+            else
+            {
+                IndividualityCardUtility.DrawIndividualityCard(mainRect, pawn);
+            }
             if (Widgets.ButtonText(okRect, "CloseButton".Translate(), true, false, true) || flag)
             {
                 Close(true);
             }
+            /*if (KeyBindingDefOf.NextColonist.KeyDownEvent)
+            {
+            }
+            if (KeyBindingDefOf.PreviousColonist.KeyDownEvent)
+            {
+            }*/
         }
     }
 }

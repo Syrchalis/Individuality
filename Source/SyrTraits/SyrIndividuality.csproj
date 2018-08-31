@@ -34,7 +34,7 @@
       <HintPath>..\..\..\..\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\..\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -44,11 +44,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\RimWorldWin64_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompToHumanlikes.cs" />
     <Compile Include="DefOf.cs" />
     <Compile Include="CompIndividuality.cs" />
     <Compile Include="CompProperties_Individuality.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="LovePartnerRelationUtility_GenerationChancePatch.cs" />
     <Compile Include="CharacterCardUtilityPatch.cs" />
     <Compile Include="Need_JoyPatch.cs" />
+    <Compile Include="PawnGenerator_GenerateTraitsPatch.cs" />
     <Compile Include="StatWorker_Mass.cs" />
     <Compile Include="StatWorker_PsychicSensitivity.cs" />
     <Compile Include="SyrIndividuality.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="ThoughtWorker_DeadMansApparelPatch.cs" />
     <Compile Include="ThoughtWorker_DisfiguredPatch.cs" />
     <Compile Include="ThoughtWorker_RandomMood.cs" />
+    <Compile Include="TraitSet_GainTraitPatch.cs" />
     <Compile Include="TraitsPawnDeath.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
