@@ -38,6 +38,7 @@ namespace SyrTraits
                 SyrIndividualitySettings.commonalityBi = listing_Standard.Slider(GenMath.RoundTo(SyrIndividualitySettings.commonalityBi, 0.05f), 0f, (1f - SyrIndividualitySettings.commonalityGay - SyrIndividualitySettings.commonalityStraight));
                 listing_Standard.Label("SyrTraitsSexualityCommonalityGay".Translate() + ": " + SyrIndividualitySettings.commonalityGay.ToStringByStyle(ToStringStyle.PercentZero));
                 SyrIndividualitySettings.commonalityGay = listing_Standard.Slider(GenMath.RoundTo(SyrIndividualitySettings.commonalityGay, 0.05f), 0f, (1f - SyrIndividualitySettings.commonalityBi - SyrIndividualitySettings.commonalityStraight));
+                listing_Standard.CheckboxLabeled("SyrTraitsTraitsForcePassion".Translate(),ref SyrIndividualitySettings.traitsForcePassion ,("SyrTraitsTraitsForcePassionTooltip".Translate()));
                 listing_Standard.End();
                 settings.Write();
             }

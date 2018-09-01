@@ -70,6 +70,7 @@
     <Compile Include="ThoughtWorker_DisfiguredPatch.cs" />
     <Compile Include="ThoughtWorker_RandomMood.cs" />
     <Compile Include="TraitSet_GainTraitPatch.cs" />
+    <Compile Include="PawnGenerator_GenerateSkillsPatch.cs" />
     <Compile Include="TraitsPawnDeath.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

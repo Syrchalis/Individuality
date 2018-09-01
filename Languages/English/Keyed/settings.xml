@@ -3,10 +3,13 @@
 
   <IndividualityTooltip>View natural variations</IndividualityTooltip>
   <SyrTraitsSettingsCategory>Individuality</SyrTraitsSettingsCategory>
+  <SyrTraitsTraitCount>Amount of traits pawns spawn with</SyrTraitsTraitCount>
   <SyrTraitsSexualityCommonality>Commonality of sexual orientations (sum does not need to be 100%)</SyrTraitsSexualityCommonality>
   <SyrTraitsSexualityCommonalityStraight>Straight</SyrTraitsSexualityCommonalityStraight>
   <SyrTraitsSexualityCommonalityBi>Bi</SyrTraitsSexualityCommonalityBi>
   <SyrTraitsSexualityCommonalityGay>Gay</SyrTraitsSexualityCommonalityGay>
+  <SyrTraitsTraitsForcePassion>Profession traits modify passion</SyrTraitsTraitsForcePassion>
+  <SyrTraitsTraitsForcePassionTooltip>Causes profession related traits to grant at least minor passion in their improved skill and remove any passion in the skill they affect negatively.\nFor example: Green Thumb will give passion in Plants, but remove any passion in Mining.</SyrTraitsTraitsForcePassionTooltip>
   <IndividualityWindow>Individuality</IndividualityWindow>
   <SexualityPawn>Sexuality</SexualityPawn>
   <SexualityPawnTooltip>Which genders this person is attracted to</SexualityPawnTooltip>

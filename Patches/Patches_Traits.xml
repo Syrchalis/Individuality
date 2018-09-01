@@ -1,50 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
-
-  <!--<Operation Class="PatchOperationConditional">
-  <success>Always</success>
-    <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/../comps</xpath>
-    <match Class="PatchOperationAdd">
-      <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/../comps</xpath>
-		<value>
-		  <li>
-			<compClass>SyrTraits.CompIndividuality</compClass>
-		  </li>
-		</value>
-    </match>
-    <nomatch Class="PatchOperationAdd">
-      <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/..</xpath>
-		<value>
-			<comps>
-			  <li>
-				<compClass>SyrTraits.CompIndividuality</compClass>
-			  </li>
-			</comps>
-		</value>
-    </nomatch>
-  </Operation>
-  
-  <Operation Class="PatchOperationConditional">
-    <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/../comps</xpath>
-    <match Class="PatchOperationAdd">
-      <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/../comps</xpath>
-		<value>
-		  <li>
-			<compClass>SyrTraits.CompIndividuality</compClass>
-		  </li>
-		</value>
-    </match>
-    <nomatch Class="PatchOperationAdd">
-      <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/..</xpath>
-		<value>
-			<comps>
-			  <li>
-				<compClass>SyrTraits.CompIndividuality</compClass>
-			  </li>
-			</comps>
-		</value>
-    </nomatch>
-  </Operation>-->
 	
 	<Operation Class="PatchOperationAdd">
 		<xpath>*/TraitDef[defName = "Gay" or defName = "PsychicSensitivity"]</xpath>
@@ -220,6 +175,13 @@
 		</value>
 	</Operation>
 	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "NaturalMood"]/degreeDatas/li[4]/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] is perenially unhappy. [PAWN_pronoun] has trouble sustaining a good mood even when everything is fine. [PAWN_possessive] only way to deal with it is hiding in [PAWN_possessive] room or wandering around in sadness.</description>
+		</value>
+	</Operation>
+	
 	<Operation Class="PatchOperationAdd">
 		<xpath>*/TraitDef[defName = "Nerves"]/degreeDatas/li[4]</xpath>
 		<value>
@@ -228,6 +190,13 @@
 			  <li>TargetedTantrum</li>
 			  <li>BedroomTantrum</li>
 			</theOnlyAllowedMentalBreaks>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Nerves"]/degreeDatas/li[4]/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] is on a hair-trigger all the time. [PAWN_pronoun] is the first to break in any tough situation. If that happens [PAWN_pronoun] will find something to smash.</description>
 		</value>
 	</Operation>
 	
@@ -408,5 +377,50 @@
 			</li>
 		</value>
 	</Operation>
+	
+  <!--<Operation Class="PatchOperationConditional">
+  <success>Always</success>
+    <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/../comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/../comps</xpath>
+		<value>
+		  <li>
+			<compClass>SyrTraits.CompIndividuality</compClass>
+		  </li>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/..</xpath>
+		<value>
+			<comps>
+			  <li>
+				<compClass>SyrTraits.CompIndividuality</compClass>
+			  </li>
+			</comps>
+		</value>
+    </nomatch>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/../comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/../comps</xpath>
+		<value>
+		  <li>
+			<compClass>SyrTraits.CompIndividuality</compClass>
+		  </li>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/..</xpath>
+		<value>
+			<comps>
+			  <li>
+				<compClass>SyrTraits.CompIndividuality</compClass>
+			  </li>
+			</comps>
+		</value>
+    </nomatch>
+  </Operation>-->
 
 </Patch>

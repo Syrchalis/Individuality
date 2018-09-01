@@ -15,6 +15,7 @@ namespace SyrTraits
         public static float commonalityBi = 0.1f;
         public static float commonalityGay = 0.1f;
         public static IntRange traitCount = new IntRange(2, 3);
+        public static bool traitsForcePassion;
         public override void ExposeData()
         {
             base.ExposeData();
@@ -22,6 +23,7 @@ namespace SyrTraits
             Scribe_Values.Look<float>(ref commonalityBi, "commonalityBi", 0.1f, true);
             Scribe_Values.Look<float>(ref commonalityGay, "commonalityGay", 0.1f, true);
             Scribe_Values.Look<IntRange>(ref traitCount, "traitCount", new IntRange(2, 3), true);
+            Scribe_Values.Look<bool>(ref traitsForcePassion, "traitsForcePassion", true, true);
         }
     }
 }

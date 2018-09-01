@@ -56,7 +56,7 @@ namespace SyrTraits
                 Rect rectNew = new Rect(num, 2f, 24f, 24f);
                 if (Current.ProgramState != ProgramState.Playing)
                 {
-                    rectNew = new Rect(creationRect.width - 54f - 100f, 0f, 24f, 24f);
+                    rectNew = new Rect(creationRect.width - 24f, 30f, 24f, 24f);
                 }
                 Color old = GUI.color;
                 if (rectNew.Contains(Event.current.mousePosition))
