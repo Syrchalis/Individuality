@@ -17,7 +17,10 @@ namespace SyrTraits
         [HarmonyPostfix]
         public static void LovePartnerRelationGenerationChance_Postfix(ref float __result, Pawn generated, Pawn other, PawnGenerationRequest request, bool ex)
         {
-            __result = LovePartnerRelationGenerationChance_Method(generated, other, request, ex);
+            if (!SyrIndividuality.PsychologyIsActive)
+            {
+                __result = LovePartnerRelationGenerationChance_Method(generated, other, request, ex);
+            }
         }
         private static float LovePartnerRelationGenerationChance_Method(Pawn generated, Pawn other, PawnGenerationRequest request, bool ex)
         {

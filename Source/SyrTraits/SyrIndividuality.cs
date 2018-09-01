@@ -22,6 +22,7 @@ namespace SyrTraits
         }
 
         public override string SettingsCategory() => "SyrTraitsSettingsCategory".Translate();
+        public static bool PsychologyIsActive => ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name == "Psychology");
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
@@ -32,12 +33,15 @@ namespace SyrTraits
                 listing_Standard.Label("SyrTraitsTraitCount".Translate());
                 listing_Standard.IntRange(ref SyrIndividualitySettings.traitCount, 0, 5);
                 listing_Standard.Label("SyrTraitsSexualityCommonality".Translate());
-                listing_Standard.Label("SyrTraitsSexualityCommonalityStraight".Translate() + ": " + SyrIndividualitySettings.commonalityStraight.ToStringByStyle(ToStringStyle.PercentZero));
-                SyrIndividualitySettings.commonalityStraight = listing_Standard.Slider(GenMath.RoundTo(SyrIndividualitySettings.commonalityStraight, 0.05f), 0f, (1f - SyrIndividualitySettings.commonalityBi - SyrIndividualitySettings.commonalityGay));
-                listing_Standard.Label("SyrTraitsSexualityCommonalityBi".Translate() + ": " + SyrIndividualitySettings.commonalityBi.ToStringByStyle(ToStringStyle.PercentZero));
-                SyrIndividualitySettings.commonalityBi = listing_Standard.Slider(GenMath.RoundTo(SyrIndividualitySettings.commonalityBi, 0.05f), 0f, (1f - SyrIndividualitySettings.commonalityGay - SyrIndividualitySettings.commonalityStraight));
-                listing_Standard.Label("SyrTraitsSexualityCommonalityGay".Translate() + ": " + SyrIndividualitySettings.commonalityGay.ToStringByStyle(ToStringStyle.PercentZero));
-                SyrIndividualitySettings.commonalityGay = listing_Standard.Slider(GenMath.RoundTo(SyrIndividualitySettings.commonalityGay, 0.05f), 0f, (1f - SyrIndividualitySettings.commonalityBi - SyrIndividualitySettings.commonalityStraight));
+                if (!PsychologyIsActive)
+                {
+                    listing_Standard.Label("SyrTraitsSexualityCommonalityStraight".Translate() + ": " + SyrIndividualitySettings.commonalityStraight.ToStringByStyle(ToStringStyle.PercentZero));
+                    SyrIndividualitySettings.commonalityStraight = listing_Standard.Slider(GenMath.RoundTo(SyrIndividualitySettings.commonalityStraight, 0.05f), 0f, (1f - SyrIndividualitySettings.commonalityBi - SyrIndividualitySettings.commonalityGay));
+                    listing_Standard.Label("SyrTraitsSexualityCommonalityBi".Translate() + ": " + SyrIndividualitySettings.commonalityBi.ToStringByStyle(ToStringStyle.PercentZero));
+                    SyrIndividualitySettings.commonalityBi = listing_Standard.Slider(GenMath.RoundTo(SyrIndividualitySettings.commonalityBi, 0.05f), 0f, (1f - SyrIndividualitySettings.commonalityGay - SyrIndividualitySettings.commonalityStraight));
+                    listing_Standard.Label("SyrTraitsSexualityCommonalityGay".Translate() + ": " + SyrIndividualitySettings.commonalityGay.ToStringByStyle(ToStringStyle.PercentZero));
+                    SyrIndividualitySettings.commonalityGay = listing_Standard.Slider(GenMath.RoundTo(SyrIndividualitySettings.commonalityGay, 0.05f), 0f, (1f - SyrIndividualitySettings.commonalityBi - SyrIndividualitySettings.commonalityStraight));
+                }
                 listing_Standard.CheckboxLabeled("SyrTraitsTraitsForcePassion".Translate(),ref SyrIndividualitySettings.traitsForcePassion ,("SyrTraitsTraitsForcePassionTooltip".Translate()));
                 listing_Standard.End();
                 settings.Write();
