@@ -80,11 +80,11 @@ namespace SyrTraits
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_Values.Look(ref sexuality, "sexuality", Sexuality.None, false);
-            Scribe_Values.Look(ref BodyWeight, "bodyWeight", -39, false);
-            Scribe_Values.Look(ref RomanceFactor, "romanceFactor", -1f, false);
-            Scribe_Values.Look(ref PsychicFactor, "psychicFactor", -2f, false);
-            if (!disabled)
+            Scribe_Values.Look(ref sexuality, "Individuality_Sexuality", Sexuality.None, false);
+            Scribe_Values.Look(ref BodyWeight, "Individuality_BodyWeight", -39, false);
+            Scribe_Values.Look(ref RomanceFactor, "Individuality_RomanceFactor", -1f, false);
+            Scribe_Values.Look(ref PsychicFactor, "Individuality_PsychicFactor", -2f, false);
+            if (!disabled && !SyrIndividuality.PsychologyIsActive)
             {
                 if (sexuality == Sexuality.None)
                 {

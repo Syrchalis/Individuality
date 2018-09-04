@@ -19,6 +19,9 @@ namespace SyrTraits
         {
             MethodInfo HighlightOpportunity = AccessTools.Method(typeof(UIHighlighter), "HighlightOpportunity");
             MethodInfo IndividualityCardButton = AccessTools.Method(typeof(CharacterCardUtilityPatch), nameof(IndividualityCardButton));
+            MethodInfo SetTextSize = AccessTools.Method(typeof(CharacterCardUtilityPatch), nameof(SetTextSize));
+            MethodInfo SetRectSize = AccessTools.Method(typeof(CharacterCardUtilityPatch), nameof(SetRectSize));
+            bool traits = false;
             bool found = false;
             foreach (CodeInstruction i in instructions)
             {
@@ -35,6 +38,26 @@ namespace SyrTraits
                 {
                     found = true;
                 }
+                if (i.opcode == OpCodes.Ldstr && i.operand.Equals("Traits"))
+                {
+                    traits = true;
+                }
+                if (traits && i.opcode == OpCodes.Ldc_I4_1)
+                {
+                    yield return new CodeInstruction(OpCodes.Call, SetTextSize);//replaces instruction, gets 0 or 1 returned from the method, depending on setting
+                    continue;
+                }
+                if (traits && i.opcode == OpCodes.Ldc_R4 && i.operand.Equals(24f))//replaces rect height
+                {
+                    yield return new CodeInstruction(OpCodes.Call, SetRectSize);
+                    continue;
+                }
+                if (traits && i.opcode == OpCodes.Ldc_R4 && i.operand.Equals(2f))//replaces rect y calculation
+                {
+                    yield return new CodeInstruction(OpCodes.Ldc_R4, 0f);
+                    traits = false;
+                    continue;
+                }
                 yield return i;
             }
         }
@@ -46,6 +69,29 @@ namespace SyrTraits
             Rect rect0 = new Rect(num, 0f, 30f, 60f);
             IndividualityCardButton(rect0, pawn);
         }*/
+        public static GameFont SetTextSize()
+        {
+            if (SyrIndividualitySettings.traitsTinyFont)
+            {
+                return GameFont.Tiny;
+            }
+            else
+            {
+                return GameFont.Small;
+            }
+        }
+
+        public static float SetRectSize()
+        {
+            if (SyrIndividualitySettings.traitsTinyFont)
+            {
+                return 18f;
+            }
+            else
+            {
+                return 24f;
+            }
+        }
 
         public static void IndividualityCardButton(Rect rect, Pawn pawn, Rect creationRect)
         {

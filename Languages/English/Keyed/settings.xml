@@ -3,13 +3,21 @@
 
   <IndividualityTooltip>View natural variations</IndividualityTooltip>
   <SyrTraitsSettingsCategory>Individuality</SyrTraitsSettingsCategory>
-  <SyrTraitsTraitCount>Amount of traits pawns spawn with</SyrTraitsTraitCount>
-  <SyrTraitsSexualityCommonality>Commonality of sexual orientations (sum does not need to be 100%)</SyrTraitsSexualityCommonality>
+  
+  <SyrTraitsTraitCount>Amount of traits pawns spawn with (default: 2-3)</SyrTraitsTraitCount>
+  <SyrTraitsTraitCountWarning>Warning: Only 5 traits can be displayed, enable "tiny trait font" to view up to 8</SyrTraitsTraitCountWarning>
+  <SyrTraitsTraitsTinyFont>Tiny trait font</SyrTraitsTraitsTinyFont>
+  <SyrTraitsTraitsTinyFontTooltip>This allows up to 8 traits to be displayed in the character window</SyrTraitsTraitsTinyFontTooltip>
+  <SyrTraitsSexualityCommonality>Commonality of sexualities</SyrTraitsSexualityCommonality>
   <SyrTraitsSexualityCommonalityStraight>Straight</SyrTraitsSexualityCommonalityStraight>
   <SyrTraitsSexualityCommonalityBi>Bi</SyrTraitsSexualityCommonalityBi>
+  <SyrTraitsSexualityCommonalityBiTooltip>Gets calculated by subtracting straight and gay from 100%</SyrTraitsSexualityCommonalityBiTooltip>
   <SyrTraitsSexualityCommonalityGay>Gay</SyrTraitsSexualityCommonalityGay>
   <SyrTraitsTraitsForcePassion>Profession traits modify passion</SyrTraitsTraitsForcePassion>
-  <SyrTraitsTraitsForcePassionTooltip>Causes profession related traits to grant at least minor passion in their improved skill and remove any passion in the skill they affect negatively.\nFor example: Green Thumb will give passion in Plants, but remove any passion in Mining.</SyrTraitsTraitsForcePassionTooltip>
+  <SyrTraitsTraitsForcePassionTooltip>Causes profession related traits to grant at least minor passion in their improved skill and remove any passion in the skill they affect negatively.\n\nFor example: Green Thumb will give passion in Plants, but remove any passion in Mining.</SyrTraitsTraitsForcePassionTooltip>
+  <SyrTraitsDefaultSettings>Reset to default</SyrTraitsDefaultSettings>
+  <SyrTraitsDefaultSettingsTooltip>Reset settings to default values</SyrTraitsDefaultSettingsTooltip>
+  
   <IndividualityWindow>Individuality</IndividualityWindow>
   <SexualityPawn>Sexuality</SexualityPawn>
   <SexualityPawnTooltip>Which genders this person is attracted to</SexualityPawnTooltip>

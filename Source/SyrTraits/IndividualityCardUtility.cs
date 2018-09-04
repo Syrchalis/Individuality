@@ -30,22 +30,38 @@ namespace SyrTraits
                     Widgets.Label(rect2, "SexualityPawn".Translate() + ": " + comp.sexuality);
                     TipSignal SexualityPawnTooltip = "SexualityPawnTooltip".Translate();
                     TooltipHandler.TipRegion(rect2, SexualityPawnTooltip);
+                    if (Mouse.IsOver(rect2))
+                    {
+                        Widgets.DrawHighlight(rect2);
+                    }
                     num += rect2.height + 2f;
                     Rect rect3 = new Rect(20f, num, rect.width - 20f, 24f);
                     Widgets.Label(rect3, "RomanceFactor".Translate() + ": " + (comp.RomanceFactor * 10));
                     TipSignal RomanceFactorTooltip = "RomanceFactorTooltip".Translate();
                     TooltipHandler.TipRegion(rect3, RomanceFactorTooltip);
+                    if (Mouse.IsOver(rect3))
+                    {
+                        Widgets.DrawHighlight(rect3);
+                    }
                     num += rect3.height + 2f;
                 }
                 Rect rect4 = new Rect(20f, num, rect.width - 20f, 24f);
                 Widgets.Label(rect4, "BodyWeight".Translate() + ": " + (comp.BodyWeight + 70) + " kg (" + pawn.story.bodyType + ")");
                 TipSignal BodyWeightTooltip = "BodyWeightTooltip".Translate();
                 TooltipHandler.TipRegion(rect4, BodyWeightTooltip);
+                if (Mouse.IsOver(rect4))
+                {
+                    Widgets.DrawHighlight(rect4);
+                }
                 num += rect4.height + 2f;
                 Rect rect5 = new Rect(20f, num, rect.width - 20f, 24f);
                 Widgets.Label(rect5, "PsychicFactor".Translate() + ": " + comp.PsychicFactor.ToStringByStyle(ToStringStyle.PercentZero, ToStringNumberSense.Offset));
                 TipSignal PsychicFactorTooltip = "PsychicFactorTooltip".Translate();
                 TooltipHandler.TipRegion(rect5, PsychicFactorTooltip);
+                if (Mouse.IsOver(rect5))
+                {
+                    Widgets.DrawHighlight(rect5);
+                }
                 //GUI.EndGroup();
             }
         }

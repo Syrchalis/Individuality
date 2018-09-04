@@ -50,7 +50,6 @@ namespace SyrTraits
                 {
                     pawn.skills.GetSkill(thisSkill).passion = Passion.Minor;
                 }
-                Log.Message("Changed passion of " + thisSkill + " on " + pawn);
                 if (badSkill != null)
                 {
                     pawn.skills.GetSkill(badSkill).passion = Passion.None;
