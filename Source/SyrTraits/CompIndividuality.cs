@@ -53,7 +53,7 @@ namespace SyrTraits
                 {
                     RomanceFactor = GenMath.RoundTo(Rand.Range(0.1f, 1f), 0.1f);
                 }
-                if (PsychicFactor < -2f)
+                if (PsychicFactor == -2f)
                 {
                     PsychicFactor = GenMath.RoundTo(Rand.Range(-1f, 0.8f), 0.2f);
                 }
@@ -94,7 +94,7 @@ namespace SyrTraits
                 {
                     RomanceFactor = GenMath.RoundTo(Rand.Range(0.1f, 1f), 0.1f);
                 }
-                if (PsychicFactor < -2f)
+                if (PsychicFactor == -2f)
                 {
                     PsychicFactor = GenMath.RoundTo(Rand.Range(-1f, 0.8f), 0.2f);
                 }
