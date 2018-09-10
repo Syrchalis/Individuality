@@ -378,6 +378,21 @@
 		</value>
 	</Operation>
 	
+	<Operation Class="PatchOperationSequence">
+    <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/TraitDef[defName = "ShootingAccuracy"]/degreeDatas/li[label = "deadshot"]</xpath>
+		</li>	
+		<li Class="PatchOperationReplace">
+		  <xpath>/Defs/TraitDef[defName = "ShootingAccuracy"]/degreeDatas/li[label = "deadshot"]/degree</xpath>
+		  <value>
+		    <degree>3</degree>
+		  </value>
+		</li>
+	  </operations>
+	</Operation>
+	
   <!--<Operation Class="PatchOperationConditional">
   <success>Always</success>
     <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/../comps</xpath>
