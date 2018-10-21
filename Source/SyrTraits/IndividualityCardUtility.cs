@@ -46,7 +46,7 @@ namespace SyrTraits
                     num += rect3.height + 2f;
                 }
                 Rect rect4 = new Rect(20f, num, rect.width - 20f, 24f);
-                Widgets.Label(rect4, "BodyWeight".Translate() + ": " + (comp.BodyWeight + 70) + " kg (" + pawn.story.bodyType + ")");
+                Widgets.Label(rect4, "BodyWeight".Translate() + ": " + ((comp.BodyWeight + 70) * pawn.BodySize) + " kg (" + pawn.story.bodyType + ")");
                 TipSignal BodyWeightTooltip = "BodyWeightTooltip".Translate();
                 TooltipHandler.TipRegion(rect4, BodyWeightTooltip);
                 if (Mouse.IsOver(rect4))

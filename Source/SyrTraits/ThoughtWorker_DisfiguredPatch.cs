@@ -16,10 +16,13 @@ namespace SyrTraits
         [HarmonyPostfix]
         public static void ThoughtWorker_Disfigured_Postfix(ref ThoughtState __result, Pawn pawn, Pawn other)
         {
-        int num = other.story.traits.DegreeOfTrait(TraitDefOf.Beauty);
-        if (num == -1 || num == -2)
+            if (other?.story?.traits != null && other.story.traits.HasTrait(TraitDefOf.Beauty))
             {
-            __result = false;
+                int num = other.story.traits.DegreeOfTrait(TraitDefOf.Beauty);
+                if (num == -1 || num == -2)
+                {
+                    __result = false;
+                }
             }
         }
     }

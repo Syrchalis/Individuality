@@ -67,7 +67,7 @@ namespace SyrTraits
                     else if (pawn.story.bodyType == BodyTypeDefOf.Thin)
                         BodyWeight = GenMath.RoundTo(Rand.Range(-30, -10), 5);
                     else if (pawn.story.bodyType == BodyTypeDefOf.Female)
-                        BodyWeight = GenMath.RoundTo(Rand.Range(-10, 0), 5);
+                        BodyWeight = GenMath.RoundTo(Rand.Range(-15, 5), 5);
                     BodyWeight = Mathf.Clamp(BodyWeight, -30, 50);
                 }
                 if (BodyWeight == -39)

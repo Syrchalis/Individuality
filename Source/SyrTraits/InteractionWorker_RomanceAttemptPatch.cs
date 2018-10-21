@@ -14,7 +14,7 @@ namespace SyrTraits
     [HarmonyPatch(typeof(InteractionWorker_RomanceAttempt), "RandomSelectionWeight")]
     public static class InteractionWorker_RomanceAttemptPatch
     {
-        [HarmonyPriority(Priority.Last)]
+        [HarmonyPriority(Priority.VeryLow)]
         [HarmonyPostfix]
         public static void RandomSelectionWeight_Postfix(ref float __result, Pawn initiator, Pawn recipient)
         {

@@ -4,7 +4,7 @@
   <IndividualityTooltip>View natural variations</IndividualityTooltip>
   <SyrTraitsSettingsCategory>Individuality</SyrTraitsSettingsCategory>
   
-  <SyrTraitsTraitCount>Amount of traits pawns spawn with (default: 2-3)</SyrTraitsTraitCount>
+  <SyrTraitsTraitCount>Amount of traits pawns spawn with</SyrTraitsTraitCount>
   <SyrTraitsTraitCountWarning>Warning: Only 5 traits can be displayed, enable "tiny trait font" to view up to 8</SyrTraitsTraitCountWarning>
   <SyrTraitsTraitsTinyFont>Tiny trait font</SyrTraitsTraitsTinyFont>
   <SyrTraitsTraitsTinyFontTooltip>This allows up to 8 traits to be displayed in the character window</SyrTraitsTraitsTinyFontTooltip>
