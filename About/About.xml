@@ -2,7 +2,7 @@
 <ModMetaData>
     <name>[SYR] Individuality</name>
     <author>Syrchalis</author>
-    <targetVersion>1.0.2059</targetVersion>
+    <supportedVersions><li>1.0</li></supportedVersions>
 	<url>https://ludeon.com/forums/index.php?topic=43449</url>
     <description>Adds new traits, rebalances vanilla traits and allows pawns to have randomized stats. 
 	
