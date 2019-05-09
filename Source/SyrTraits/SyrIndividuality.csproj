@@ -60,6 +60,7 @@
     <Compile Include="CharacterCardUtilityPatch.cs" />
     <Compile Include="Need_JoyPatch.cs" />
     <Compile Include="PawnGenerator_GenerateTraitsPatch.cs" />
+    <Compile Include="SecondaryLovinChanceFactorPatch.cs" />
     <Compile Include="StatWorker_Mass.cs" />
     <Compile Include="StatWorker_PsychicSensitivity.cs" />
     <Compile Include="SyrIndividuality.cs" />

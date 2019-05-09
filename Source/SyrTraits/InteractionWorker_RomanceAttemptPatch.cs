@@ -14,7 +14,6 @@ namespace SyrTraits
     [HarmonyPatch(typeof(InteractionWorker_RomanceAttempt), "RandomSelectionWeight")]
     public static class InteractionWorker_RomanceAttemptPatch
     {
-        [HarmonyPriority(Priority.VeryLow)]
         [HarmonyPostfix]
         public static void RandomSelectionWeight_Postfix(ref float __result, Pawn initiator, Pawn recipient)
         {
@@ -30,8 +29,8 @@ namespace SyrTraits
             {
                 return 0f;
             }
-            float attactiveness = initiator.relations.SecondaryRomanceChanceFactor(recipient);
-            if (attactiveness < 0.25f)
+            float attractiveness = initiator.relations.SecondaryRomanceChanceFactor(recipient);
+            if (attractiveness < 0.25f)
             {
                 return 0f;
             }
@@ -56,7 +55,7 @@ namespace SyrTraits
             {
                 romanceFactor = 0.5f;
             }
-            float attractivenessFactor = Mathf.InverseLerp(0.25f, 1f, attactiveness);
+            float attractivenessFactor = Mathf.InverseLerp(0.25f, 1f, attractiveness);
             float opinionFactor = Mathf.InverseLerp(5f, 100f, (float)opinion);
             float genderFactor = 1f;
             if (initiator.gender != recipient.gender && comp != null)
