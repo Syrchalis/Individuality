@@ -2,7 +2,10 @@
 <ModMetaData>
     <name>[SYR] Individuality</name>
     <author>Syrchalis</author>
-    <supportedVersions><li>1.0</li></supportedVersions>
+    <supportedVersions>
+        <li>1.0</li>
+        <li>1.1</li>
+    </supportedVersions>
 	<url>https://ludeon.com/forums/index.php?topic=43449</url>
     <description>Adds new traits, rebalances vanilla traits and allows pawns to have randomized stats. 
 	
@@ -13,4 +16,13 @@ Design goal is to make every trait have up- and downsides, but these do not need
 The new traits are mostly work-related traits that make pawns better in one area and worse in another. Generally the improvement is bigger than the penalty, so they can be considered good traits.
 
 Please do not ask for Prepare Carefully compatibility, it's a lot of work. Just accept that these things are random (for now).</description>
+    <packageId>syrchalis.individuality</packageId>
+    <modDependencies>
+    <li>
+        <packageId>brrainz.harmony</packageId>
+        <displayName>Harmony</displayName>
+        <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+        <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+</modDependencies>
 </ModMetaData>

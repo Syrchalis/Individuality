@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace SyrTraits
             FieldInfo pawn = AccessTools.Field(typeof(Need), "pawn");
             foreach (CodeInstruction i in instructions)
             {
-                if (i.opcode == OpCodes.Call && i.operand == get_FallPerInterval)
+                if (i.opcode == OpCodes.Call && (MethodInfo)i.operand == get_FallPerInterval)
                 {
                     yield return i;
                     yield return new CodeInstruction(OpCodes.Ldarg_0);//get object

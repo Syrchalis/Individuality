@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace SyrTraits
             MethodInfo IndividualityCardButton = AccessTools.Method(typeof(CharacterCardUtilityPatch), nameof(IndividualityCardButton));
             MethodInfo SetTextSize = AccessTools.Method(typeof(CharacterCardUtilityPatch), nameof(SetTextSize));
             MethodInfo SetRectSize = AccessTools.Method(typeof(CharacterCardUtilityPatch), nameof(SetRectSize));
-            bool traits = false;
+            //bool traits = false;
             bool found = false;
             foreach (CodeInstruction i in instructions)
             {
@@ -37,7 +37,7 @@ namespace SyrTraits
                 if (i.opcode == OpCodes.Call && i.operand == HighlightOpportunity)
                 {
                     found = true;
-                }
+                }/*
                 if (i.opcode == OpCodes.Ldstr && i.operand.Equals("Traits"))
                 {
                     traits = true;
@@ -57,7 +57,7 @@ namespace SyrTraits
                     yield return new CodeInstruction(OpCodes.Ldc_R4, 0f);
                     traits = false;
                     continue;
-                }
+                }*/
                 yield return i;
             }
         }
@@ -98,7 +98,7 @@ namespace SyrTraits
             if (pawn != null)
             {
                 TipSignal tooltip = "IndividualityTooltip".Translate();
-                float num = CharacterCardUtility.PawnCardSize.x - 163f;
+                float num = CharacterCardUtility.BasePawnCardSize.x - 163f;
                 Rect rectNew = new Rect(num, 2f, 24f, 24f);
                 if (Current.ProgramState != ProgramState.Playing)
                 {

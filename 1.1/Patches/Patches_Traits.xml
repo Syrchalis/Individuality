@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "Gay" or defName = "PsychicSensitivity" or defName = "Bisexual" or defName = "Asexual"]</xpath>
+		<value>
+			<ignoreConfigErrors>true</ignoreConfigErrors>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Gay" or defName = "PsychicSensitivity" or defName = "Bisexual" or defName = "Asexual"]/commonality</xpath>
+		<value>
+			<commonality>0</commonality>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/StatDef[defName = "PsychicSensitivity"]</xpath>
+		<value>
+			<workerClass>SyrTraits.StatWorker_PsychicSensitivity</workerClass>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/StatDef[defName = "Mass"]</xpath>
+		<value>
+			<workerClass>SyrTraits.StatWorker_Mass</workerClass>
+		</value>
+	</Operation>
+
+<!-- Spectrum Traits -->
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "ShootingAccuracy"]/degreeDatas</xpath>
+		<value>
+		  <li>
+			<label>expert shooter</label>
+			<description>[PAWN_nameDef] has had proper training with ranged weapons. [PAWN_pronoun] shoots accurately and quickly.</description>
+			<degree>2</degree>
+			<statOffsets>
+			  <AimingDelayFactor>-0.25</AimingDelayFactor>
+			  <ShootingAccuracyPawn>2.5</ShootingAccuracyPawn>
+			</statOffsets>
+		  </li>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "Industriousness"]/degreeDatas/li[1]/statOffsets</xpath>
+		<value>
+		  <JoyNeedRateMultiplier>0.15</JoyNeedRateMultiplier>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "Industriousness"]/degreeDatas/li[2]/statOffsets</xpath>
+		<value>
+		  <JoyNeedRateMultiplier>0.1</JoyNeedRateMultiplier>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "Industriousness"]/degreeDatas/li[3]/statOffsets</xpath>
+		<value>
+		  <JoyNeedRateMultiplier>-0.25</JoyNeedRateMultiplier>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "Industriousness"]/degreeDatas/li[4]/statOffsets</xpath>
+		<value>
+		  <JoyNeedRateMultiplier>-0.5</JoyNeedRateMultiplier>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "SpeedOffset"]/degreeDatas/li[1]/statOffsets</xpath>
+		<value>
+			<statOffsets>
+			  <MoveSpeed>-0.4</MoveSpeed>
+			  <RestRateMultiplier>0.25</RestRateMultiplier>
+			</statOffsets>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "SpeedOffset"]/degreeDatas/li[2]/statOffsets</xpath>
+		<value>
+			<statOffsets>
+			  <MoveSpeed>0.4</MoveSpeed>
+			</statOffsets>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "SpeedOffset"]/degreeDatas/li[3]/statOffsets</xpath>
+		<value>
+			<statOffsets>
+			  <MoveSpeed>0.7</MoveSpeed>
+			  <RestRateMultiplier>-0.1</RestRateMultiplier>
+			</statOffsets>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "DrugDesire"]/degreeDatas</xpath>
+		<value>
+		<degreeDatas>
+		  <li Class="SyrTraits.RandomInspirationMtbDays">
+			<label>chemical fascination</label>
+			<description>[PAWN_nameDef] has an intense fascination with chemical sources of enjoyment. [PAWN_pronoun] will consume much more of them and, if not already addicted to any drug and satisfied, will sometimes go on hard drug binges. [PAWN_pronoun] will ignore directives to not use pleasurable drugs. If there is one upside to this it's all the inspiration one can get from drugs.</description>
+			<degree>2</degree>
+			<randomMentalState>Binging_DrugExtreme</randomMentalState>
+			<randomMentalStateMtbDaysMoodCurve>
+			  <points>
+				<li>(0, 30)</li>
+			  </points>
+			</randomMentalStateMtbDaysMoodCurve>
+			<marketValueFactorOffset>-0.3</marketValueFactorOffset>
+			<randomInspirationMtbDays>20</randomInspirationMtbDays>
+		  </li>
+		  <li Class="SyrTraits.RandomInspirationMtbDays">
+			<label>chemical interest</label>
+			<description>[PAWN_nameDef] has an unusual interest in chemical sources of enjoyment. [PAWN_pronoun] will consume more of them and, if not already addicted to any drug and satisfied, will sometimes go on social drug binges. [PAWN_pronoun] will ignore directives to not use pleasurable drugs. If there is one upside to this it's all the inspiration one can get from drugs.</description>
+			<degree>1</degree>
+			<randomMentalState>Binging_DrugMajor</randomMentalState>
+			<randomMentalStateMtbDaysMoodCurve>
+			  <points>
+				<li>(0, 40)</li>
+			  </points>
+			</randomMentalStateMtbDaysMoodCurve>
+			<marketValueFactorOffset>-0.15</marketValueFactorOffset>
+			<randomInspirationMtbDays>30</randomInspirationMtbDays>
+		  </li>
+		  <li Class="SyrTraits.RandomInspirationMtbDays">
+			<label>teetotaler</label>
+			<description>[PAWN_nameDef] abhors the idea of gaining pleasure from chemicals, and avoids alcohol and pleasurable drugs. [PAWN_pronoun] is a hard working individual.</description>
+			<degree>-1</degree>
+			<disallowedMentalStates>
+			  <li>Binging_DrugExtreme</li>
+			  <li>Binging_DrugMajor</li>
+			</disallowedMentalStates>
+			<statOffsets>
+			  <WorkSpeedGlobal>0.2</WorkSpeedGlobal>
+			</statOffsets>
+		  </li>
+		</degreeDatas>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Beauty"]/degreeDatas/li[3]/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] is somewhat ugly. This subtly repels others during social interactions. If there is an upside to this than that no one minds if [PAWN_possessive] face has a scar or two.</description>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Beauty"]/degreeDatas/li[4]/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] is staggeringly ugly. [PAWN_possessive] face looks like a cross between a drawing by an untalented child, a malformed fetus in a jar of formaldehyde, and a piece of modern art. Others must exert conscious effort to look at [PAWN_objective] while conversing. If there is an upside to this than that no one minds if [PAWN_possessive] face has a scar or two.</description>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "NaturalMood"]/degreeDatas/li[4]</xpath>
+		<value>
+			<theOnlyAllowedMentalBreaks>
+			  <li>Wander_Sad</li>
+			  <li>Wander_OwnRoom</li>
+			</theOnlyAllowedMentalBreaks>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "NaturalMood"]/degreeDatas/li[4]/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] is perenially unhappy. [PAWN_pronoun] has trouble sustaining a good mood even when everything is fine. [PAWN_possessive] only way to deal with it is hiding in [PAWN_possessive] room or wandering around in sadness.</description>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "Nerves"]/degreeDatas/li[4]</xpath>
+		<value>
+			<theOnlyAllowedMentalBreaks>
+			  <li>Tantrum</li>
+			  <li>TargetedTantrum</li>
+			  <li>BedroomTantrum</li>
+			</theOnlyAllowedMentalBreaks>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Nerves"]/degreeDatas/li[4]/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] is on a hair-trigger all the time. [PAWN_pronoun] is the first to break in any tough situation. If that happens [PAWN_pronoun] will find something to smash.</description>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationRemove">
+		<xpath>*/TraitDef[defName = "Neurotic"]/degreeDatas/li/statOffsets/MentalBreakThreshold</xpath>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Neurotic"]/degreeDatas/li[1]/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] likes to have things squared away. [PAWN_pronoun] will work harder than most to attain this state of affairs, but [PAWN_possessive] random mood swings can get the better of [PAWN_objective].</description>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Neurotic"]/degreeDatas/li[2]/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] feels constantly nervous about everything that has to get done. [PAWN_pronoun] will work extremely hard to attain this state of affairs, but [PAWN_possessive] random mood swings can easily get the better of [PAWN_objective].</description>
+		</value>
+	</Operation>
+
+	
+<!-- Singular Traits -->
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Abrasive"]/degreeDatas/li/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] always says exactly what's on [PAWN_possessive] mind, especially if it's bugging [PAWN_objective]. That tends to rub people the wrong way. At least [PAWN_pronoun] doesn't mind being insulted or slighted either.</description>
+		</value>
+	</Operation>
+	
+		<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "Gourmand"]/degreeDatas/li/statOffsets</xpath>
+		<value>
+		  <EatingSpeed>1.0</EatingSpeed>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThoughtDef[defName = "InsultedMood" or defName = "Insulted" or defName = "Slighted"]</xpath>
+		<value>
+			<nullifyingTraits>
+			  <li>Abrasive</li>
+			</nullifyingTraits>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/ThoughtDef[defName = "Greedy"]/stages</xpath>
+		<value>
+			<stages>
+			  <li> <!-- used if no bedroom at all -->
+				<label>greedy for impressive bedroom</label>
+				<description>I'm greedy. I want a really impressive bedroom.</description>
+				<baseMoodEffect>-8</baseMoodEffect>
+			  </li>
+			  <li>
+				<label>greedy for impressive bedroom</label>
+				<description>I'm greedy. My room is pathetic! I want a really impressive bedroom.</description>
+				<baseMoodEffect>-8</baseMoodEffect>
+			  </li>
+			  <li>
+				<label>greedy for impressive bedroom</label>
+				<description>I'm greedy. My room isn't nearly good enough. I want a really impressive bedroom.</description>
+				<baseMoodEffect>-8</baseMoodEffect>
+			  </li>
+			  <li>
+				<label>greedy for impressive bedroom</label>
+				<description>I'm greedy. My room isn't good enough. I want a really impressive bedroom.</description>
+				<baseMoodEffect>-6</baseMoodEffect>
+			  </li>
+			  <li>
+				<label>greedy for impressive bedroom</label>
+				<description>I'm greedy. My room isn't quite good enough. I want a really impressive bedroom.</description>
+				<baseMoodEffect>-4</baseMoodEffect>
+			  </li>
+			  <li IsNull="True" /> <!-- slightly impressive -->
+			  <li IsNull="True" /> <!-- somewhat impressive -->
+			  <li> <!-- very impressive -->
+				<label>greedy has impressive bedroom</label>
+				<description>I'm greedy and satisfied. My bedroom is very impressive.</description>
+				<baseMoodEffect>1</baseMoodEffect>
+			  </li>
+			  <li> <!-- extremely impressive -->
+				<label>greedy has impressive bedroom</label>
+				<description>I'm greedy and satisfied. My bedroom is extremely impressive.</description>
+				<baseMoodEffect>2</baseMoodEffect>
+			  </li>
+			  <li> <!-- unbelievably impressive -->
+				<label>greedy has impressive bedroom</label>
+				<description>I'm greedy and very satisfied. My bedroom is unbelievably impressive.</description>
+				<baseMoodEffect>4</baseMoodEffect>
+			  </li>
+			  <li> <!-- wondrously impressive -->
+				<label>greedy has impressive bedroom</label>
+				<description>I'm greedy and extremely satisfied. My bedroom is wondrously impressive.</description>
+				<baseMoodEffect>8</baseMoodEffect>
+			  </li>
+			</stages>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Jealous"]/degreeDatas/li/description</xpath>
+		<value>
+			<description>For [PAWN_nameDef], it's degrading to have a less impressive bedroom than someone else. [PAWN_pronoun] gets a mood loss if any colonist has a more impressive bedroom. At least [PAWN_pronoun] isn't as affected by prisoners or colonists dying and [PAWN_pronoun] doesn't mind wearing a dead person's clothing.</description>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/ThoughtDef[defName = "KnowGuestExecuted" or defName = "KnowColonistExecuted" or defName = "KnowPrisonerDiedInnocent" or defName = "KnowColonistDied"]/nullifyingTraits</xpath>
+		<value>
+			<li>Jealous</li>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "FastLearner"]/degreeDatas/li/statOffsets</xpath>
+		<value>
+          <MoveSpeed>-0.2</MoveSpeed>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Wimp"]/degreeDatas/li/statOffsets/PainShockThreshold</xpath>
+		<value>
+          <PainShockThreshold>-0.45</PainShockThreshold>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Wimp"]/degreeDatas/li/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] is weak and cowardly. Even a little pain will immobilize [PAWN_objective]. For whatever reason [PAWN_pronoun] seems to be nearly immune to toxic substances.</description>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "Wimp"]/degreeDatas/li/statOffsets</xpath>
+		<value>
+          <ToxicSensitivity>-0.9</ToxicSensitivity>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Tough"]/degreeDatas/li/description</xpath>
+		<value>
+			<description>[PAWN_nameDef] has thick skin, dense flesh, and durable bones. [PAWN_pronoun] takes much less damage than other people from the same blows. [PAWN_pronoun] is extremely hard to kill, except by toxic substances, you could even say they are [PAWN_possessive] cryptonite.</description>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TraitDef[defName = "Tough"]/degreeDatas/li</xpath>
+		<value>
+			<statOffsets>
+			  <ToxicSensitivity>0.5</ToxicSensitivity>
+			</statOffsets>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "Pyromaniac"]/degreeDatas/li</xpath>
+		<value>
+			<li Class="SyrTraits.RandomInspirationMtbDays">
+				<label>pyromaniac</label>
+				<description>[PAWN_nameDef] loves fire. [PAWN_pronoun] will never extinguish fires. To relieve stress, [PAWN_pronoun] will occasionally go on random fire starting sprees. This happens more often if [PAWN_possessive] mood is low. Somehow this fascination with fire leads to a lot more inspiration.</description>
+				<theOnlyAllowedMentalBreaks>
+				  <li>FireStartingSpree</li>
+				</theOnlyAllowedMentalBreaks>
+				<randomMentalState>FireStartingSpree</randomMentalState>
+				<randomMentalStateMtbDaysMoodCurve>
+				  <points>
+					<li>(1, 50)</li>
+				  </points>
+				</randomMentalStateMtbDaysMoodCurve>
+				<marketValueFactorOffset>-0.2</marketValueFactorOffset>
+				<randomInspirationMtbDays>25</randomInspirationMtbDays>
+			</li>
+		</value>
+	</Operation>
+	
+	<Operation Class="PatchOperationSequence">
+    <success>Always</success>
+	  <operations>
+		<li Class="PatchOperationTest">
+		  <xpath>/Defs/TraitDef[defName = "ShootingAccuracy"]/degreeDatas/li[label = "deadshot"]</xpath>
+		</li>	
+		<li Class="PatchOperationReplace">
+		  <xpath>/Defs/TraitDef[defName = "ShootingAccuracy"]/degreeDatas/li[label = "deadshot"]/degree</xpath>
+		  <value>
+		    <degree>3</degree>
+		  </value>
+		</li>
+	  </operations>
+	</Operation>
+	
+  <!--<Operation Class="PatchOperationConditional">
+  <success>Always</success>
+    <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/../comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/../comps</xpath>
+		<value>
+		  <li>
+			<compClass>SyrTraits.CompIndividuality</compClass>
+		  </li>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/ThingDef/race[intelligence="Humanlike"]/..</xpath>
+		<value>
+			<comps>
+			  <li>
+				<compClass>SyrTraits.CompIndividuality</compClass>
+			  </li>
+			</comps>
+		</value>
+    </nomatch>
+  </Operation>
+  
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/../comps</xpath>
+    <match Class="PatchOperationAdd">
+      <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/../comps</xpath>
+		<value>
+		  <li>
+			<compClass>SyrTraits.CompIndividuality</compClass>
+		  </li>
+		</value>
+    </match>
+    <nomatch Class="PatchOperationAdd">
+      <xpath>Defs/AlienRace.ThingDef_AlienRace/race[intelligence="Humanlike"]/..</xpath>
+		<value>
+			<comps>
+			  <li>
+				<compClass>SyrTraits.CompIndividuality</compClass>
+			  </li>
+			</comps>
+		</value>
+    </nomatch>
+  </Operation>-->
+
+</Patch>
