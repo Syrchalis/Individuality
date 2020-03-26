@@ -404,6 +404,7 @@ namespace SyrTraits
                 {
                     num += building_Bed.GetStatValue(StatDefOf.MedicalTendQualityOffset, true);
                 }
+                __result = Mathf.Clamp(num, 0f, medicineQualityMax);
                 return false;
             }
             else

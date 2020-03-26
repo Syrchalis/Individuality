@@ -142,7 +142,7 @@
     <degreeDatas>
       <li>
         <label>gun nut</label>
-        <description>[PAWN_nameDef] is a gun nut, [PAWN_possessive] life revolves around guns, how they are crafted, maintained and used. Quite a handy skill in these circumstances. Simply carrying a gun makes [PAWN_nameDef] smile. Just don't hand [PAWN_objective] a melee weapon.</description>
+        <description>[PAWN_nameDef] is a gun nut, [PAWN_possessive] life revolves around guns, how they are crafted, maintained and used. Quite a handy skill in these circumstances. Just don't hand [PAWN_objective] a melee weapon.</description>
         <statOffsets>
           <AimingDelayFactor>-0.10</AimingDelayFactor>
         </statOffsets>
@@ -353,13 +353,14 @@
 
   <TraitDef>
     <defName>SYR_Hotblooded</defName>
-	  <commonality>0.5</commonality>
+	  <commonality>0</commonality>
     <degreeDatas>
       <li>
         <label>hotblooded (old)</label>
         <description>(Old trait)</description>
       </li>
     </degreeDatas>
+    <ignoreConfigErrors>true</ignoreConfigErrors>
   </TraitDef>
 
   <TraitDef>
