@@ -15,8 +15,8 @@ namespace SyrTraits
         public CompIndividuality()
         {
             RomanceFactor = GenMath.RoundTo(Rand.Range(0.1f, 1f), 0.1f);
-            float num = Mathf.Clamp(Rand.Gaussian(-0.1f, 0.45f), -1f, 0.8f);
-            if (num > -0.2f && num < 0.2) //this ensures there is few with 20% and many with 0% psychicFactor
+            float num = Mathf.Clamp(Rand.Gaussian(0f, 0.5f), -1f, 1f);
+            if (num > -0.3f && num < 0.3) //this ensures there is few with 20% and many with 0% psychicFactor
             {
                 num = 0f;
             }
@@ -73,6 +73,40 @@ namespace SyrTraits
                 if (BodyWeight == -39)
                 {
                     BodyWeight = Rand.Range(-10, 10);
+                }
+                if (pawn?.story?.traits != null) //compatibility with older versions
+                {
+                    TraitSet traitset = pawn.story.traits;
+                    if (traitset.HasTrait(SyrTraitDefOf.SYR_Blacksmith))
+                    {
+                        traitset.allTraits.RemoveAll((Trait t) => t.def == SyrTraitDefOf.SYR_Blacksmith);
+                        traitset.GainTrait(new Trait(SyrTraitDefOf.SYR_KeenEye, 0, false));
+                    }
+                    if (traitset.HasTrait(SyrTraitDefOf.SYR_Scientist))
+                    {
+                        traitset.allTraits.RemoveAll((Trait t) => t.def == SyrTraitDefOf.SYR_Scientist);
+                        traitset.GainTrait(new Trait(SyrTraitDefOf.SYR_CreativeThinker, 0, false));
+                    }
+                    if (traitset.HasTrait(SyrTraitDefOf.SYR_Tinkerer))
+                    {
+                        traitset.allTraits.RemoveAll((Trait t) => t.def == SyrTraitDefOf.SYR_Tinkerer);
+                        traitset.GainTrait(new Trait(SyrTraitDefOf.SYR_MechanoidExpert, 0, false));
+                    }
+                    if (traitset.HasTrait(SyrTraitDefOf.SYR_Chef))
+                    {
+                        traitset.allTraits.RemoveAll((Trait t) => t.def == SyrTraitDefOf.SYR_Chef);
+                        traitset.GainTrait(new Trait(SyrTraitDefOf.Gourmand, 0, false));
+                    }
+                    if (traitset.HasTrait(SyrTraitDefOf.SYR_MedicalTraining))
+                    {
+                        traitset.allTraits.RemoveAll((Trait t) => t.def == SyrTraitDefOf.SYR_MedicalTraining);
+                        traitset.GainTrait(new Trait(SyrTraitDefOf.SYR_SteadyHands, 0, false));
+                    }
+                    if (traitset.HasTrait(SyrTraitDefOf.SYR_Hotblooded))
+                    {
+                        traitset.allTraits.RemoveAll((Trait t) => t.def == SyrTraitDefOf.SYR_Hotblooded);
+                        traitset.GainTrait(new Trait(SyrTraitDefOf.SYR_HandEyeCoordination, 0, false));
+                    }
                 }
             }
         }

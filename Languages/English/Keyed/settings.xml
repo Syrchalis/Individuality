@@ -28,5 +28,8 @@
   <BodyWeight>Body weight</BodyWeight>
   <BodyWeightTooltip>The weight of this person</BodyWeightTooltip>
   <BodyWeightOffset>Natural body shape</BodyWeightOffset>
+  <SyrTraitsDaVinciGene>Da Vinci Gene</SyrTraitsDaVinciGene>
+  <SyrTraitsSlowLearnerLabel>Slow learner</SyrTraitsSlowLearnerLabel>
+  <SyrTraitsSlowLearner>Bonus from total skills</SyrTraitsSlowLearner>
 
 </LanguageData>

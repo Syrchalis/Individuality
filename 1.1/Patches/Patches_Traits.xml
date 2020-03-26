@@ -2,28 +2,28 @@
 <Patch>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "Gay" or defName = "PsychicSensitivity" or defName = "Bisexual" or defName = "Asexual"]</xpath>
+		<xpath>Defs/TraitDef[defName = "Gay" or defName = "PsychicSensitivity" or defName = "Bisexual" or defName = "Asexual"]</xpath>
 		<value>
 			<ignoreConfigErrors>true</ignoreConfigErrors>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Gay" or defName = "PsychicSensitivity" or defName = "Bisexual" or defName = "Asexual"]/commonality</xpath>
+		<xpath>Defs/TraitDef[defName = "Gay" or defName = "PsychicSensitivity" or defName = "Bisexual" or defName = "Asexual"]/commonality</xpath>
 		<value>
 			<commonality>0</commonality>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/StatDef[defName = "PsychicSensitivity"]</xpath>
+		<xpath>Defs/StatDef[defName = "PsychicSensitivity"]</xpath>
 		<value>
 			<workerClass>SyrTraits.StatWorker_PsychicSensitivity</workerClass>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/StatDef[defName = "Mass"]</xpath>
+		<xpath>Defs/StatDef[defName = "Mass"]</xpath>
 		<value>
 			<workerClass>SyrTraits.StatWorker_Mass</workerClass>
 		</value>
@@ -32,7 +32,7 @@
 <!-- Spectrum Traits -->
 
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "ShootingAccuracy"]/degreeDatas</xpath>
+		<xpath>Defs/TraitDef[defName = "ShootingAccuracy"]/degreeDatas</xpath>
 		<value>
 		  <li>
 			<label>expert shooter</label>
@@ -47,35 +47,35 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "Industriousness"]/degreeDatas/li[1]/statOffsets</xpath>
+		<xpath>Defs/TraitDef[defName = "Industriousness"]/degreeDatas/li[1]/statOffsets</xpath>
 		<value>
 		  <JoyNeedRateMultiplier>0.15</JoyNeedRateMultiplier>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "Industriousness"]/degreeDatas/li[2]/statOffsets</xpath>
+		<xpath>Defs/TraitDef[defName = "Industriousness"]/degreeDatas/li[2]/statOffsets</xpath>
 		<value>
 		  <JoyNeedRateMultiplier>0.1</JoyNeedRateMultiplier>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "Industriousness"]/degreeDatas/li[3]/statOffsets</xpath>
+		<xpath>Defs/TraitDef[defName = "Industriousness"]/degreeDatas/li[3]/statOffsets</xpath>
 		<value>
-		  <JoyNeedRateMultiplier>-0.25</JoyNeedRateMultiplier>
+		  <JoyNeedRateMultiplier>-0.33</JoyNeedRateMultiplier>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "Industriousness"]/degreeDatas/li[4]/statOffsets</xpath>
+		<xpath>Defs/TraitDef[defName = "Industriousness"]/degreeDatas/li[4]/statOffsets</xpath>
 		<value>
-		  <JoyNeedRateMultiplier>-0.5</JoyNeedRateMultiplier>
+		  <JoyNeedRateMultiplier>-0.67</JoyNeedRateMultiplier>
 		</value>
 	</Operation>
 
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "SpeedOffset"]/degreeDatas/li[1]/statOffsets</xpath>
+		<xpath>Defs/TraitDef[defName = "SpeedOffset"]/degreeDatas/li[1]/statOffsets</xpath>
 		<value>
 			<statOffsets>
 			  <MoveSpeed>-0.4</MoveSpeed>
@@ -85,7 +85,7 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "SpeedOffset"]/degreeDatas/li[2]/statOffsets</xpath>
+		<xpath>Defs/TraitDef[defName = "SpeedOffset"]/degreeDatas/li[2]/statOffsets</xpath>
 		<value>
 			<statOffsets>
 			  <MoveSpeed>0.4</MoveSpeed>
@@ -94,7 +94,7 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "SpeedOffset"]/degreeDatas/li[3]/statOffsets</xpath>
+		<xpath>Defs/TraitDef[defName = "SpeedOffset"]/degreeDatas/li[3]/statOffsets</xpath>
 		<value>
 			<statOffsets>
 			  <MoveSpeed>0.7</MoveSpeed>
@@ -104,7 +104,7 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "DrugDesire"]/degreeDatas</xpath>
+		<xpath>Defs/TraitDef[defName = "DrugDesire"]/degreeDatas</xpath>
 		<value>
 		<degreeDatas>
 		  <li Class="SyrTraits.RandomInspirationMtbDays">
@@ -150,21 +150,21 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Beauty"]/degreeDatas/li[3]/description</xpath>
+		<xpath>Defs/TraitDef[defName = "Beauty"]/degreeDatas/li[3]/description</xpath>
 		<value>
 			<description>[PAWN_nameDef] is somewhat ugly. This subtly repels others during social interactions. If there is an upside to this than that no one minds if [PAWN_possessive] face has a scar or two.</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Beauty"]/degreeDatas/li[4]/description</xpath>
+		<xpath>Defs/TraitDef[defName = "Beauty"]/degreeDatas/li[4]/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] is staggeringly ugly. [PAWN_possessive] face looks like a cross between a drawing by an untalented child, a malformed fetus in a jar of formaldehyde, and a piece of modern art. Others must exert conscious effort to look at [PAWN_objective] while conversing. If there is an upside to this than that no one minds if [PAWN_possessive] face has a scar or two.</description>
+			<description>[PAWN_nameDef] is staggeringly ugly. [PAWN_possessive] face looks like a cross between a drawing by an untalented child, a malformed fetus in a jar of formaldehyde, and a piece of modern art. Others must exert conscious effort to look at [PAWN_objective] while conversing. If there is an upside to this than that no one minds if [PAWN_possessive] face has a scar or two... or ten.</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "NaturalMood"]/degreeDatas/li[4]</xpath>
+		<xpath>Defs/TraitDef[defName = "NaturalMood"]/degreeDatas/li[4]</xpath>
 		<value>
 			<theOnlyAllowedMentalBreaks>
 			  <li>Wander_Sad</li>
@@ -174,14 +174,14 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "NaturalMood"]/degreeDatas/li[4]/description</xpath>
+		<xpath>Defs/TraitDef[defName = "NaturalMood"]/degreeDatas/li[4]/description</xpath>
 		<value>
 			<description>[PAWN_nameDef] is perenially unhappy. [PAWN_pronoun] has trouble sustaining a good mood even when everything is fine. [PAWN_possessive] only way to deal with it is hiding in [PAWN_possessive] room or wandering around in sadness.</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "Nerves"]/degreeDatas/li[4]</xpath>
+		<xpath>Defs/TraitDef[defName = "Nerves"]/degreeDatas/li[4]</xpath>
 		<value>
 			<theOnlyAllowedMentalBreaks>
 			  <li>Tantrum</li>
@@ -192,25 +192,25 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Nerves"]/degreeDatas/li[4]/description</xpath>
+		<xpath>Defs/TraitDef[defName = "Nerves"]/degreeDatas/li[4]/description</xpath>
 		<value>
 			<description>[PAWN_nameDef] is on a hair-trigger all the time. [PAWN_pronoun] is the first to break in any tough situation. If that happens [PAWN_pronoun] will find something to smash.</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationRemove">
-		<xpath>*/TraitDef[defName = "Neurotic"]/degreeDatas/li/statOffsets/MentalBreakThreshold</xpath>
+		<xpath>Defs/TraitDef[defName = "Neurotic"]/degreeDatas/li/statOffsets/MentalBreakThreshold</xpath>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Neurotic"]/degreeDatas/li[1]/description</xpath>
+		<xpath>Defs/TraitDef[defName = "Neurotic"]/degreeDatas/li[1]/description</xpath>
 		<value>
 			<description>[PAWN_nameDef] likes to have things squared away. [PAWN_pronoun] will work harder than most to attain this state of affairs, but [PAWN_possessive] random mood swings can get the better of [PAWN_objective].</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Neurotic"]/degreeDatas/li[2]/description</xpath>
+		<xpath>Defs/TraitDef[defName = "Neurotic"]/degreeDatas/li[2]/description</xpath>
 		<value>
 			<description>[PAWN_nameDef] feels constantly nervous about everything that has to get done. [PAWN_pronoun] will work extremely hard to attain this state of affairs, but [PAWN_possessive] random mood swings can easily get the better of [PAWN_objective].</description>
 		</value>
@@ -220,21 +220,44 @@
 <!-- Singular Traits -->
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Abrasive"]/degreeDatas/li/description</xpath>
+		<xpath>Defs/TraitDef[defName = "Abrasive"]/degreeDatas/li/description</xpath>
 		<value>
 			<description>[PAWN_nameDef] always says exactly what's on [PAWN_possessive] mind, especially if it's bugging [PAWN_objective]. That tends to rub people the wrong way. At least [PAWN_pronoun] doesn't mind being insulted or slighted either.</description>
 		</value>
 	</Operation>
 	
-		<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "Gourmand"]/degreeDatas/li/statOffsets</xpath>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/TraitDef[defName = "Gourmand"]/degreeDatas</xpath>
 		<value>
-		  <EatingSpeed>1.0</EatingSpeed>
+			<degreeDatas>
+				<li>
+					<label>gourmand</label>
+					<description>{PAWN_nameDef}'s life revolves around food. {PAWN_pronoun} gets hungry quickly but also eats faster, cooks faster and knows his ingredients, barely ever causing food poisoning.</description>
+					<theOnlyAllowedMentalBreaks>
+						<li>Binging_Food</li>
+					</theOnlyAllowedMentalBreaks>
+					<statOffsets>
+						<EatingSpeed>1.0</EatingSpeed>
+						<CookSpeed>0.5</CookSpeed>
+						<FoodPoisonChance>-0.75</FoodPoisonChance>
+						<HungerRateMultiplier>0.25</HungerRateMultiplier>
+					</statOffsets>
+				</li>
+			</degreeDatas>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>Defs/TraitDef[defName = "Gourmand"]</xpath>
+		<value>
+			<forcedPassions>
+				<li>Cooking</li>
+			</forcedPassions>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/ThoughtDef[defName = "InsultedMood" or defName = "Insulted" or defName = "Slighted"]</xpath>
+		<xpath>Defs/ThoughtDef[defName = "InsultedMood" or defName = "Insulted" or defName = "Slighted"]</xpath>
 		<value>
 			<nullifyingTraits>
 			  <li>Abrasive</li>
@@ -243,7 +266,7 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/ThoughtDef[defName = "Greedy"]/stages</xpath>
+		<xpath>Defs/ThoughtDef[defName = "Greedy"]/stages</xpath>
 		<value>
 			<stages>
 			  <li> <!-- used if no bedroom at all -->
@@ -280,7 +303,7 @@
 			  </li>
 			  <li> <!-- extremely impressive -->
 				<label>greedy has impressive bedroom</label>
-				<description>I'm greedy and satisfied. My bedroom is extremely impressive.</description>
+				<description>I'm greedy and quite satisfied. My bedroom is extremely impressive.</description>
 				<baseMoodEffect>2</baseMoodEffect>
 			  </li>
 			  <li> <!-- unbelievably impressive -->
@@ -298,65 +321,80 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Jealous"]/degreeDatas/li/description</xpath>
+		<xpath>Defs/TraitDef[defName = "Jealous"]/degreeDatas/li/description</xpath>
 		<value>
 			<description>For [PAWN_nameDef], it's degrading to have a less impressive bedroom than someone else. [PAWN_pronoun] gets a mood loss if any colonist has a more impressive bedroom. At least [PAWN_pronoun] isn't as affected by prisoners or colonists dying and [PAWN_pronoun] doesn't mind wearing a dead person's clothing.</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/ThoughtDef[defName = "KnowGuestExecuted" or defName = "KnowColonistExecuted" or defName = "KnowPrisonerDiedInnocent" or defName = "KnowColonistDied"]/nullifyingTraits</xpath>
+		<xpath>Defs/ThoughtDef[defName = "KnowGuestExecuted" or defName = "KnowColonistExecuted" or defName = "KnowPrisonerDiedInnocent" or defName = "KnowColonistDied"]/nullifyingTraits</xpath>
 		<value>
 			<li>Jealous</li>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "FastLearner"]/degreeDatas/li/statOffsets</xpath>
+		<xpath>Defs/TraitDef[defName = "FastLearner"]/degreeDatas/li/statOffsets</xpath>
 		<value>
-          <MoveSpeed>-0.2</MoveSpeed>
+          <WorkSpeedGlobal>-0.1</WorkSpeedGlobal>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/TraitDef[defName = "SlowLearner"]/degreeDatas/li/statOffsets/GlobalLearningFactor</xpath>
+		<value>
+          <GlobalLearningFactor>-1.3</GlobalLearningFactor>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/TraitDef[defName = "SlowLearner"]/degreeDatas/li/description</xpath>
+		<value>
+			<description>{PAWN_nameDef} has never learned how to learn. The motivation and talent is there, {PAWN_pronoun} just needs time and patience. \n\n    Each skill point increases global learning factor by 2%</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Wimp"]/degreeDatas/li/statOffsets/PainShockThreshold</xpath>
+		<xpath>Defs/TraitDef[defName = "Wimp"]/degreeDatas/li/statOffsets/PainShockThreshold</xpath>
 		<value>
           <PainShockThreshold>-0.45</PainShockThreshold>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Wimp"]/degreeDatas/li/description</xpath>
+		<xpath>Defs/TraitDef[defName = "Wimp"]/degreeDatas/li/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] is weak and cowardly. Even a little pain will immobilize [PAWN_objective]. For whatever reason [PAWN_pronoun] seems to be nearly immune to toxic substances.</description>
+			<description>[PAWN_nameDef] is weak and cowardly. Even a little pain will immobilize [PAWN_objective]. At least [PAWN_pronoun] is really good at running and for whatever reason  seems to be nearly immune to toxic substances.</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "Wimp"]/degreeDatas/li/statOffsets</xpath>
+		<xpath>Defs/TraitDef[defName = "Wimp"]/degreeDatas/li/statOffsets</xpath>
 		<value>
           <ToxicSensitivity>-0.9</ToxicSensitivity>
+		  <MoveSpeed>0.4</MoveSpeed>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Tough"]/degreeDatas/li/description</xpath>
+		<xpath>Defs/TraitDef[defName = "Tough"]/degreeDatas/li/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] has thick skin, dense flesh, and durable bones. [PAWN_pronoun] takes much less damage than other people from the same blows. [PAWN_pronoun] is extremely hard to kill, except by toxic substances, you could even say they are [PAWN_possessive] cryptonite.</description>
+			<description>[PAWN_nameDef] has thick skin, dense flesh, and durable bones. [PAWN_pronoun] takes much less damage than other people from the same blows. [PAWN_pronoun] stands solid like a rock, and equally unmovable.</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
-		<xpath>*/TraitDef[defName = "Tough"]/degreeDatas/li</xpath>
+		<xpath>Defs/TraitDef[defName = "Tough"]/degreeDatas/li</xpath>
 		<value>
 			<statOffsets>
-			  <ToxicSensitivity>0.5</ToxicSensitivity>
+			  <MoveSpeed>-0.4</MoveSpeed>
 			</statOffsets>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>*/TraitDef[defName = "Pyromaniac"]/degreeDatas/li</xpath>
+		<xpath>Defs/TraitDef[defName = "Pyromaniac"]/degreeDatas/li</xpath>
 		<value>
 			<li Class="SyrTraits.RandomInspirationMtbDays">
 				<label>pyromaniac</label>

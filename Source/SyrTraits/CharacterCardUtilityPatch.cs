@@ -69,37 +69,14 @@ namespace SyrTraits
             Rect rect0 = new Rect(num, 0f, 30f, 60f);
             IndividualityCardButton(rect0, pawn);
         }*/
-        public static GameFont SetTextSize()
-        {
-            if (SyrIndividualitySettings.traitsTinyFont)
-            {
-                return GameFont.Tiny;
-            }
-            else
-            {
-                return GameFont.Small;
-            }
-        }
-
-        public static float SetRectSize()
-        {
-            if (SyrIndividualitySettings.traitsTinyFont)
-            {
-                return 18f;
-            }
-            else
-            {
-                return 24f;
-            }
-        }
 
         public static void IndividualityCardButton(Rect rect, Pawn pawn, Rect creationRect)
         {
             if (pawn != null)
             {
                 TipSignal tooltip = "IndividualityTooltip".Translate();
-                float num = CharacterCardUtility.BasePawnCardSize.x - 163f;
-                Rect rectNew = new Rect(num, 2f, 24f, 24f);
+                float num = CharacterCardUtility.BasePawnCardSize.x - 50f;
+                Rect rectNew = new Rect(num, 34f, 24f, 24f);
                 if (Current.ProgramState != ProgramState.Playing)
                 {
                     rectNew = new Rect(creationRect.width - 24f, 30f, 24f, 24f);

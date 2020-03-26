@@ -1,23 +1,45 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThoughtDef>
-		<defName>WitnessedDeathMedic</defName>
-		<icon>Things/Mote/ThoughtSymbol/Skull</icon>
-		<showBubble>true</showBubble>
-		<durationDays>4</durationDays>
-		<stackLimit>3</stackLimit>
-		<requiredTraits>
-			<li>SYR_MedicalTraining</li>
-		</requiredTraits>
-		<stages>
-			<li>
-				<label>witnessed death as medic</label>
-				<description>I saw someone die! That was horrible!</description>
-				<baseMoodEffect>-4</baseMoodEffect>
-			</li>
-		</stages>
-	</ThoughtDef>
+  <ThoughtDef>
+    <defName>Thought_SYR_GreenThumb</defName>
+    <workerClass>SyrTraits.ThoughtWorker_GreenThumb</workerClass>
+    <requiredTraits>
+      <li>SYR_GreenThumb</li>
+    </requiredTraits>
+    <stages>
+      <li>
+        <label>green thumb frustrated</label>
+        <description>Why are there no plants in my room?</description>
+        <baseMoodEffect>-5</baseMoodEffect>
+      </li>
+      <li>
+        <label>green thumb unhappy</label>
+        <description>Can I have some more plants in my room? One or two just won't do.</description>
+        <baseMoodEffect>-1</baseMoodEffect>
+      </li>
+      <li>
+        <label>green thumb satisfied</label>
+        <description>Those are some nice plants in my bedroom, though I would love if it were more.</description>
+        <baseMoodEffect>2</baseMoodEffect>
+      </li>
+      <li>
+        <label>green thumb happy</label>
+        <description>Those are nice plants in my bedroom, though I would love if it were some more.</description>
+        <baseMoodEffect>3</baseMoodEffect>
+      </li>
+      <li>
+        <label>green thumb pleased</label>
+        <description>Those are quite a few nice plants in my bedroom, though it could be a little more.</description>
+        <baseMoodEffect>4</baseMoodEffect>
+      </li>
+      <li>
+        <label>green thumb delighted</label>
+        <description>So many wonderful plants in my room.</description>
+        <baseMoodEffect>5</baseMoodEffect>
+      </li>
+    </stages>
+  </ThoughtDef>
 	
   <ThoughtDef>
     <defName>ProsthophobeHappy</defName>
@@ -75,5 +97,21 @@
       </li>
     </stages>
   </ThoughtDef>
+
+	<ThoughtDef>
+		<defName>SYR_GunNutUnhappy</defName>
+		<workerClass>SyrTraits.ThoughtWorker_IsCarryingMeleeWeapon</workerClass>
+		<validWhileDespawned>true</validWhileDespawned>
+		<requiredTraits>
+			<li>SYR_GunNut</li>
+		</requiredTraits>
+		<stages>
+			<li>
+				<label>gun nut has melee weapon</label>
+				<description>What is this? I don't want to use a caveman tool, I want a gun, or a bow at least!</description>
+				<baseMoodEffect>-10</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>
 	
 </Defs>
