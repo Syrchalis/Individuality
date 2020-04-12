@@ -20,40 +20,33 @@ namespace SyrTraits
             pawn = editFor;
         }
 
+        public override Vector2 InitialSize
+        {
+            get
+            {
+                return new Vector2(350f, 300f);
+            }
+        }
+
         public override void DoWindowContents(Rect inRect)
         {
-            bool flag = false;
             soundClose = SoundDefOf.InfoCard_Close;
             closeOnClickedOutside = true;
             absorbInputAroundWindow = false;
             forcePause = true;
             preventCameraMotion = false;
-            if (Event.current.type == EventType.KeyDown && (Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.Escape))
-            {
-                flag = true;
-                Event.current.Use();
-            }
-            Rect windowRect = inRect.ContractedBy(17f);
-            Rect mainRect = new Rect(windowRect.x, windowRect.y, windowRect.width, windowRect.height - 20f);
-            Rect okRect = new Rect(inRect.width / 3, mainRect.yMax + 10f, inRect.width / 3f, 30f);
-            if (Current.ProgramState == ProgramState.Playing)
-            {
-                IndividualityCardUtility.DrawIndividualityCard(mainRect, Find.Selector.SingleSelectedThing as Pawn);
-            }
-            else
+            doCloseX = true;
+            closeOnAccept = true;
+            closeOnCancel = true;
+            Rect mainRect = new Rect(inRect.x -10f, inRect.y, inRect.width +10f, inRect.height);
+            if (Find.WindowStack.IsOpen(typeof(Dialog_Trade)) || Current.ProgramState != ProgramState.Playing)
             {
                 IndividualityCardUtility.DrawIndividualityCard(mainRect, pawn);
             }
-            if (Widgets.ButtonText(okRect, "CloseButton".Translate(), true, false, true) || flag)
+            else
             {
-                Close(true);
+                IndividualityCardUtility.DrawIndividualityCard(mainRect, Find.Selector.SingleSelectedThing as Pawn);
             }
-            /*if (KeyBindingDefOf.NextColonist.KeyDownEvent)
-            {
-            }
-            if (KeyBindingDefOf.PreviousColonist.KeyDownEvent)
-            {
-            }*/
         }
     }
 }

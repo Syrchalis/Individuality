@@ -92,7 +92,7 @@ namespace SyrTraits
                 }
                 GUI.DrawTexture(rectNew, ContentFinder<Texture2D>.Get("Buttons/Individuality", true));
                 TooltipHandler.TipRegion(rectNew, tooltip);
-                if (Widgets.ButtonInvisible(rectNew, false))
+                if (Widgets.ButtonInvisible(rectNew))
                 {
                     SoundDefOf.InfoCard_Open.PlayOneShotOnCamera(null);
                     Find.WindowStack.Add(new Dialog_ViewIndividuality(pawn));

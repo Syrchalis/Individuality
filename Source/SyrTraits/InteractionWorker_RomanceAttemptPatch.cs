@@ -24,18 +24,18 @@ namespace SyrTraits
         }
         private static float RandomSelectionWeight_Method(Pawn initiator, Pawn recipient)
         {
-            var comp = recipient.TryGetComp<CompIndividuality>();
+            CompIndividuality comp = recipient.TryGetComp<CompIndividuality>();
             if (LovePartnerRelationUtility.LovePartnerRelationExists(initiator, recipient))
             {
                 return 0f;
             }
             float attractiveness = initiator.relations.SecondaryRomanceChanceFactor(recipient);
-            if (attractiveness < 0.25f)
+            if (attractiveness < 0.15f)
             {
                 return 0f;
             }
-            int opinion = initiator.relations.OpinionOf(recipient);
-            if (opinion < 5)
+            int opinionOfOther = initiator.relations.OpinionOf(recipient);
+            if (opinionOfOther < 5)
             {
                 return 0f;
             }
@@ -47,16 +47,21 @@ namespace SyrTraits
             Pawn pawn = LovePartnerRelationUtility.ExistingMostLikedLovePartner(initiator, false);
             if (pawn != null)
             {
-                float value = (float)initiator.relations.OpinionOf(pawn);
-                existingLovePartnerFactor = Mathf.InverseLerp(50f, -50f, value);
+                float opinionOfSpouse = initiator.relations.OpinionOf(pawn);
+                existingLovePartnerFactor = Mathf.InverseLerp(50f, -50f, opinionOfSpouse);
             }
-            float romanceFactor = comp.RomanceFactor;
-            if (comp == null)
+            float romanceFactor;
+            if (comp != null)
             {
-                romanceFactor = 0.5f;
+                romanceFactor = comp.RomanceFactor * 2f;
+                
             }
-            float attractivenessFactor = Mathf.InverseLerp(0.25f, 1f, attractiveness);
-            float opinionFactor = Mathf.InverseLerp(5f, 100f, (float)opinion);
+            else
+            {
+                romanceFactor = 1f;
+            }
+            float attractivenessFactor = Mathf.InverseLerp(0.15f, 1f, attractiveness);
+            float opinionFactor = Mathf.InverseLerp(5f, 100f, opinionOfOther);
             float genderFactor = 1f;
             if (initiator.gender != recipient.gender && comp != null)
             {

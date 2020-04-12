@@ -36,7 +36,7 @@
 		<value>
 		  <li>
 			<label>expert shooter</label>
-			<description>[PAWN_nameDef] has had proper training with ranged weapons. [PAWN_pronoun] shoots accurately and quickly.</description>
+			<description>{PAWN_nameDef} has had proper training with ranged weapons. {PAWN_pronoun} shoots accurately and quickly.</description>
 			<degree>2</degree>
 			<statOffsets>
 			  <AimingDelayFactor>-0.25</AimingDelayFactor>
@@ -109,7 +109,7 @@
 		<degreeDatas>
 		  <li Class="SyrTraits.RandomInspirationMtbDays">
 			<label>chemical fascination</label>
-			<description>[PAWN_nameDef] has an intense fascination with chemical sources of enjoyment. [PAWN_pronoun] will consume much more of them and, if not already addicted to any drug and satisfied, will sometimes go on hard drug binges. [PAWN_pronoun] will ignore directives to not use pleasurable drugs. If there is one upside to this it's all the inspiration one can get from drugs.</description>
+			<description>{PAWN_nameDef} has an intense fascination with chemical sources of enjoyment. {PAWN_pronoun} will consume much more of them and, if not already addicted to any drug and satisfied, will sometimes go on hard drug binges. {PAWN_pronoun} will ignore directives to not use pleasurable drugs. If there is one upside to this it's all the inspiration one can get from drugs.</description>
 			<degree>2</degree>
 			<randomMentalState>Binging_DrugExtreme</randomMentalState>
 			<randomMentalStateMtbDaysMoodCurve>
@@ -122,7 +122,7 @@
 		  </li>
 		  <li Class="SyrTraits.RandomInspirationMtbDays">
 			<label>chemical interest</label>
-			<description>[PAWN_nameDef] has an unusual interest in chemical sources of enjoyment. [PAWN_pronoun] will consume more of them and, if not already addicted to any drug and satisfied, will sometimes go on social drug binges. [PAWN_pronoun] will ignore directives to not use pleasurable drugs. If there is one upside to this it's all the inspiration one can get from drugs.</description>
+			<description>{PAWN_nameDef} has an unusual interest in chemical sources of enjoyment. {PAWN_pronoun} will consume more of them and, if not already addicted to any drug and satisfied, will sometimes go on social drug binges. {PAWN_pronoun} will ignore directives to not use pleasurable drugs. If there is one upside to this it's all the inspiration one can get from drugs.</description>
 			<degree>1</degree>
 			<randomMentalState>Binging_DrugMajor</randomMentalState>
 			<randomMentalStateMtbDaysMoodCurve>
@@ -135,7 +135,7 @@
 		  </li>
 		  <li Class="SyrTraits.RandomInspirationMtbDays">
 			<label>teetotaler</label>
-			<description>[PAWN_nameDef] abhors the idea of gaining pleasure from chemicals, and avoids alcohol and pleasurable drugs. [PAWN_pronoun] is a hard working individual.</description>
+			<description>{PAWN_nameDef} abhors the idea of gaining pleasure from chemicals, and avoids alcohol and pleasurable drugs. {PAWN_pronoun} is a hard working individual.</description>
 			<degree>-1</degree>
 			<disallowedMentalStates>
 			  <li>Binging_DrugExtreme</li>
@@ -152,14 +152,14 @@
 	<Operation Class="PatchOperationReplace">
 		<xpath>Defs/TraitDef[defName = "Beauty"]/degreeDatas/li[3]/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] is somewhat ugly. This subtly repels others during social interactions. If there is an upside to this than that no one minds if [PAWN_possessive] face has a scar or two.</description>
+			<description>{PAWN_nameDef} is somewhat ugly. This subtly repels others during social interactions. If there is an upside to this than that no one minds if {PAWN_possessive} face has a scar or two.</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
 		<xpath>Defs/TraitDef[defName = "Beauty"]/degreeDatas/li[4]/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] is staggeringly ugly. [PAWN_possessive] face looks like a cross between a drawing by an untalented child, a malformed fetus in a jar of formaldehyde, and a piece of modern art. Others must exert conscious effort to look at [PAWN_objective] while conversing. If there is an upside to this than that no one minds if [PAWN_possessive] face has a scar or two... or ten.</description>
+			<description>{PAWN_nameDef} is staggeringly ugly. {PAWN_possessive} face looks like a cross between a drawing by an untalented child, a malformed fetus in a jar of formaldehyde, and a piece of modern art. Others must exert conscious effort to look at {PAWN_objective} while conversing. If there is an upside to this than that no one minds if {PAWN_possessive} face has a scar or two... or ten.</description>
 		</value>
 	</Operation>
 	
@@ -176,7 +176,7 @@
 	<Operation Class="PatchOperationReplace">
 		<xpath>Defs/TraitDef[defName = "NaturalMood"]/degreeDatas/li[4]/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] is perenially unhappy. [PAWN_pronoun] has trouble sustaining a good mood even when everything is fine. [PAWN_possessive] only way to deal with it is hiding in [PAWN_possessive] room or wandering around in sadness.</description>
+			<description>{PAWN_nameDef} is perenially unhappy. {PAWN_pronoun} has trouble sustaining a good mood even when everything is fine. {PAWN_possessive} only way to deal with it is hiding in {PAWN_possessive} room or wandering around in sadness.</description>
 		</value>
 	</Operation>
 	
@@ -194,7 +194,7 @@
 	<Operation Class="PatchOperationReplace">
 		<xpath>Defs/TraitDef[defName = "Nerves"]/degreeDatas/li[4]/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] is on a hair-trigger all the time. [PAWN_pronoun] is the first to break in any tough situation. If that happens [PAWN_pronoun] will find something to smash.</description>
+			<description>{PAWN_nameDef} is on a hair-trigger all the time. {PAWN_pronoun} is the first to break in any tough situation. If that happens {PAWN_pronoun} will find something to smash.</description>
 		</value>
 	</Operation>
 	
@@ -205,14 +205,14 @@
 	<Operation Class="PatchOperationReplace">
 		<xpath>Defs/TraitDef[defName = "Neurotic"]/degreeDatas/li[1]/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] likes to have things squared away. [PAWN_pronoun] will work harder than most to attain this state of affairs, but [PAWN_possessive] random mood swings can get the better of [PAWN_objective].</description>
+			<description>{PAWN_nameDef} likes to have things squared away. {PAWN_pronoun} will work harder than most to attain this state of affairs, but {PAWN_possessive} random mood swings can get the better of {PAWN_objective}.</description>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
 		<xpath>Defs/TraitDef[defName = "Neurotic"]/degreeDatas/li[2]/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] feels constantly nervous about everything that has to get done. [PAWN_pronoun] will work extremely hard to attain this state of affairs, but [PAWN_possessive] random mood swings can easily get the better of [PAWN_objective].</description>
+			<description>{PAWN_nameDef} feels constantly nervous about everything that has to get done. {PAWN_pronoun} will work extremely hard to attain this state of affairs, but {PAWN_possessive} random mood swings can easily get the better of {PAWN_objective}.</description>
 		</value>
 	</Operation>
 
@@ -222,7 +222,7 @@
 	<Operation Class="PatchOperationReplace">
 		<xpath>Defs/TraitDef[defName = "Abrasive"]/degreeDatas/li/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] always says exactly what's on [PAWN_possessive] mind, especially if it's bugging [PAWN_objective]. That tends to rub people the wrong way. At least [PAWN_pronoun] doesn't mind being insulted or slighted either.</description>
+			<description>{PAWN_nameDef} always says exactly what's on {PAWN_possessive} mind, especially if it's bugging {PAWN_objective}. That tends to rub people the wrong way. At least {PAWN_pronoun} doesn't mind being insulted or slighted either.</description>
 		</value>
 	</Operation>
 	
@@ -253,6 +253,9 @@
 			<forcedPassions>
 				<li>Cooking</li>
 			</forcedPassions>
+			<requiredWorkTags>
+				<li>Cooking</li>
+			</requiredWorkTags>
 		</value>
 	</Operation>
 	
@@ -323,7 +326,7 @@
 	<Operation Class="PatchOperationReplace">
 		<xpath>Defs/TraitDef[defName = "Jealous"]/degreeDatas/li/description</xpath>
 		<value>
-			<description>For [PAWN_nameDef], it's degrading to have a less impressive bedroom than someone else. [PAWN_pronoun] gets a mood loss if any colonist has a more impressive bedroom. At least [PAWN_pronoun] isn't as affected by prisoners or colonists dying and [PAWN_pronoun] doesn't mind wearing a dead person's clothing.</description>
+			<description>For {PAWN_nameDef}, it's degrading to have a less impressive bedroom than someone else. {PAWN_pronoun} gets a mood loss if any colonist has a more impressive bedroom. At least {PAWN_pronoun} isn't as affected by prisoners or colonists dying and {PAWN_pronoun} doesn't mind wearing a dead person's clothing.</description>
 		</value>
 	</Operation>
 	
@@ -365,7 +368,7 @@
 	<Operation Class="PatchOperationReplace">
 		<xpath>Defs/TraitDef[defName = "Wimp"]/degreeDatas/li/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] is weak and cowardly. Even a little pain will immobilize [PAWN_objective]. At least [PAWN_pronoun] is really good at running and for whatever reason  seems to be nearly immune to toxic substances.</description>
+			<description>{PAWN_nameDef} is weak and cowardly. Even a little pain will immobilize {PAWN_objective}. At least {PAWN_pronoun} is really good at running and for whatever reason  seems to be nearly immune to toxic substances.</description>
 		</value>
 	</Operation>
 	
@@ -380,7 +383,7 @@
 	<Operation Class="PatchOperationReplace">
 		<xpath>Defs/TraitDef[defName = "Tough"]/degreeDatas/li/description</xpath>
 		<value>
-			<description>[PAWN_nameDef] has thick skin, dense flesh, and durable bones. [PAWN_pronoun] takes much less damage than other people from the same blows. [PAWN_pronoun] stands solid like a rock, and equally unmovable.</description>
+			<description>{PAWN_nameDef} has thick skin, dense flesh, and durable bones. {PAWN_pronoun} takes much less damage than other people from the same blows. {PAWN_pronoun} stands solid like a rock, and equally unmovable.</description>
 		</value>
 	</Operation>
 	
@@ -398,7 +401,7 @@
 		<value>
 			<li Class="SyrTraits.RandomInspirationMtbDays">
 				<label>pyromaniac</label>
-				<description>[PAWN_nameDef] loves fire. [PAWN_pronoun] will never extinguish fires. To relieve stress, [PAWN_pronoun] will occasionally go on random fire starting sprees. This happens more often if [PAWN_possessive] mood is low. Somehow this fascination with fire leads to a lot more inspiration.</description>
+				<description>{PAWN_nameDef} loves fire. {PAWN_pronoun} will never extinguish fires. To relieve stress, {PAWN_pronoun} will occasionally go on random fire starting sprees. This happens more often if {PAWN_possessive} mood is low. Somehow this fascination with fire leads to a lot more inspiration.</description>
 				<theOnlyAllowedMentalBreaks>
 				  <li>FireStartingSpree</li>
 				</theOnlyAllowedMentalBreaks>

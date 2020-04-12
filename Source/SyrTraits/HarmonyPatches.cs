@@ -30,6 +30,20 @@ namespace SyrTraits
     }
 
 
+    [HarmonyPatch(typeof(PawnGenerator), "GenerateBodyType")]
+    public static class GenerateBodyTypePatch
+    {
+        [HarmonyPostfix]
+        public static void GenerateBodyType_Postfix(Pawn pawn)
+        {
+            CompIndividuality comp = pawn.TryGetComp<CompIndividuality>();
+            if (pawn != null && comp != null)
+            {
+                pawn.BroadcastCompSignal("bodyTypeSelected");
+            }
+        }
+    }
+
     //Green Thumb Trait
     [HarmonyPatch(typeof(WorkGiver_GrowerSow), nameof(WorkGiver_GrowerSow.JobOnCell))]
     public static class WorkGiver_GrowerSowPatch
@@ -96,13 +110,13 @@ namespace SyrTraits
                     {
                         return 0f;
                     }
-                    if (d == ThingDefOf.MineableComponentsIndustrial)
+                    if (d.building.mineableYield < 5)
                     {
-                        return d.building.mineableScatterCommonality * 0.4f;
+                        return d.building.mineableScatterCommonality * 0.2f * d.building.mineableYield;
                     }
                     return d.building.mineableScatterCommonality;
                 }, null);
-                int num = Mathf.Max(1, Mathf.RoundToInt(thingDef.building.mineableYield * Find.Storyteller.difficulty.mineYieldFactor * 0.2f));
+                int num = Mathf.Max(1, Mathf.RoundToInt(thingDef.building.mineableYield * Find.Storyteller.difficulty.mineYieldFactor * 0.2f * pawn.GetStatValue(StatDefOf.MiningYield, true)));
                 Thing thing = ThingMaker.MakeThing(thingDef.building.mineableThing, null);
                 thing.stackCount = num;
                 GenSpawn.Spawn(thing, pawn.Position, map, WipeMode.Vanish);
@@ -137,7 +151,7 @@ namespace SyrTraits
         }
     }
 
-    //Da Vinci Gene
+    //Creative Thinker
     [HarmonyPatch(typeof(StatWorker), nameof(StatWorker.GetValueUnfinalized))]
     public static class GetValueUnfinalizedPatch
     {
@@ -199,7 +213,7 @@ namespace SyrTraits
         }
     }
 
-    //Uninspired
+    //Slow Learner
     [HarmonyPatch(typeof(StatWorker), nameof(StatWorker.GetValueUnfinalized))]
     public static class GetValueUnfinalizedPatch2
     {
@@ -318,7 +332,7 @@ namespace SyrTraits
         [HarmonyPriority(Priority.Last)]
         public static void GenerateQualityCreatedByPawn_Postfix(ref QualityCategory __result, Pawn pawn, SkillDef relevantSkill)
         {
-            if (pawn?.story?.traits!= null && pawn.story.traits.HasTrait(SyrTraitDefOf.SYR_Perfectionist))
+            if (pawn?.story?.traits!= null && pawn.story.traits.HasTrait(SyrTraitDefOf.SYR_Perfectionist) && Rand.Value < 0.5f)
             {
                 __result += 1;
                 if (__result > QualityCategory.Legendary)
@@ -329,7 +343,7 @@ namespace SyrTraits
         }
     }
 
-    //AnimalTrait
+    //Animal Friend
     [HarmonyPatch(typeof(InteractionWorker_RecruitAttempt), nameof(InteractionWorker_RecruitAttempt.Interacted))]
     public static class Recruit_InteractedPatch
     {
@@ -380,12 +394,13 @@ namespace SyrTraits
         }
     }
 
-    //SteadyHands
+    //Steady Hands
     [HarmonyPatch(typeof(TendUtility), nameof(TendUtility.CalculateBaseTendQuality), new Type[] { typeof(Pawn), typeof(Pawn), typeof(float), typeof(float) })]
     public static class CalculateBaseTendQualityPatch
     {
-        [HarmonyPrefix]
-        public static bool CalculateBaseTendQuality_Prefix(ref float __result, Pawn doctor, Pawn patient, float medicinePotency, float medicineQualityMax)
+        [HarmonyPostfix]
+        [HarmonyPriority(Priority.First)]
+        public static void CalculateBaseTendQuality_Postfix(ref float __result, Pawn doctor, Pawn patient, float medicinePotency, float medicineQualityMax)
         {
             if (doctor?.story?.traits != null && doctor.story.traits.HasTrait(SyrTraitDefOf.SYR_SteadyHands))
             {
@@ -405,11 +420,6 @@ namespace SyrTraits
                     num += building_Bed.GetStatValue(StatDefOf.MedicalTendQualityOffset, true);
                 }
                 __result = Mathf.Clamp(num, 0f, medicineQualityMax);
-                return false;
-            }
-            else
-            {
-                return true;
             }
         }
     }

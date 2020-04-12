@@ -43,7 +43,7 @@ namespace SyrTraits
                 }
                 else if (comp.sexuality == CompIndividuality.Sexuality.Bisexual)
                 {
-                    GenderFactor = 0.55f;
+                    GenderFactor = 0.75f;
                 }
                 else if (comp.sexuality == CompIndividuality.Sexuality.Gay)
                 {
@@ -58,7 +58,7 @@ namespace SyrTraits
                 }
                 else if (comp.sexuality == CompIndividuality.Sexuality.Bisexual)
                 {
-                    GenderFactor = 0.55f;
+                    GenderFactor = 0.75f;
                 }
                 else if (comp.sexuality == CompIndividuality.Sexuality.Straight)
                 {

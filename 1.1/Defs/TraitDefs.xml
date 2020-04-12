@@ -9,7 +9,7 @@
     <degreeDatas>
       <li>
         <label>stealthy</label>
-        <description>[PAWN_nameDef] is uncommonly agile and stealthy, with better reflexes and a more flexible body than most.</description>
+        <description>{PAWN_nameDef} is uncommonly agile and stealthy, with better reflexes and a more flexible body than most.</description>
         <statOffsets>
           <HuntingStealth>1.0</HuntingStealth>
           <MoveSpeed>0.30</MoveSpeed>
@@ -31,7 +31,7 @@
     <degreeDatas>
       <li>
       <label>animal friend</label>
-      <description>[PAWN_nameDef] has a special connection to animals and understands them better than most people. Animals also tend to understand what [PAWN_pronoun] wants from them. The time [PAWN_pronoun] spends with animals is long, but worth it.\n\n    Taming never causes manhunter\n    Easier taming of very wild animals</description>
+      <description>{PAWN_nameDef} has a special connection to animals and understands them better than most people. Animals also tend to understand what {PAWN_pronoun} wants from them. The time {PAWN_pronoun} spends with animals is long, but worth it.\n\n    Taming never causes manhunter\n    Easier taming of very wild animals</description>
       <statOffsets>
         <AnimalGatherSpeed>-0.5</AnimalGatherSpeed>
         <AnimalGatherYield>0.2</AnimalGatherYield>
@@ -55,7 +55,7 @@
     <degreeDatas>
       <li>
         <label>architect</label>
-        <description>[PAWN_nameDef] is proficient with various construction materials, particularly stone. [PAWN_pronoun] will construct anything out of stone three times as fast as others and smooth out your rocky base in no time.\n\n    Stone construction speed +200%</description>
+        <description>{PAWN_nameDef} is proficient with various construction materials, particularly stone. {PAWN_pronoun} will construct anything out of stone three times as fast as others and smooth out your rocky base in no time.\n\n    Stone construction speed +200%</description>
         <statOffsets>
           <SmoothingSpeed>2.0</SmoothingSpeed>
           <ConstructSuccessChance>0.1</ConstructSuccessChance>
@@ -80,7 +80,7 @@
     <degreeDatas>
       <li>
         <label>creative thinker</label>
-        <description>[PAWN_nameDef] has a unique approach to science. [PAWN_pronoun] always thinks outside the box and finds inspiration for intellectual problems in art.\n\n    Artistic increases research speed</description>
+        <description>{PAWN_nameDef} has a unique approach to science. {PAWN_pronoun} always thinks outside the box and finds inspiration for intellectual problems in art.\n\n    Artistic increases research speed</description>
       </li>
     </degreeDatas>
     <exclusionTags>
@@ -98,7 +98,7 @@
     <degreeDatas>
       <li Class="SyrTraits.RandomInspirationMtbDays">
         <label>fortunate</label>
-        <description>[PAWN_nameDef] seems to have rented all the good fortune on this Rimworld.</description>
+        <description>{PAWN_nameDef} seems to have rented all the good fortune on this Rimworld.</description>
         <statOffsets>
           <MiningYield>+0.10</MiningYield>
           <AnimalGatherYield>+0.20</AnimalGatherYield>
@@ -122,7 +122,7 @@
     <degreeDatas>
       <li>
         <label>green thumb</label>
-        <description>[PAWN_nameDef] has a special talent to grow plants and nurture them even in hostile enviroments. [PAWN_pronoun] can grow any plant, even if other people would fail due to their lack of skills. [PAWN_pronoun] would like some plants in [PAWN_possessive] bedroom.\n\n    Can grow any plant regardless of skill</description>
+        <description>{PAWN_nameDef} has a special talent to grow plants and nurture them even in hostile enviroments. {PAWN_pronoun} can grow any plant, even if other people would fail due to their lack of skills. {PAWN_pronoun} would like some plants in {PAWN_possessive} bedroom.\n\n    Can grow any plant regardless of skill</description>
         <statOffsets>
 		      <PlantWorkSpeed>0.2</PlantWorkSpeed>
         </statOffsets>
@@ -142,7 +142,7 @@
     <degreeDatas>
       <li>
         <label>gun nut</label>
-        <description>[PAWN_nameDef] is a gun nut, [PAWN_possessive] life revolves around guns, how they are crafted, maintained and used. Quite a handy skill in these circumstances. Just don't hand [PAWN_objective] a melee weapon.</description>
+        <description>{PAWN_nameDef} is a gun nut, {PAWN_possessive} life revolves around guns, how they are crafted, maintained and used. Quite a handy skill in these circumstances. Just don't hand {PAWN_objective} a melee weapon.</description>
         <statOffsets>
           <AimingDelayFactor>-0.10</AimingDelayFactor>
         </statOffsets>
@@ -175,7 +175,7 @@
     <degreeDatas>
       <li>
         <label>hand-eye coordination</label>
-        <description>[PAWN_nameDef] is exceptionally coordinated with his hands.</description>
+        <description>{PAWN_nameDef} is exceptionally coordinated with his hands.</description>
         <statOffsets>
 		      <WorkSpeedGlobal>0.15</WorkSpeedGlobal>
 		      <AimingDelayFactor>-0.1</AimingDelayFactor>
@@ -199,7 +199,7 @@
     <degreeDatas>
       <li>
         <label>keen eye</label>
-        <description>[PAWN_nameDef] has a keen eye and can spot even tiny mineral deposits. [PAWN_pronoun] will occassionally find small clumps of resources when mining any sort of stone or ore. Chance increased for flatter terrain.</description>
+        <description>{PAWN_nameDef} has a keen eye and can spot even tiny mineral deposits. {PAWN_pronoun} will occassionally find small clumps of resources when mining any sort of stone or ore. Chance increased for flatter terrain.</description>
         <statOffsets>
 		      <MiningSpeed>0.2</MiningSpeed>
         </statOffsets>
@@ -222,7 +222,7 @@
     <degreeDatas>
       <li>
         <label>mechanoid expert</label>
-        <description>[PAWN_nameDef] has had their fair share of encounters with mechanoids. [PAWN_pronoun] has become an expert in mechanoid construction and combat, making [PAWN_objective] uniquely suited to disassemble and fight them.\n\n    Damage versus mechanoids +50%</description>
+        <description>{PAWN_nameDef} has had their fair share of encounters with mechanoids. {PAWN_pronoun} has become an expert in mechanoid construction and combat, making {PAWN_objective} uniquely suited to disassemble and fight them.\n\n    Damage versus mechanoids +50%</description>
         <statOffsets>
           <ButcheryMechanoidEfficiency>0.5</ButcheryMechanoidEfficiency>
         </statOffsets>
@@ -246,7 +246,7 @@
     <degreeDatas>
       <li>
         <label>perfectionist</label>
-        <description>[PAWN_nameDef] wants thing to be exactly right. This does take time, but the results speak for themselves.\n\n    Quality Level +1</description>
+        <description>{PAWN_nameDef} wants thing to be exactly right. This does take time, but the results speak for themselves.\n\n    Quality Level +1</description>
         <statOffsets>
           <WorkSpeedGlobal>-0.25</WorkSpeedGlobal>
         </statOffsets>
@@ -269,7 +269,7 @@
     <degreeDatas>
       <li>
         <label>silver tongue</label>
-        <description>[PAWN_nameDef] knows exactly the right words for every situation. This also means [PAWN_possessive] insults hurt more.</description>
+        <description>{PAWN_nameDef} knows exactly the right words for every situation. This also means {PAWN_possessive} insults hurt more.</description>
         <statOffsets>
           <TradePriceImprovement>0.33</TradePriceImprovement>
           <NegotiationAbility>0.2</NegotiationAbility>
@@ -291,7 +291,7 @@
     <degreeDatas>
       <li>
       <label>steady hands</label>
-      <description>[PAWN_nameDef] has particularly steady hands, which don't even tremble in dire circumstances or when [PAWN_pronoun] [PAWN_objective]self is injured.\n\n    No self-tend penalty</description>
+      <description>{PAWN_nameDef} has particularly steady hands, which don't even tremble in dire circumstances or when {PAWN_pronoun} {PAWN_objective}self is injured.\n\n    No self-tend penalty</description>
       <statOffsets>
         <MedicalTendSpeed>0.5</MedicalTendSpeed>
         <MedicalTendQuality>0.1</MedicalTendQuality>
@@ -310,7 +310,7 @@
     <degreeDatas>
       <li>
         <label>strong back</label>
-        <description>[PAWN_nameDef] has a very strong back or is part mule or something. [PAWN_pronoun] can carry significantly more as a normal person.</description>
+        <description>{PAWN_nameDef} has a very strong back or is part mule or something. {PAWN_pronoun} can carry significantly more as a normal person.</description>
         <statOffsets>
           <CarryingCapacity>+75</CarryingCapacity>
         </statOffsets>
