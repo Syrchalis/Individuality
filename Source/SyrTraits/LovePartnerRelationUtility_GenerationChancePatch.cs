@@ -17,18 +17,14 @@ namespace SyrTraits
         [HarmonyPostfix]
         public static void LovePartnerRelationGenerationChance_Postfix(ref float __result, Pawn generated, Pawn other, PawnGenerationRequest request, bool ex)
         {
-            if (!SyrIndividuality.PsychologyIsActive)
+            if (!SyrIndividuality.RomanceDisabled)
             {
                 __result = LovePartnerRelationGenerationChance_Method(generated, other, request, ex);
             }
         }
         private static float LovePartnerRelationGenerationChance_Method(Pawn generated, Pawn other, PawnGenerationRequest request, bool ex)
         {
-            if (generated.ageTracker.AgeBiologicalYearsFloat < 14f)
-            {
-                return 0f;
-            }
-            if (other.ageTracker.AgeBiologicalYearsFloat < 14f)
+            if (generated.ageTracker.AgeBiologicalYearsFloat < 14f || other.ageTracker.AgeBiologicalYearsFloat < 14f)
             {
                 return 0f;
             }

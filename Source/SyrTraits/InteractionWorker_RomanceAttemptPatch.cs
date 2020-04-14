@@ -17,7 +17,7 @@ namespace SyrTraits
         [HarmonyPostfix]
         public static void RandomSelectionWeight_Postfix(ref float __result, Pawn initiator, Pawn recipient)
         {
-            if (!SyrIndividuality.PsychologyIsActive)
+            if (!SyrIndividuality.RomanceDisabled)
             {
                 __result = RandomSelectionWeight_Method(initiator, recipient);
             }

@@ -30,7 +30,7 @@ namespace SyrTraits
                 Widgets.Label(titleRect, "IndividualityWindow".Translate());
                 Text.Font = GameFont.Small;
                 num += titleRect.height + 17f;
-                if (!SyrIndividuality.PsychologyIsActive)
+                if (!SyrIndividuality.RomanceDisabled)
                 {
                     Rect rect2 = new Rect(0f, num, rect.width - 10f, 24f);
                     Widgets.Label(new Rect(10f, num, rect.width, 24f), "SexualityPawn".Translate() + ": " + comp.sexuality);
@@ -46,46 +46,40 @@ namespace SyrTraits
                     num += rect3.height + 2f;
                     if (editMode)
                     {
-                        if (Event.current.type == EventType.MouseDown && Mouse.IsOver(rect2))
+                        if (ScrolledDown(rect2, true) || LeftClicked(rect2))
                         {
-                            if (Event.current.button == 0)
+                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+                            comp.sexuality += 1;
+                            if (comp.sexuality > CompIndividuality.Sexuality.Asexual)
                             {
-                                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                                comp.sexuality += 1;
-                                if (comp.sexuality > CompIndividuality.Sexuality.Asexual)
-                                {
-                                    comp.sexuality = CompIndividuality.Sexuality.Straight;
-                                }
-                            }
-                            else if (Event.current.button == 1)
-                            {
-                                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                                comp.sexuality -= 1;
-                                if (comp.sexuality < CompIndividuality.Sexuality.Straight)
-                                {
-                                    comp.sexuality = CompIndividuality.Sexuality.Asexual;
-                                }
+                                comp.sexuality = CompIndividuality.Sexuality.Straight;
                             }
                         }
-                        else if (Event.current.type == EventType.MouseDown && Mouse.IsOver(rect3))
+                        else if (ScrolledUp(rect2, true) || RightClicked(rect2))
                         {
-                            if (Event.current.button == 0)
+                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+                            comp.sexuality -= 1;
+                            if (comp.sexuality < CompIndividuality.Sexuality.Straight)
                             {
-                                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                                comp.RomanceFactor += 0.1f;
-                                if (comp.RomanceFactor > 1.05f)
-                                {
-                                    comp.RomanceFactor = 0.1f;
-                                }
+                                comp.sexuality = CompIndividuality.Sexuality.Asexual;
                             }
-                            else if (Event.current.button == 1)
+                        }
+                        else if (ScrolledDown(rect3, true) || LeftClicked(rect3))
+                        {
+                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+                            comp.RomanceFactor += 0.1f;
+                            if (comp.RomanceFactor > 1.05f)
                             {
-                                SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                                comp.RomanceFactor -= 0.1f;
-                                if (comp.RomanceFactor < 0.1f)
-                                {
-                                    comp.RomanceFactor = 1f;
-                                }
+                                comp.RomanceFactor = 0.1f;
+                            }
+                        }
+                        else if (ScrolledUp(rect3, true) || RightClicked(rect3))
+                        {
+                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+                            comp.RomanceFactor -= 0.1f;
+                            if (comp.RomanceFactor < 0.05f)
+                            {
+                                comp.RomanceFactor = 1f;
                             }
                         }
                     }
@@ -130,50 +124,80 @@ namespace SyrTraits
                         SoundDefOf.Tick_Low.PlayOneShotOnCamera(null);
                         editMode = false;
                     }
-                    if (Event.current.type == EventType.MouseDown && Mouse.IsOver(rect4))
+                    if (ScrolledDown(rect4, true) || LeftClicked(rect4))
                     {
-                        if (Event.current.button == 0)
+                        SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+                        comp.PsychicFactor += 0.2f;
+                        if (comp.PsychicFactor > 1f)
                         {
-                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                            comp.PsychicFactor += 0.2f;
-                            if (comp.PsychicFactor > 1f)
-                            {
-                                comp.PsychicFactor = -1f;
-                            }
-                        }
-                        else if (Event.current.button == 1)
-                        {
-                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                            comp.PsychicFactor -= 0.2f;
-                            if (comp.PsychicFactor < -1f)
-                            {
-                                comp.PsychicFactor = 1f;
-                            }
+                            comp.PsychicFactor = -1f;
                         }
                     }
-                    else if (Event.current.type == EventType.MouseDown && Mouse.IsOver(rect5))
+                    else if (ScrolledUp(rect4, true) || RightClicked(rect4))
                     {
-                        if (Event.current.button == 0)
+                        SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+                        comp.PsychicFactor -= 0.2f;
+                        if (comp.PsychicFactor < -1f)
                         {
-                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                            comp.BodyWeight += 10;
-                            if (comp.BodyWeight > 40)
-                            {
-                                comp.BodyWeight = -20;
-                            }
+                            comp.PsychicFactor = 1f;
                         }
-                        else if (Event.current.button == 1)
+                    }
+                    else if (ScrolledDown(rect5, true) || LeftClicked(rect5))
+                    {
+                        SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+                        comp.BodyWeight += 10;
+                        if (comp.BodyWeight > 40)
                         {
-                            SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
-                            comp.BodyWeight -= 10;
-                            if (comp.BodyWeight < -20)
-                            {
-                                comp.BodyWeight = 40;
-                            }
+                            comp.BodyWeight = -20;
+                        }
+                    }
+                    else if (ScrolledUp(rect5, true) || RightClicked(rect5))
+                    {
+                        SoundDefOf.DragSlider.PlayOneShotOnCamera(null);
+                        comp.BodyWeight -= 10;
+                        if (comp.BodyWeight < -20)
+                        {
+                            comp.BodyWeight = 40;
                         }
                     }
                 }
             }
+        }
+
+        public static bool Scrolled(Rect rect, ScrollDirection direction, bool stopPropagation)
+        {
+            bool flag = Event.current.type == EventType.ScrollWheel && ((Event.current.delta.y > 0f && direction == ScrollDirection.Up) || (Event.current.delta.y < 0f && direction == ScrollDirection.Down)) && Mouse.IsOver(rect);
+            if (flag && stopPropagation)
+            {
+                Event.current.Use();
+            }
+            return flag;
+        }
+        public static bool ScrolledUp(Rect rect, bool stopPropagation = false)
+        {
+            return Scrolled(rect, ScrollDirection.Up, stopPropagation);
+        }
+        public static bool ScrolledDown(Rect rect, bool stopPropagation = false)
+        {
+            return Scrolled(rect, ScrollDirection.Down, stopPropagation);
+        }
+        public enum ScrollDirection
+        {
+            Up,
+            Down
+        }
+
+        public static bool Clicked(Rect rect, int button = 0)
+        {
+            return Event.current.type == EventType.MouseDown && Event.current.button == button && Mouse.IsOver(rect);
+        }
+        public static bool LeftClicked(Rect rect)
+        {
+            return Clicked(rect, 0);
+        }
+        public static bool RightClicked(Rect rect)
+        {
+            return Clicked(rect, 1);
         }
     }
 }
