@@ -238,9 +238,10 @@
 					</theOnlyAllowedMentalBreaks>
 					<statOffsets>
 						<EatingSpeed>1.0</EatingSpeed>
-						<CookSpeed>0.5</CookSpeed>
+						<CookSpeed>5.0</CookSpeed>
 						<FoodPoisonChance>-0.75</FoodPoisonChance>
-						<HungerRateMultiplier>0.25</HungerRateMultiplier>
+						<ButcheryFleshEfficiency>0.1</ButcheryFleshEfficiency>
+						<HungerRateMultiplier>0.35</HungerRateMultiplier>
 					</statOffsets>
 				</li>
 			</degreeDatas>

@@ -91,7 +91,7 @@ namespace SyrTraits
                 Widgets.DrawHighlightIfMouseover(rect4);
                 num += rect4.height + 2f;
                 Rect rect5 = new Rect(0f, num, rect.width - 10f, 24f);
-                Widgets.Label(new Rect(10f, num, rect.width, 24f), "BodyWeight".Translate() + ": " + ((comp.BodyWeight + 70) * pawn.BodySize) + " kg (" + pawn.story.bodyType + ")");
+                Widgets.Label(new Rect(10f, num, rect.width, 24f), "BodyWeight".Translate() + ": " + (comp.BodyWeight + pawn.def.statBases.Find(s => s.stat == StatDefOf.Mass).value * pawn.BodySize + " kg (" + pawn.story.bodyType + ")"));
                 TipSignal BodyWeightTooltip = "BodyWeightTooltip".Translate();
                 TooltipHandler.TipRegion(rect5, BodyWeightTooltip);
                 Widgets.DrawHighlightIfMouseover(rect5);

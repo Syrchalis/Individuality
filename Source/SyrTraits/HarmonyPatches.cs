@@ -29,6 +29,23 @@ namespace SyrTraits
         }
     }
 
+    [HarmonyPatch(typeof(Pawn_RelationsTracker), nameof(Pawn_RelationsTracker.SecondaryRomanceChanceFactor))]
+    public static class SecondaryRomanceChanceFactorPatch
+    {
+        [HarmonyPostfix]
+        public static void SecondaryRomanceChanceFactor_Postfix(ref float __result, Pawn ___pawn, Pawn otherPawn)
+        {
+            if (!SyrIndividuality.RomanceDisabled)
+            {
+                CompIndividuality compOther = otherPawn.TryGetComp<CompIndividuality>();
+                CompIndividuality comp = ___pawn.TryGetComp<CompIndividuality>();
+                if (compOther.sexuality == CompIndividuality.Sexuality.Asexual && comp.sexuality == CompIndividuality.Sexuality.Asexual)
+                {
+                    __result = 2.0f;
+                }
+            }
+        }
+    }
 
     [HarmonyPatch(typeof(PawnGenerator), "GenerateBodyType")]
     public static class GenerateBodyTypePatch
@@ -40,6 +57,20 @@ namespace SyrTraits
             if (pawn != null && comp != null)
             {
                 pawn.BroadcastCompSignal("bodyTypeSelected");
+            }
+        }
+    }
+
+    [HarmonyPatch(typeof(PawnGenerator), "GenerateTraits")]
+    public static class GenerateTraitsPatch
+    {
+        [HarmonyPostfix]
+        public static void GenerateTraits_Postfix(Pawn pawn)
+        {
+            CompIndividuality comp = pawn.TryGetComp<CompIndividuality>();
+            if (pawn != null && comp != null)
+            {
+                pawn.BroadcastCompSignal("traitsGenerated");
             }
         }
     }

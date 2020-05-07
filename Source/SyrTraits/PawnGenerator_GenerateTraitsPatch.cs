@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace SyrTraits
             FieldInfo max = AccessTools.Field(typeof(IntRange), "max");
             foreach (CodeInstruction i in instructions)
             {
-                if (i.opcode == OpCodes.Call && i.operand == RangeInclusive)
+                if (i.opcode == OpCodes.Call && (MethodInfo)i.operand == RangeInclusive)
                 {
                     yield return new CodeInstruction(OpCodes.Pop);//pop first int value we don't want
                     yield return new CodeInstruction(OpCodes.Pop);//pop second int value we don't want

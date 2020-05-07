@@ -53,8 +53,19 @@ namespace SyrTraits
         {
             if (signal == "bodyTypeSelected" && parent is Pawn pawn)
             {
-                RandomBodyWeightByBodyType(pawn);
+                BodyWeight = RandomBodyWeightByBodyType(pawn);
             }
+            if (signal == "traitsGenerated")
+            {
+                ReplaceVanillaTraits();
+            }
+        }
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
+        {
+            base.PostSpawnSetup(respawningAfterLoad);
+            IndividualityValueSetup();
+            ReplaceVanillaTraits();
         }
 
         public override void PostExposeData()
@@ -71,14 +82,22 @@ namespace SyrTraits
             Pawn pawn = parent as Pawn;
             if (parent.def.defName == "ChjDroid")
             {
-                RomanceFactor = 0f;
-                BodyWeight = 0;
-                sexuality = Sexuality.Asexual;
-                return;
+                if (sexuality == Sexuality.Undefined)
+                {
+                    sexuality = Sexuality.Asexual;
+                }
+                if (RomanceFactor == -1f)
+                {
+                    RomanceFactor = 0f;
+                }
+                if (PsychicFactor == -2f)
+                {
+                    PsychicFactor = RandomPsychicFactor();
+                }
             }
             else if (parent.def.defName == "Harpy")
             {
-                if (pawn != null && pawn.gender == Gender.Female)
+                if (sexuality == Sexuality.Undefined)
                 {
                     sexuality = Sexuality.Bisexual;
                 }
@@ -116,16 +135,30 @@ namespace SyrTraits
             int num;
             if (pawn?.story?.bodyType != null)
             {
-                if (pawn.story.bodyType == BodyTypeDefOf.Fat)
-                    num = GenMath.RoundTo(Rand.Range(30, 40), 10);
-                else if (pawn.story.bodyType == BodyTypeDefOf.Hulk)
-                    num = GenMath.RoundTo(Rand.Range(10, 20), 10);
-                else if (pawn.story.bodyType == BodyTypeDefOf.Thin)
-                    num = GenMath.RoundTo(Rand.Range(-20, -10), 10);
-                else if (pawn.story.bodyType == BodyTypeDefOf.Female)
-                    num = GenMath.RoundTo(Rand.Range(-10, 0), 10);
-                else
+                if (parent.def.defName == "Harpy")
+                {
                     num = GenMath.RoundTo(Rand.Range(0, 10), 10);
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Fat)
+                {
+                    num = GenMath.RoundTo(Rand.Range(30, 40), 10);
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Hulk)
+                {
+                    num = GenMath.RoundTo(Rand.Range(10, 20), 10);
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Thin)
+                {
+                    num = GenMath.RoundTo(Rand.Range(-20, -10), 10);
+                }
+                else if (pawn.story.bodyType == BodyTypeDefOf.Female)
+                {
+                    num = GenMath.RoundTo(Rand.Range(-10, 0), 10);
+                }
+                else
+                {
+                    num = GenMath.RoundTo(Rand.Range(0, 10), 10);
+                }
             }
             else
             {
@@ -139,6 +172,7 @@ namespace SyrTraits
             return SexualityArray.RandomElementByWeight(x => Probability(x));
         }
         Sexuality[] SexualityArray = { Sexuality.Straight, Sexuality.Bisexual, Sexuality.Gay, Sexuality.Asexual };
+
         public float Probability(Sexuality val)
         {
             switch (val)
@@ -181,19 +215,22 @@ namespace SyrTraits
                         }
 
                     }
-                    pawn.story.traits.allTraits.RemoveAll(t => t.def == TraitDefOf.Bisexual || t.def == TraitDefOf.Asexual || t.def == TraitDefOf.Gay || t.def == TraitDefOf.PsychicSensitivity);
-                    IEnumerable<TraitDef> allTraitDefs = DefDatabase<TraitDef>.AllDefsListForReading;
-                    Func<TraitDef, float> weightSelector = (TraitDef tr) => tr.GetGenderSpecificCommonality(pawn.gender);
-                    TraitDef newTraitDef = allTraitDefs.RandomElementByWeight(weightSelector);
-                    if (!pawn.story.traits.HasTrait(newTraitDef) && (pawn.Faction == null || Faction.OfPlayerSilentFail == null || !pawn.Faction.HostileTo(Faction.OfPlayer) || newTraitDef.allowOnHostileSpawn)
-                        && !pawn.story.traits.allTraits.Any((Trait tr) => newTraitDef.ConflictsWith(tr)) && (newTraitDef.requiredWorkTypes == null
-                        || !pawn.OneOfWorkTypesIsDisabled(newTraitDef.requiredWorkTypes)) && !pawn.WorkTagIsDisabled(newTraitDef.requiredWorkTags))
+                    if (!SyrIndividuality.RomanceDisabled)
                     {
-                        int degree = PawnGenerator.RandomTraitDegree(newTraitDef);
-                        if (pawn.story.childhood == null || !pawn.story.childhood.DisallowsTrait(newTraitDef, degree) && (pawn.story.adulthood == null || !pawn.story.adulthood.DisallowsTrait(newTraitDef, degree)))
+                        pawn.story.traits.allTraits.RemoveAll(t => t.def == TraitDefOf.Bisexual || t.def == TraitDefOf.Asexual || t.def == TraitDefOf.Gay || t.def == TraitDefOf.PsychicSensitivity);
+                        IEnumerable<TraitDef> allTraitDefs = DefDatabase<TraitDef>.AllDefsListForReading;
+                        Func<TraitDef, float> weightSelector = (TraitDef tr) => tr.GetGenderSpecificCommonality(pawn.gender);
+                        TraitDef newTraitDef = allTraitDefs.RandomElementByWeight(weightSelector);
+                        if (!pawn.story.traits.HasTrait(newTraitDef) && (pawn.Faction == null || Faction.OfPlayerSilentFail == null || !pawn.Faction.HostileTo(Faction.OfPlayer) || newTraitDef.allowOnHostileSpawn)
+                            && !pawn.story.traits.allTraits.Any((Trait tr) => newTraitDef.ConflictsWith(tr)) && (newTraitDef.requiredWorkTypes == null
+                            || !pawn.OneOfWorkTypesIsDisabled(newTraitDef.requiredWorkTypes)) && !pawn.WorkTagIsDisabled(newTraitDef.requiredWorkTags))
                         {
-                            Trait trait = new Trait(newTraitDef, degree, false);
-                            pawn.story.traits.GainTrait(trait);
+                            int degree = PawnGenerator.RandomTraitDegree(newTraitDef);
+                            if (pawn.story.childhood == null || !pawn.story.childhood.DisallowsTrait(newTraitDef, degree) && (pawn.story.adulthood == null || !pawn.story.adulthood.DisallowsTrait(newTraitDef, degree)))
+                            {
+                                Trait trait = new Trait(newTraitDef, degree, false);
+                                pawn.story.traits.GainTrait(trait);
+                            }
                         }
                     }
                 }

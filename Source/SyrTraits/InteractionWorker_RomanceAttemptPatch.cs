@@ -24,7 +24,8 @@ namespace SyrTraits
         }
         private static float RandomSelectionWeight_Method(Pawn initiator, Pawn recipient)
         {
-            CompIndividuality comp = recipient.TryGetComp<CompIndividuality>();
+            CompIndividuality compOther = recipient.TryGetComp<CompIndividuality>();
+            CompIndividuality comp = initiator.TryGetComp<CompIndividuality>();
             if (LovePartnerRelationUtility.LovePartnerRelationExists(initiator, recipient))
             {
                 return 0f;
@@ -51,10 +52,9 @@ namespace SyrTraits
                 existingLovePartnerFactor = Mathf.InverseLerp(50f, -50f, opinionOfSpouse);
             }
             float romanceFactor;
-            if (comp != null)
+            if (compOther != null)
             {
-                romanceFactor = comp.RomanceFactor * 2f;
-                
+                romanceFactor = compOther.RomanceFactor * 2f;
             }
             else
             {
@@ -63,34 +63,42 @@ namespace SyrTraits
             float attractivenessFactor = Mathf.InverseLerp(0.15f, 1f, attractiveness);
             float opinionFactor = Mathf.InverseLerp(5f, 100f, opinionOfOther);
             float genderFactor = 1f;
-            if (initiator.gender != recipient.gender && comp != null)
+            if (initiator.gender != recipient.gender && compOther != null && comp != null)
             {
-                if (comp.sexuality == CompIndividuality.Sexuality.Straight)
+                if (compOther.sexuality == CompIndividuality.Sexuality.Straight)
                 {
                     genderFactor = 1.0f;
                 }
-                else if (comp.sexuality == CompIndividuality.Sexuality.Bisexual)
+                else if (compOther.sexuality == CompIndividuality.Sexuality.Bisexual)
                 {
                     genderFactor = 0.75f;
                 }
-                else if (comp.sexuality == CompIndividuality.Sexuality.Gay)
+                else if (compOther.sexuality == CompIndividuality.Sexuality.Gay)
                 {
-                    genderFactor = 0.15f;
+                    genderFactor = 0.1f;
+                }
+                else if (compOther.sexuality == CompIndividuality.Sexuality.Asexual && comp.sexuality == CompIndividuality.Sexuality.Asexual)
+                {
+                    genderFactor = 1.0f;
                 }
             }
-            if (initiator.gender == recipient.gender && comp != null)
+            if (initiator.gender == recipient.gender && compOther != null && comp != null)
             {
-                if (comp.sexuality == CompIndividuality.Sexuality.Gay)
+                if (compOther.sexuality == CompIndividuality.Sexuality.Gay)
                 {
                     genderFactor = 1.0f;
                 }
-                else if (comp.sexuality == CompIndividuality.Sexuality.Bisexual)
+                else if (compOther.sexuality == CompIndividuality.Sexuality.Bisexual)
                 {
                     genderFactor = 0.75f;
                 }
-                else if (comp.sexuality == CompIndividuality.Sexuality.Straight)
+                else if (compOther.sexuality == CompIndividuality.Sexuality.Straight)
                 {
-                    genderFactor = 0.15f;
+                    genderFactor = 0.1f;
+                }
+                else if (compOther.sexuality == CompIndividuality.Sexuality.Asexual && comp.sexuality == CompIndividuality.Sexuality.Asexual)
+                {
+                    genderFactor = 0.5f;
                 }
             }
             return 1.15f * romanceFactor * attractivenessFactor * opinionFactor * existingLovePartnerFactor * genderFactor;

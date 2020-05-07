@@ -4,6 +4,11 @@
   <SyrTraitsSettingsCategory>Individuality</SyrTraitsSettingsCategory>
   
   <SyrTraitsTraitCount>Amount of traits pawns spawn with</SyrTraitsTraitCount>
+  <SyrTraitsDisabled>Romance features disabled because of</SyrTraitsDisabled>
+  <SyrTraitsDisabledPsychology>Psychology is active</SyrTraitsDisabledPsychology>
+  <SyrTraitsDisabledRationalRomance>Rational Romance is active</SyrTraitsDisabledRationalRomance>
+  <SyrTraitsDisableRomance>Disable romance features</SyrTraitsDisableRomance>
+  <SyrTraitsDisableRomanceTooltip>Disables sexuality and confidence values and their effects</SyrTraitsDisableRomanceTooltip>
   <SyrTraitsSexualityCommonality>Commonality of sexualities</SyrTraitsSexualityCommonality>
   <SyrTraitsSexualityCommonalityStraight>Straight</SyrTraitsSexualityCommonalityStraight>
   <SyrTraitsSexualityCommonalityBi>Bi</SyrTraitsSexualityCommonalityBi>

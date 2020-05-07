@@ -100,9 +100,9 @@
         <label>fortunate</label>
         <description>{PAWN_nameDef} seems to have rented all the good fortune on this Rimworld.</description>
         <statOffsets>
-          <MiningYield>+0.10</MiningYield>
-          <AnimalGatherYield>+0.20</AnimalGatherYield>
-          <PlantHarvestYield>+0.10</PlantHarvestYield>
+          <MiningYield>0.1</MiningYield>
+          <AnimalGatherYield>0.2</AnimalGatherYield>
+          <PlantHarvestYield>0.1</PlantHarvestYield>
         </statOffsets>
 		    <randomInspirationMtbDays>30</randomInspirationMtbDays>
 	    </li>
@@ -124,7 +124,8 @@
         <label>green thumb</label>
         <description>{PAWN_nameDef} has a special talent to grow plants and nurture them even in hostile enviroments. {PAWN_pronoun} can grow any plant, even if other people would fail due to their lack of skills. {PAWN_pronoun} would like some plants in {PAWN_possessive} bedroom.\n\n    Can grow any plant regardless of skill</description>
         <statOffsets>
-		      <PlantWorkSpeed>0.2</PlantWorkSpeed>
+		      <PlantWorkSpeed>0.8</PlantWorkSpeed>
+          <PlantHarvestYield>0.1</PlantHarvestYield>
         </statOffsets>
       </li>
     </degreeDatas>
@@ -201,7 +202,7 @@
         <label>keen eye</label>
         <description>{PAWN_nameDef} has a keen eye and can spot even tiny mineral deposits. {PAWN_pronoun} will occassionally find small clumps of resources when mining any sort of stone or ore. Chance increased for flatter terrain.</description>
         <statOffsets>
-		      <MiningSpeed>0.2</MiningSpeed>
+		      <MiningSpeed>0.4</MiningSpeed>
         </statOffsets>
       </li>
     </degreeDatas>
@@ -246,7 +247,7 @@
     <degreeDatas>
       <li>
         <label>perfectionist</label>
-        <description>{PAWN_nameDef} wants thing to be exactly right. This does take time, but the results speak for themselves.\n\n    Quality Level +1</description>
+        <description>{PAWN_nameDef} wants thing to be exactly right. This does take time, but the results speak for themselves.\n\n    Quality level +1 (50% chance)</description>
         <statOffsets>
           <WorkSpeedGlobal>-0.25</WorkSpeedGlobal>
         </statOffsets>

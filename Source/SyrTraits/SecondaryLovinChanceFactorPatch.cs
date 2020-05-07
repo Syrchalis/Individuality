@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,105 +15,97 @@ namespace SyrTraits
     public static class SecondaryLovinChanceFactorPatch
     {
         [HarmonyPostfix]
-        public static void SecondaryLovinChanceFactor_Postfix(ref float __result, Pawn otherPawn, Pawn_RelationsTracker __instance)
+        public static void SecondaryLovinChanceFactor_Postfix(ref float __result, Pawn ___pawn, Pawn otherPawn, Pawn_RelationsTracker __instance)
         {
-            if (!SyrIndividuality.PsychologyIsActive)
+            if (!SyrIndividuality.RomanceDisabled)
             {
-                Pawn pawn = Traverse.Create(__instance).Field("pawn").GetValue<Pawn>();
-                var comp = pawn.TryGetComp<CompIndividuality>();
-
+                CompIndividuality comp = ___pawn.TryGetComp<CompIndividuality>();
                 float genderFactor = 1f;
-                if (Rand.ValueSeeded(pawn.thingIDNumber ^ 3273711) >= 0.015f)
+                if (___pawn == otherPawn)
                 {
-                    if (pawn.gender != otherPawn.gender && comp != null)
+                    __result = 0f;
+                }
+                if (comp != null && ___pawn.gender != otherPawn.gender)
+                {
+                    if (comp.sexuality == CompIndividuality.Sexuality.Straight)
                     {
-                        if (comp.sexuality == CompIndividuality.Sexuality.Straight)
-                        {
-                            genderFactor = 1.0f;
-                        }
-                        else if (comp.sexuality == CompIndividuality.Sexuality.Bisexual)
-                        {
-                            genderFactor = 0.75f;
-                        }
-                        else if (comp.sexuality == CompIndividuality.Sexuality.Gay)
-                        {
-                            genderFactor = 0.15f;
-                        }
+                        genderFactor = 1.0f;
                     }
-                    else if (pawn.gender == otherPawn.gender && comp != null)
+                    else if (comp.sexuality == CompIndividuality.Sexuality.Bisexual)
                     {
-                        if (comp.sexuality == CompIndividuality.Sexuality.Gay)
-                        {
-                            genderFactor = 1.0f;
-                        }
-                        else if (comp.sexuality == CompIndividuality.Sexuality.Bisexual)
-                        {
-                            genderFactor = 0.75f;
-                        }
-                        else if (comp.sexuality == CompIndividuality.Sexuality.Straight)
-                        {
-                            genderFactor = 0.15f;
-                        }
+                        genderFactor = 0.75f;
+                    }
+                    else if (comp.sexuality == CompIndividuality.Sexuality.Gay)
+                    {
+                        genderFactor = 0.1f;
+                    }
+                    else if (comp.sexuality == CompIndividuality.Sexuality.Asexual)
+                    {
+                        genderFactor = 0f;
                     }
                 }
-                float ageBiologicalYearsFloat = pawn.ageTracker.AgeBiologicalYearsFloat;
-                float ageBiologicalYearsFloat2 = otherPawn.ageTracker.AgeBiologicalYearsFloat;
+                else if (comp != null && ___pawn.gender == otherPawn.gender)
+                {
+                    if (comp.sexuality == CompIndividuality.Sexuality.Gay)
+                    {
+                        genderFactor = 1.0f;
+                    }
+                    else if (comp.sexuality == CompIndividuality.Sexuality.Bisexual)
+                    {
+                        genderFactor = 0.75f;
+                    }
+                    else if (comp.sexuality == CompIndividuality.Sexuality.Straight)
+                    {
+                        genderFactor = 0.1f;
+                    }
+                    else if (comp.sexuality == CompIndividuality.Sexuality.Asexual)
+                    {
+                        genderFactor = 0f;
+                    }
+                }
+                float agePawn = ___pawn.ageTracker.AgeBiologicalYearsFloat;
+                float ageOtherPawn = otherPawn.ageTracker.AgeBiologicalYearsFloat;
                 float ageFactor = 1f;
-                if (pawn.gender == Gender.Male)
+                if (___pawn.gender == Gender.Male)
                 {
-                    if (ageBiologicalYearsFloat2 < 16f)
-                    {
-                        __result = 0f;
-                    }
-                    float min = Mathf.Max(16f, ageBiologicalYearsFloat - 30f);
-                    float lower = Mathf.Max(20f, ageBiologicalYearsFloat - 10f);
-                    ageFactor = GenMath.FlatHill(0.15f, min, lower, ageBiologicalYearsFloat, ageBiologicalYearsFloat + 10f, 0.15f, ageBiologicalYearsFloat2);
+                    float min = agePawn - 30f;
+                    float lower = agePawn - 10f;
+                    float upper = agePawn + 5f;
+                    float max = agePawn + 15f;
+                    ageFactor = GenMath.FlatHill(0.2f, min, lower, upper, max, 0.2f, ageOtherPawn);
                 }
-                else if (pawn.gender == Gender.Female)
+                else if (___pawn.gender == Gender.Female)
                 {
-                    if (ageBiologicalYearsFloat2 < 16f)
-                    {
-                        __result = 0f;
-                    }
-                    if (ageBiologicalYearsFloat2 < ageBiologicalYearsFloat - 10f)
-                    {
-                        __result = 0.15f;
-                    }
-                    if (ageBiologicalYearsFloat2 < ageBiologicalYearsFloat - 3f)
-                    {
-                        ageFactor = Mathf.InverseLerp(ageBiologicalYearsFloat - 10f, ageBiologicalYearsFloat - 3f, ageBiologicalYearsFloat2) * 0.3f;
-                    }
-                    else
-                    {
-                        ageFactor = GenMath.FlatHill(0.3f, ageBiologicalYearsFloat - 3f, ageBiologicalYearsFloat, ageBiologicalYearsFloat + 10f, ageBiologicalYearsFloat + 30f, 0.15f, ageBiologicalYearsFloat2);
-                    }
+                    float min2 = agePawn - 20f;
+                    float lower2 = agePawn - 10f;
+                    float upper2 = agePawn + 10f;
+                    float max2 = agePawn + 30f;
+                    ageFactor = GenMath.FlatHill(0.2f, min2, lower2, upper2, max2, 0.2f, ageOtherPawn);
                 }
                 float healthFactor = 1f;
                 healthFactor *= Mathf.Lerp(0.2f, 1f, otherPawn.health.capacities.GetLevel(PawnCapacityDefOf.Talking));
-                healthFactor *= Mathf.Lerp(0.2f, 1f, otherPawn.health.capacities.GetLevel(PawnCapacityDefOf.Manipulation));
-                healthFactor *= Mathf.Lerp(0.2f, 1f, otherPawn.health.capacities.GetLevel(PawnCapacityDefOf.Moving));
-                int beautyDegree = 0;
+                float beauty = 0;
                 if (otherPawn.RaceProps.Humanlike)
                 {
-                    beautyDegree = otherPawn.story.traits.DegreeOfTrait(TraitDefOf.Beauty);
+                    beauty = otherPawn.GetStatValue(StatDefOf.PawnBeauty, true);
                 }
                 float beautyFactor = 1f;
-                if (beautyDegree < 0)
-                {
-                    beautyFactor = 0.5f;
-                }
-                else if (beautyDegree > 0)
-                {
-                    beautyFactor = 1.25f;
-                }
-                else if (beautyDegree > 1)
-                {
-                    beautyFactor = 2.5f;
-                }
-                float youthFactorPawn = Mathf.InverseLerp(15f, 18f, ageBiologicalYearsFloat);
-                float youthFactorOtherPawn = Mathf.InverseLerp(15f, 18f, ageBiologicalYearsFloat2);
+                beautyFactor = beautyCurve.Evaluate(beauty);
+                float youthFactorPawn = Mathf.InverseLerp(16f, 18f, agePawn);
+                float youthFactorOtherPawn = Mathf.InverseLerp(16f, 18f, ageOtherPawn);
                 __result = genderFactor * ageFactor * healthFactor * beautyFactor * youthFactorPawn * youthFactorOtherPawn;
             }
         }
+
+        public static SimpleCurve beautyCurve = new SimpleCurve
+        {
+            new CurvePoint(-10f, 0.01f),
+            new CurvePoint(-2f, 0.3f),
+            new CurvePoint(0f, 1f),
+            new CurvePoint(1f, 1.8f),
+            new CurvePoint(2f, 2.5f),
+            new CurvePoint(5f, 3f),
+            new CurvePoint(10f, 4f)
+        };
     }
 }
