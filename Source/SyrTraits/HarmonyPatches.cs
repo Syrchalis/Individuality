@@ -35,11 +35,11 @@ namespace SyrTraits
         [HarmonyPostfix]
         public static void SecondaryRomanceChanceFactor_Postfix(ref float __result, Pawn ___pawn, Pawn otherPawn)
         {
-            if (!SyrIndividuality.RomanceDisabled)
+            if (!SyrIndividuality.RomanceDisabled && ___pawn != null && otherPawn != null)
             {
                 CompIndividuality compOther = otherPawn.TryGetComp<CompIndividuality>();
                 CompIndividuality comp = ___pawn.TryGetComp<CompIndividuality>();
-                if (compOther.sexuality == CompIndividuality.Sexuality.Asexual && comp.sexuality == CompIndividuality.Sexuality.Asexual)
+                if (comp != null && compOther != null && compOther.sexuality == CompIndividuality.Sexuality.Asexual && comp.sexuality == CompIndividuality.Sexuality.Asexual)
                 {
                     __result = 2.0f;
                 }
