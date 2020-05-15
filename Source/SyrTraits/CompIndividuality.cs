@@ -66,6 +66,7 @@ namespace SyrTraits
             base.PostSpawnSetup(respawningAfterLoad);
             IndividualityValueSetup();
             ReplaceVanillaTraits();
+            ReplaceOldTraits();
         }
 
         public override void PostExposeData()
