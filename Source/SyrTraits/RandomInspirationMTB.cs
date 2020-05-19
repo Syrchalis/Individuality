@@ -26,21 +26,18 @@ namespace SyrTraits
         }
         public static void CheckStartTrait_RandomInspiration(InspirationHandler __instance)
         {
-            if (!__instance.Inspired)
+            if (!__instance.Inspired && __instance?.pawn?.story != null)
             {
-                if (__instance.pawn.story != null)
+                List<Trait> allTraits = __instance.pawn.story.traits.allTraits;
+                for (int m = 0; m < allTraits.Count; m++)
                 {
-                    List<Trait> allTraits = __instance.pawn.story.traits.allTraits;
-                    for (int m = 0; m < allTraits.Count; m++)
+                    RandomInspirationMtbDays currentData = allTraits[m].CurrentData as RandomInspirationMtbDays;
+                    if (currentData != null && currentData.randomInspirationMtbDays > 0f && Rand.MTBEventOccurs(currentData.randomInspirationMtbDays, 60000f, 100f))
                     {
-                        RandomInspirationMtbDays currentData = allTraits[m].CurrentData as RandomInspirationMtbDays;
-                        if (currentData != null && currentData.randomInspirationMtbDays > 0f && Rand.MTBEventOccurs(currentData.randomInspirationMtbDays, 60000f, 100f))
+                        InspirationDef randomAvailableInspirationDef = GetRandomAvailableInspirationDef(__instance);
+                        if (randomAvailableInspirationDef != null)
                         {
-                            InspirationDef randomAvailableInspirationDef = GetRandomAvailableInspirationDef(__instance);
-                            if (randomAvailableInspirationDef != null)
-                            {
-                                __instance.TryStartInspiration(randomAvailableInspirationDef);
-                            }
+                            __instance.TryStartInspiration(randomAvailableInspirationDef);
                         }
                     }
                 }

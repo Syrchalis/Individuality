@@ -22,6 +22,7 @@ namespace SyrTraits
                 __result = LovePartnerRelationGenerationChance_Method(generated, other, request, ex);
             }
         }
+        private static readonly MethodInfo GetGenerationChanceAgeGapFactor = AccessTools.Method(typeof(LovePartnerRelationUtility), "GetGenerationChanceAgeGapFactor");
         private static float LovePartnerRelationGenerationChance_Method(Pawn generated, Pawn other, PawnGenerationRequest request, bool ex)
         {
             if (generated.ageTracker.AgeBiologicalYearsFloat < 14f || other.ageTracker.AgeBiologicalYearsFloat < 14f)
@@ -78,18 +79,9 @@ namespace SyrTraits
             {
                 return 0f;
             }
-            float generationChanceAgeFactor = Traverse
-                .Create(typeof(LovePartnerRelationUtility))
-                .Method("GetGenerationChanceAgeFactor", new[] { typeof(Pawn) })
-                .GetValue<float>(new object[] { generated });
-            float generationChanceAgeFactor2 = Traverse
-                .Create(typeof(LovePartnerRelationUtility))
-                .Method("GetGenerationChanceAgeFactor", new[] { typeof(Pawn) })
-                .GetValue<float>(new object[] { other });
-            float generationChanceAgeGapFactor = Traverse
-                .Create(typeof(LovePartnerRelationUtility))
-                .Method("GetGenerationChanceAgeGapFactor", new[] { typeof(Pawn), typeof(Pawn), typeof(bool) })
-                .GetValue<float>(new object[] { generated, other, ex });
+            float generationChanceAgeFactor = Mathf.Clamp(GenMath.LerpDouble(14f, 27f, 0f, 1f, generated.ageTracker.AgeBiologicalYearsFloat), 0f, 1f);
+            float generationChanceAgeFactor2 = Mathf.Clamp(GenMath.LerpDouble(14f, 27f, 0f, 1f, other.ageTracker.AgeBiologicalYearsFloat), 0f, 1f);
+            float generationChanceAgeGapFactor = (float)GetGenerationChanceAgeGapFactor.Invoke(null, new object[] { generated, other, ex });
             float IncestFactor = 1f;
             if (generated.GetRelations(other).Any((PawnRelationDef x) => x.familyByBloodRelation))
             {
