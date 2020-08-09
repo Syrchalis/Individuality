@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<!-- Positive Traits -->
+<!-- Work -->
+  <TraitDef>
+    <defName>SYR_Agile</defName>
+    <commonality>0.5</commonality>
+    <degreeDatas>
+      <li>
+        <label>stealthy</label>
+        <description>{PAWN_nameDef} is uncommonly agile and stealthy, with better reflexes and a more flexible body than most.</description>
+        <statOffsets>
+          <HuntingStealth>1.0</HuntingStealth>
+          <MoveSpeed>0.30</MoveSpeed>
+          <MeleeDodgeChance>+10</MeleeDodgeChance>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+    <conflictingTraits>
+      <li>SpeedOffset</li>
+    </conflictingTraits>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_AnimalAffinity</defName>
+    <commonality>1.0</commonality>
+    <forcedPassions>
+      <li>Animals</li>
+    </forcedPassions>
+    <degreeDatas>
+      <li>
+      <label>animal friend</label>
+      <description>{PAWN_nameDef} has a special connection to animals and understands them better than most people. Animals also tend to understand what {PAWN_pronoun} wants from them. The time {PAWN_pronoun} spends with animals is long, but worth it.\n\n    Taming never causes manhunter\n    Easier taming of very wild animals</description>
+      <statOffsets>
+        <AnimalGatherSpeed>-0.5</AnimalGatherSpeed>
+        <AnimalGatherYield>0.2</AnimalGatherYield>
+      </statOffsets>
+      </li>      
+    </degreeDatas>
+    <conflictingTraits>
+      <li>SYR_Haggler</li>
+    </conflictingTraits>
+    <requiredWorkTags>
+      <li>Animals</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_Architect</defName>
+	  <commonality>1.0</commonality>
+    <forcedPassions>
+      <li>Construction</li>
+    </forcedPassions>
+    <degreeDatas>
+      <li>
+        <label>architect</label>
+        <description>{PAWN_nameDef} is proficient with various construction materials, particularly stone. {PAWN_pronoun} will construct anything out of stone three times as fast as others and smooth out your rocky base in no time.\n\n    Stone construction speed +200%</description>
+        <statOffsets>
+          <SmoothingSpeed>2.0</SmoothingSpeed>
+          <ConstructSuccessChance>0.1</ConstructSuccessChance>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+    <exclusionTags>
+      <li>SYR_Traits</li>
+    </exclusionTags>
+    <requiredWorkTags>
+      <li>ManualSkilled</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_CreativeThinker</defName>
+	  <commonality>1.0</commonality>
+    <forcedPassions>
+      <li>Intellectual</li>
+      <li>Artistic</li>
+    </forcedPassions>
+    <degreeDatas>
+      <li>
+        <label>creative thinker</label>
+        <description>{PAWN_nameDef} has a unique approach to science. {PAWN_pronoun} always thinks outside the box and finds inspiration for intellectual problems in art.\n\n    Artistic increases research speed</description>
+      </li>
+    </degreeDatas>
+    <exclusionTags>
+      <li>SYR_Traits</li>
+    </exclusionTags>
+    <requiredWorkTags>
+      <li>Intellectual</li>
+      <li>Artistic</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_GoodFortune</defName>
+	  <commonality>0.5</commonality>
+    <degreeDatas>
+      <li Class="SyrTraits.RandomInspirationMtbDays">
+        <label>fortunate</label>
+        <description>{PAWN_nameDef} seems to have rented all the good fortune on this Rimworld.</description>
+        <statOffsets>
+          <MiningYield>0.1</MiningYield>
+          <AnimalGatherYield>0.2</AnimalGatherYield>
+          <PlantHarvestYield>0.1</PlantHarvestYield>
+        </statOffsets>
+		    <randomInspirationMtbDays>30</randomInspirationMtbDays>
+	    </li>
+    </degreeDatas>
+    <requiredWorkTags>
+      <li>ManualDumb</li>
+      <li>ManualSkilled</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_GreenThumb</defName>
+	  <commonality>1.5</commonality>
+    <forcedPassions>
+      <li>Plants</li>
+    </forcedPassions>
+    <degreeDatas>
+      <li>
+        <label>green thumb</label>
+        <description>{PAWN_nameDef} has a special talent to grow plants and nurture them even in hostile enviroments. {PAWN_pronoun} can grow any plant, even if other people would fail due to their lack of skills. {PAWN_pronoun} would like some plants in {PAWN_possessive} bedroom.\n\n    Can grow any plant regardless of skill</description>
+        <statOffsets>
+		      <PlantWorkSpeed>0.8</PlantWorkSpeed>
+          <PlantHarvestYield>0.1</PlantHarvestYield>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+    <exclusionTags>
+      <li>SYR_Traits</li>
+    </exclusionTags>
+    <requiredWorkTags>
+      <li>PlantWork</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_GunNut</defName>
+    <commonality>0.5</commonality>
+    <degreeDatas>
+      <li>
+        <label>gun nut</label>
+        <description>{PAWN_nameDef} is a gun nut, {PAWN_possessive} life revolves around guns, how they are crafted, maintained and used. Quite a handy skill in these circumstances. Just don't hand {PAWN_objective} a melee weapon.</description>
+        <statOffsets>
+          <AimingDelayFactor>-0.10</AimingDelayFactor>
+        </statOffsets>
+        <skillGains>
+          <li>
+            <key>Shooting</key>
+            <value>2</value>
+          </li>
+          <li>
+            <key>Crafting</key>
+            <value>2</value>
+          </li>
+        </skillGains>
+      </li>
+    </degreeDatas>
+    <conflictingTraits>
+      <li>Brawler</li>
+    </conflictingTraits>
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <requiredWorkTypes>
+      <li>Hunting</li>
+    </requiredWorkTypes>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_HandEyeCoordination</defName>
+    <commonality>0.5</commonality>
+    <degreeDatas>
+      <li>
+        <label>hand-eye coordination</label>
+        <description>{PAWN_nameDef} is exceptionally coordinated with his hands.</description>
+        <statOffsets>
+		      <WorkSpeedGlobal>0.15</WorkSpeedGlobal>
+		      <AimingDelayFactor>-0.1</AimingDelayFactor>
+          <MeleeHitChance>+5</MeleeHitChance>
+        </statOffsets>
+      </li>  
+    </degreeDatas>
+    <requiredWorkTags>
+      <li>ManualDumb</li>
+      <li>ManualSkilled</li>
+      <li>Violent</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_KeenEye</defName>
+	  <commonality>1.5</commonality>
+    <forcedPassions>
+      <li>Mining</li>
+    </forcedPassions>
+    <degreeDatas>
+      <li>
+        <label>keen eye</label>
+        <description>{PAWN_nameDef} has a keen eye and can spot even tiny mineral deposits. {PAWN_pronoun} will occassionally find small clumps of resources when mining any sort of stone or ore. Chance increased for flatter terrain.</description>
+        <statOffsets>
+		      <MiningSpeed>0.4</MiningSpeed>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+    <exclusionTags>
+      <li>SYR_Traits</li>
+    </exclusionTags>
+    <requiredWorkTags>
+      <li>Mining</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_MechanoidExpert</defName>
+	  <commonality>1.0</commonality>
+    <forcedPassions>
+      <li>Crafting</li>
+    </forcedPassions>
+    <degreeDatas>
+      <li>
+        <label>mechanoid expert</label>
+        <description>{PAWN_nameDef} has had their fair share of encounters with mechanoids. {PAWN_pronoun} has become an expert in mechanoid construction and combat, making {PAWN_objective} uniquely suited to disassemble and fight them.\n\n    Damage versus mechanoids +50%</description>
+        <statOffsets>
+          <ButcheryMechanoidEfficiency>0.5</ButcheryMechanoidEfficiency>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+    <exclusionTags>
+      <li>SYR_Traits</li>
+    </exclusionTags>
+    <requiredWorkTags>
+      <li>Crafting</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_Perfectionist</defName>
+	  <commonality>1.0</commonality>
+    <forcedPassions>
+      <li>Construction</li>
+      <li>Crafting</li>
+    </forcedPassions>
+    <degreeDatas>
+      <li>
+        <label>perfectionist</label>
+        <description>{PAWN_nameDef} wants thing to be exactly right. This does take time, but the results speak for themselves.\n\n    Quality level +1 (50% chance)</description>
+        <statOffsets>
+          <WorkSpeedGlobal>-0.25</WorkSpeedGlobal>
+        </statOffsets>
+      </li>
+    </degreeDatas>
+    <exclusionTags>
+      <li>SYR_Traits</li>
+    </exclusionTags>
+    <requiredWorkTags>
+      <li>ManualSkilled</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_Haggler</defName>
+    <commonality>1.0</commonality>
+    <forcedPassions>
+      <li>Social</li>
+    </forcedPassions>
+    <degreeDatas>
+      <li>
+        <label>silver tongue</label>
+        <description>{PAWN_nameDef} knows exactly the right words for every situation. This also means {PAWN_possessive} insults hurt more.</description>
+        <statOffsets>
+          <TradePriceImprovement>0.33</TradePriceImprovement>
+          <NegotiationAbility>0.2</NegotiationAbility>
+          <SocialImpact>0.5</SocialImpact>
+        </statOffsets>
+      </li>      
+    </degreeDatas>
+    <exclusionTags>
+      <li>SYR_Traits</li>
+    </exclusionTags>
+    <requiredWorkTags>
+      <li>Social</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_SteadyHands</defName>
+    <commonality>2.0</commonality>
+    <degreeDatas>
+      <li>
+      <label>steady hands</label>
+      <description>{PAWN_nameDef} has particularly steady hands, which don't even tremble in dire circumstances or when {PAWN_pronoun} {PAWN_objective}self is injured.\n\n    No self-tend penalty</description>
+      <statOffsets>
+        <MedicalTendSpeed>0.5</MedicalTendSpeed>
+        <MedicalTendQuality>0.1</MedicalTendQuality>
+        <ShootingAccuracyPawn>3</ShootingAccuracyPawn>
+      </statOffsets>
+      </li>      
+    </degreeDatas>
+    <requiredWorkTags>
+      <li>Caring</li>
+    </requiredWorkTags>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_StrongBack</defName>
+    <commonality>1.0</commonality>
+    <degreeDatas>
+      <li>
+        <label>strong back</label>
+        <description>{PAWN_nameDef} has a very strong back or is part mule or something. {PAWN_pronoun} can carry significantly more as a normal person.</description>
+        <statOffsets>
+          <CarryingCapacity>+75</CarryingCapacity>
+        </statOffsets>
+      </li>  
+    </degreeDatas>
+    <requiredWorkTags>
+      <li>ManualDumb</li>
+      <li>Hauling</li>
+    </requiredWorkTags>	
+    <conflictingTraits>
+      <li>Wimp</li>
+    </conflictingTraits>
+  </TraitDef>
+
+  <!-- Old Traits -->
+  
+  <TraitDef>
+    <defName>SYR_Blacksmith</defName>
+	  <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>blacksmith (old)</label>
+        <description>(Old trait)</description>
+      </li>
+    </degreeDatas>
+    <ignoreConfigErrors>true</ignoreConfigErrors>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_Chef</defName>
+	  <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>chef (old)</label>
+        <description>(Old trait)</description>
+      </li>
+    </degreeDatas>
+    <ignoreConfigErrors>true</ignoreConfigErrors>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_Hotblooded</defName>
+	  <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>hotblooded (old)</label>
+        <description>(Old trait)</description>
+      </li>
+    </degreeDatas>
+    <ignoreConfigErrors>true</ignoreConfigErrors>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_MedicalTraining</defName>
+    <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+      <label>medical training (old)</label>
+      <description>(Old trait)</description>
+      </li>      
+    </degreeDatas>
+    <ignoreConfigErrors>true</ignoreConfigErrors>
+  </TraitDef>
+
+  <TraitDef>
+    <defName>SYR_Scientist</defName>
+	<commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>scientist (old)</label>
+        <description>(Old trait)</description>
+      </li>
+    </degreeDatas>
+    <ignoreConfigErrors>true</ignoreConfigErrors>
+  </TraitDef>
+  
+  <TraitDef>
+    <defName>SYR_Tinkerer</defName>
+	  <commonality>0</commonality>
+    <degreeDatas>
+      <li>
+        <label>tinkerer (old)</label>
+        <description>(Old trait)</description>
+      </li>
+    </degreeDatas>
+    <ignoreConfigErrors>true</ignoreConfigErrors>
+  </TraitDef>
+  
+</Defs>

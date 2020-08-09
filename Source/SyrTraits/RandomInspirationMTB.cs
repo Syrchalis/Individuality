@@ -37,7 +37,7 @@ namespace SyrTraits
                         InspirationDef randomAvailableInspirationDef = GetRandomAvailableInspirationDef(__instance);
                         if (randomAvailableInspirationDef != null)
                         {
-                            __instance.TryStartInspiration(randomAvailableInspirationDef);
+                            __instance.TryStartInspiration_NewTemp(randomAvailableInspirationDef);
                         }
                     }
                 }
