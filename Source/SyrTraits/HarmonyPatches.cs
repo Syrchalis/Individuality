@@ -29,7 +29,66 @@ namespace SyrTraits
         }
     }
 
-    [HarmonyPatch(typeof(Pawn_RelationsTracker), nameof(Pawn_RelationsTracker.SecondaryRomanceChanceFactor))]
+    //Changes WordOfLove to work for this mod
+    [HarmonyPatch(typeof(CompAbilityEffect_WordOfLove), nameof(CompAbilityEffect_WordOfLove.ValidateTarget))]
+    public static class CompAbilityEffect_WordOfLovePatch
+    {
+        [HarmonyPrefix]
+        public static bool CompAbilityEffect_WordOfLove_Prefix(ref bool __result, CompAbilityEffect_WordOfLove __instance, LocalTargetInfo target, LocalTargetInfo ___selectedTarget)
+        {
+            Pawn pawn = ___selectedTarget.Pawn;
+            Pawn pawn2 = target.Pawn;
+            CompIndividuality comp = pawn.TryGetComp<CompIndividuality>();
+
+            if (pawn == pawn2)
+            {
+                __result = false;
+                return false;
+            }
+            if (pawn != null && pawn2 != null && comp.sexuality != CompIndividuality.Sexuality.Bisexual)
+            {
+                if ((pawn.gender == pawn2.gender && comp.sexuality == CompIndividuality.Sexuality.Straight) || (pawn.gender != pawn2.gender && comp.sexuality == CompIndividuality.Sexuality.Gay))
+                {
+                    Messages.Message("AbilityCantApplyWrongAttractionGender".Translate(pawn, pawn2), pawn, MessageTypeDefOf.RejectInput, false);
+                    __result = false;
+                    return false;
+                }
+            }
+            __result = true;
+            return false;
+        }
+    }
+    [HarmonyPatch(typeof(CompAbilityEffect_WordOfLove), nameof(CompAbilityEffect_WordOfLove.Valid))]
+    public static class CompAbilityEffect_WordOfLovePatch2
+    {
+        [HarmonyPrefix]
+        public static bool CompAbilityEffect_WordOfLove_Prefix2(ref bool __result, CompAbilityEffect_WordOfLove __instance, LocalTargetInfo target, bool throwMessages)
+        {
+            Pawn pawn = target.Pawn;
+            CompIndividuality comp = pawn.TryGetComp<CompIndividuality>();
+            if (pawn != null)
+            {
+                if (comp.sexuality == CompIndividuality.Sexuality.Asexual)
+                {
+                    if (throwMessages)
+                    {
+                        Messages.Message("AbilityCantApplyOnAsexual".Translate(pawn), pawn, MessageTypeDefOf.RejectInput, false);
+                    }
+                    __result = false;
+                    return false;
+                }
+                if (!AbilityUtility.ValidateNoMentalState(pawn, throwMessages))
+                {
+                    __result = false;
+                    return false;
+                }
+            }
+            __result = true;
+            return false;
+        }
+    }
+
+[HarmonyPatch(typeof(Pawn_RelationsTracker), nameof(Pawn_RelationsTracker.SecondaryRomanceChanceFactor))]
     public static class SecondaryRomanceChanceFactorPatch
     {
         [HarmonyPostfix]
