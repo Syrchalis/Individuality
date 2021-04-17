@@ -45,6 +45,22 @@
 		  </li>
 		</value>
 	</Operation>
+
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>[SYR] Trait Value</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>*/TraitDef[defName = "ShootingAccuracy"]/modExtensions/li[@Class="SyrTraitValue.TraitValueExtension"]/traitValues</xpath>
+          <value>
+            <li>2, 30</li>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
 	
 	<Operation Class="PatchOperationAdd">
 		<xpath>*/TraitDef[defName = "Industriousness"]/degreeDatas/li[1]/statOffsets</xpath>
@@ -487,6 +503,22 @@
 					<randomInspirationMtbDays>25</randomInspirationMtbDays>
 				</li>
 			</degreeDatas>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>*/TraitDef[defName = "TooSmart"]/degreeDatas</xpath>
+		<value>
+      <degreeDatas>
+        <li>
+          <label>too smart</label>
+          <description>{PAWN_nameDef} is too smart for {PAWN_possessive} own good. {PAWN_pronoun} learns everything much faster than everyone, but can be quite eccentric.</description>
+          <statOffsets>
+            <GlobalLearningFactor>1.5</GlobalLearningFactor>
+            <MentalBreakThreshold>0.12</MentalBreakThreshold>
+          </statOffsets>
+        </li>
+      </degreeDatas>
 		</value>
 	</Operation>
 	

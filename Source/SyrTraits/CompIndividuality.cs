@@ -44,7 +44,7 @@ namespace SyrTraits
             if (parent is Pawn pawn)
             {
                 ReplaceVanillaTraits();
-                ReplaceOldTraits();
+                //ReplaceOldTraits();
             }
             IndividualityValueSetup();
         }
@@ -66,7 +66,7 @@ namespace SyrTraits
             base.PostSpawnSetup(respawningAfterLoad);
             IndividualityValueSetup();
             ReplaceVanillaTraits();
-            ReplaceOldTraits();
+            //ReplaceOldTraits();
         }
 
         public override void PostExposeData()
@@ -239,7 +239,7 @@ namespace SyrTraits
         }
 
         //compatibility with older versions
-        public void ReplaceOldTraits()
+        /*public void ReplaceOldTraits()
         {
             Pawn pawn = parent as Pawn;
             if (pawn?.story?.traits != null) 
@@ -276,6 +276,6 @@ namespace SyrTraits
                     traitset.GainTrait(new Trait(SyrTraitDefOf.SYR_HandEyeCoordination, 0, false));
                 }
             }
-        }
+        }*/
     }
 }

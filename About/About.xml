@@ -28,4 +28,7 @@ Please do not ask for Prepare Carefully compatibility, it's a lot of work. Just 
 	<incompatibleWith>
 		<li>neceros.badcanbegood</li>
 	</incompatibleWith>
+	<loadAfter>
+    <li>syrchalis.traitvalue</li>
+	</loadAfter>
 </ModMetaData>
