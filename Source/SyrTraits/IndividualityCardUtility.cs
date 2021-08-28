@@ -109,7 +109,7 @@ namespace SyrTraits
                 Rect checkBoxRect = new Rect(rect.width / 2 - 90f, num, 180f, 40f);
                 bool leftClick = Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Mouse0;
                 bool rightClick = Event.current.type == EventType.KeyDown && Event.current.keyCode == KeyCode.Mouse1;
-                if (!editMode)
+                if (!editMode && ((Current.ProgramState != ProgramState.Playing) || Prefs.DevMode))
                 {
                     if (Widgets.ButtonText(checkBoxRect, "SyrIndividuality_EditModeOn".Translate()))
                     {
@@ -117,7 +117,7 @@ namespace SyrTraits
                         editMode = true;
                     }
                 }
-                else
+                else if (editMode)
                 {
                     if (Widgets.ButtonText(checkBoxRect, "SyrIndividuality_EditModeOff".Translate()))
                     {
