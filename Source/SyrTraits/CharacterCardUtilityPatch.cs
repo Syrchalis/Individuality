@@ -76,10 +76,10 @@ namespace SyrTraits
             {
                 TipSignal tooltip = "IndividualityTooltip".Translate();
                 float num = CharacterCardUtility.BasePawnCardSize.x - 50f;
-                Rect rectNew = new Rect(num, 34f, 24f, 24f);
+                Rect rectNew = new Rect(num, 5f, 24f, 24f);
                 if (Current.ProgramState != ProgramState.Playing)
                 {
-                    rectNew = new Rect(creationRect.width - 24f, 30f, 24f, 24f);
+                    rectNew = new Rect(creationRect.width - 24f, 90f, 24f, 24f);
                 }
                 Color old = GUI.color;
                 if (rectNew.Contains(Event.current.mousePosition))
