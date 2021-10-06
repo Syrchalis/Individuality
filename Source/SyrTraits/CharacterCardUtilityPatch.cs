@@ -75,8 +75,8 @@ namespace SyrTraits
             if (pawn != null)
             {
                 TipSignal tooltip = "IndividualityTooltip".Translate();
-                float num = CharacterCardUtility.BasePawnCardSize.x - 50f;
-                Rect rectNew = new Rect(num, 34f, 24f, 24f);
+                float num = CharacterCardUtility.BasePawnCardSize.x - 160f;
+                Rect rectNew = new Rect(num, 1f, 24f, 24f);
                 if (Current.ProgramState != ProgramState.Playing)
                 {
                     rectNew = new Rect(creationRect.width - 24f, 30f, 24f, 24f);
