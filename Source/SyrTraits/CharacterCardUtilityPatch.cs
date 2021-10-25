@@ -13,6 +13,7 @@ using System.Reflection.Emit;
 namespace SyrTraits
 {
     [HarmonyPatch(typeof(CharacterCardUtility), "DrawCharacterCard")]
+    [HotSwappable]
     public static class CharacterCardUtilityPatch
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
@@ -76,10 +77,15 @@ namespace SyrTraits
             {
                 TipSignal tooltip = "IndividualityTooltip".Translate();
                 float num = CharacterCardUtility.BasePawnCardSize.x - 160f;
+                //Move if royalty title button is active
+                if (pawn.IsFreeColonist && !pawn.IsQuestLodger() && pawn.royalty != null && pawn.royalty.AllTitlesForReading.Count > 0)
+                {
+                    num -= 40f;
+                }
                 Rect rectNew = new Rect(num, 1f, 24f, 24f);
                 if (Current.ProgramState != ProgramState.Playing)
                 {
-                    rectNew = new Rect(creationRect.width - 24f, 30f, 24f, 24f);
+                    rectNew = new Rect(creationRect.width - 24f, 80f, 24f, 24f);
                 }
                 Color old = GUI.color;
                 if (rectNew.Contains(Event.current.mousePosition))

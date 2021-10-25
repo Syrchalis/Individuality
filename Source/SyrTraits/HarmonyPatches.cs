@@ -549,4 +549,8 @@ namespace SyrTraits
             return 1f;
         }
     }
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
+    public class HotSwappableAttribute : Attribute
+    {
+    }
 }
