@@ -494,6 +494,7 @@
 						<li>FireStartingSpree</li>
 					</theOnlyAllowedMentalBreaks>
 					<randomMentalState>FireStartingSpree</randomMentalState>
+					<allowedMeditationFocusTypes><li>Flame</li></allowedMeditationFocusTypes>
 					<randomMentalStateMtbDaysMoodCurve>
 						<points>
 						<li>(1, 50)</li>
