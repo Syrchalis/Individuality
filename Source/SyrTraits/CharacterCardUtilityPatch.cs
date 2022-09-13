@@ -13,76 +13,36 @@ using System.Reflection.Emit;
 namespace SyrTraits
 {
     [HarmonyPatch(typeof(CharacterCardUtility), "DrawCharacterCard")]
-    [HotSwappable]
+    [HarmonyDebug]
     public static class CharacterCardUtilityPatch
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            MethodInfo HighlightOpportunity = AccessTools.Method(typeof(UIHighlighter), "HighlightOpportunity");
+
             MethodInfo IndividualityCardButton = AccessTools.Method(typeof(CharacterCardUtilityPatch), nameof(IndividualityCardButton));
-            MethodInfo SetTextSize = AccessTools.Method(typeof(CharacterCardUtilityPatch), nameof(SetTextSize));
-            MethodInfo SetRectSize = AccessTools.Method(typeof(CharacterCardUtilityPatch), nameof(SetRectSize));
-            //bool traits = false;
-            bool found = false;
-            foreach (CodeInstruction i in instructions)
+            var codes = instructions.ToList();
+            var idx1 = codes.FindIndex(ins => ins.IsStloc() && ins.operand is LocalBuilder { LocalIndex: 15 });
+            var list = codes.GetRange(idx1 + 1, 2).Select(ins => ins.Clone()).ToList();
+            codes.InsertRange(idx1 + 1, list.Concat(new List<CodeInstruction>
             {
-                if (found)
-                {
-                    yield return new CodeInstruction(OpCodes.Ldarg_0) { labels = i.labels.ListFullCopy() };//rect
-                    yield return new CodeInstruction(OpCodes.Ldarg_1);//pawn
-                    yield return new CodeInstruction(OpCodes.Ldarg_3);//creationRect
-                    yield return new CodeInstruction(OpCodes.Call, IndividualityCardButton);
-                    found = false;
-                    i.labels.Clear();
-                }
-                if (i.opcode == OpCodes.Call && i.operand == HighlightOpportunity)
-                {
-                    found = true;
-                }/*
-                if (i.opcode == OpCodes.Ldstr && i.operand.Equals("Traits"))
-                {
-                    traits = true;
-                }
-                if (traits && i.opcode == OpCodes.Ldc_I4_1)
-                {
-                    yield return new CodeInstruction(OpCodes.Call, SetTextSize);//replaces instruction, gets 0 or 1 returned from the method, depending on setting
-                    continue;
-                }
-                if (traits && i.opcode == OpCodes.Ldc_R4 && i.operand.Equals(24f))//replaces rect height
-                {
-                    yield return new CodeInstruction(OpCodes.Call, SetRectSize);
-                    continue;
-                }
-                if (traits && i.opcode == OpCodes.Ldc_R4 && i.operand.Equals(2f))//replaces rect y calculation
-                {
-                    yield return new CodeInstruction(OpCodes.Ldc_R4, 0f);
-                    traits = false;
-                    continue;
-                }*/
-                yield return i;
-            }
+                new CodeInstruction(OpCodes.Ldloca, 15),
+                new CodeInstruction(OpCodes.Ldarg_0),
+                new CodeInstruction(OpCodes.Ldarg_1),
+                new CodeInstruction(OpCodes.Ldarg_3),                
+                new CodeInstruction(OpCodes.Call,IndividualityCardButton)
+            }));
+            return codes;
         }
 
-        /*[HarmonyPostfix]
-        public static void DrawCharacterCard_Postfix(Rect rect, Pawn pawn, Action randomizeCallback = null, Rect creationRect = default(Rect))
-        {
-            float num = CharacterCardUtility.PawnCardSize.x - 182f;
-            Rect rect0 = new Rect(num, 0f, 30f, 60f);
-            IndividualityCardButton(rect0, pawn);
-        }*/
 
-        public static void IndividualityCardButton(Rect rect, Pawn pawn, Rect creationRect)
+        public static void IndividualityCardButton(ref float x, Rect rect, Pawn pawn, Rect creationRect)
         {
             if (pawn != null)
             {
                 TipSignal tooltip = "IndividualityTooltip".Translate();
-                float num = CharacterCardUtility.BasePawnCardSize.x - 160f;
-                //Move if royalty title button is active
-                if (pawn.IsFreeColonist && !pawn.IsQuestLodger() && pawn.royalty != null && pawn.royalty.AllTitlesForReading.Count > 0)
-                {
-                    num -= 40f;
-                }
-                Rect rectNew = new Rect(num, 1f, 24f, 24f);
+
+                Rect rectNew = new Rect(x, 1f, 24f, 24f);
+                x -= 40f;
                 if (Current.ProgramState != ProgramState.Playing)
                 {
                     rectNew = new Rect(creationRect.width - 24f, 80f, 24f, 24f);
