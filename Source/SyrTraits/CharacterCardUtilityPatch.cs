@@ -13,7 +13,6 @@ using System.Reflection.Emit;
 namespace SyrTraits
 {
     [HarmonyPatch(typeof(CharacterCardUtility), "DrawCharacterCard")]
-    [HarmonyDebug]
     public static class CharacterCardUtilityPatch
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
