@@ -551,18 +551,35 @@
   	<success>Always</success>
     <xpath>*/TraitDef[defName = "Polyamorous"]/commonality</xpath>
     <match Class="PatchOperationReplace">
-      <xpath>*/TraitDef[defName = "Polyamorous" or defName = "Straight"]/commonality</xpath>
+      <xpath>*/TraitDef[defName = "Polyamorous"]/commonality</xpath>
 				<value>
 					<commonality>0</commonality>
 				</value>
     </match>
 		<nomatch Class="PatchOperationAdd">
-      <xpath>*/TraitDef[defName = "Polyamorous" or defName = "Straight"]</xpath>
+      <xpath>*/TraitDef[defName = "Polyamorous"]</xpath>
 				<value>
 					<commonality>0</commonality>
 				</value>
     </nomatch>
   </Operation>
+
+	<Operation Class="PatchOperationConditional">
+		<success>Always</success>
+		<xpath>*/TraitDef[defName = "Straight"]/commonality</xpath>
+		<match Class="PatchOperationReplace">
+			<xpath>*/TraitDef[defName = "Straight"]/commonality</xpath>
+			<value>
+				<commonality>0</commonality>
+			</value>
+		</match>
+		<nomatch Class="PatchOperationAdd">
+			<xpath>*/TraitDef[defName = "Straight"]</xpath>
+			<value>
+				<commonality>0</commonality>
+			</value>
+		</nomatch>
+	</Operation>
 	
   <!--<Operation Class="PatchOperationConditional">
   <success>Always</success>

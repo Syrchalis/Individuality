@@ -23,7 +23,8 @@ namespace SyrTraits
         public override string SettingsCategory() => "SyrTraitsSettingsCategory".Translate();
         public static bool RationalRomanceActive => ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Rational Romance"));
         public static bool PsychologyActive => ModsConfig.ActiveModsInLoadOrder.Any(m => m.Name.Contains("Psychology"));
-        public static bool RomanceDisabled => PsychologyActive || RationalRomanceActive || SyrIndividualitySettings.disableRomance;
+        public static bool WayBetterRomanceActive => ModsConfig.IsActive("divineDerivative.Romance");
+        public static bool RomanceDisabled => PsychologyActive || RationalRomanceActive || WayBetterRomanceActive || SyrIndividualitySettings.disableRomance;
 
         public override void DoSettingsWindowContents(Rect inRect)
         {
@@ -35,12 +36,12 @@ namespace SyrTraits
                 listing_Standard.Label("SyrTraitsTraitCount".Translate());
                 listing_Standard.IntRange(ref SyrIndividualitySettings.traitCount, 0, 8);
                 listing_Standard.Gap(24f);
-                if (PsychologyActive || RationalRomanceActive)
+                if (PsychologyActive || RationalRomanceActive || WayBetterRomanceActive)
                 {
                     GUI.color = Color.red;
                     string disabledReason = "";
                     if (PsychologyActive) disabledReason = "SyrTraitsDisabledPsychology".Translate();
-                    else if (RationalRomanceActive) disabledReason = "SyrTraitsDisabledRationalRomance".Translate();
+                    else if (RationalRomanceActive || WayBetterRomanceActive) disabledReason = "SyrTraitsDisabledRationalRomance".Translate();
                     listing_Standard.Label("SyrTraitsDisabled".Translate() + ": " + disabledReason);
                     GUI.color = Color.white;
                 }

@@ -36,26 +36,30 @@ namespace SyrTraits
         [HarmonyPrefix]
         public static bool CompAbilityEffect_WordOfLove_Prefix(ref bool __result, CompAbilityEffect_WordOfLove __instance, LocalTargetInfo target, LocalTargetInfo ___selectedTarget)
         {
-            Pawn pawn = ___selectedTarget.Pawn;
-            Pawn pawn2 = target.Pawn;
-            CompIndividuality comp = pawn.TryGetComp<CompIndividuality>();
+            if (!SyrIndividuality.RomanceDisabled)
+            {
+                Pawn pawn = ___selectedTarget.Pawn;
+                Pawn pawn2 = target.Pawn;
+                CompIndividuality comp = pawn.TryGetComp<CompIndividuality>();
 
-            if (pawn == pawn2)
-            {
-                __result = false;
-                return false;
-            }
-            if (pawn != null && pawn2 != null && comp.sexuality != CompIndividuality.Sexuality.Bisexual)
-            {
-                if ((pawn.gender == pawn2.gender && comp.sexuality == CompIndividuality.Sexuality.Straight) || (pawn.gender != pawn2.gender && comp.sexuality == CompIndividuality.Sexuality.Gay))
+                if (pawn == pawn2)
                 {
-                    Messages.Message("AbilityCantApplyWrongAttractionGender".Translate(pawn, pawn2), pawn, MessageTypeDefOf.RejectInput, false);
                     __result = false;
                     return false;
                 }
+                if (pawn != null && pawn2 != null && comp.sexuality != CompIndividuality.Sexuality.Bisexual)
+                {
+                    if ((pawn.gender == pawn2.gender && comp.sexuality == CompIndividuality.Sexuality.Straight) || (pawn.gender != pawn2.gender && comp.sexuality == CompIndividuality.Sexuality.Gay))
+                    {
+                        Messages.Message("AbilityCantApplyWrongAttractionGender".Translate(pawn, pawn2), pawn, MessageTypeDefOf.RejectInput, false);
+                        __result = false;
+                        return false;
+                    }
+                }
+                __result = true;
+                return false;
             }
-            __result = true;
-            return false;
+            return true;
         }
     }
     [HarmonyPatch(typeof(CompAbilityEffect_WordOfLove), nameof(CompAbilityEffect_WordOfLove.Valid))]
@@ -64,27 +68,31 @@ namespace SyrTraits
         [HarmonyPrefix]
         public static bool CompAbilityEffect_WordOfLove_Prefix2(ref bool __result, CompAbilityEffect_WordOfLove __instance, LocalTargetInfo target, bool throwMessages)
         {
-            Pawn pawn = target.Pawn;
-            CompIndividuality comp = pawn.TryGetComp<CompIndividuality>();
-            if (pawn != null)
+            if (!SyrIndividuality.RomanceDisabled)
             {
-                if (comp.sexuality == CompIndividuality.Sexuality.Asexual)
+                Pawn pawn = target.Pawn;
+                CompIndividuality comp = pawn.TryGetComp<CompIndividuality>();
+                if (pawn != null)
                 {
-                    if (throwMessages)
+                    if (comp.sexuality == CompIndividuality.Sexuality.Asexual)
                     {
-                        Messages.Message("AbilityCantApplyOnAsexual".Translate(pawn), pawn, MessageTypeDefOf.RejectInput, false);
+                        if (throwMessages)
+                        {
+                            Messages.Message("AbilityCantApplyOnAsexual".Translate(pawn), pawn, MessageTypeDefOf.RejectInput, false);
+                        }
+                        __result = false;
+                        return false;
                     }
-                    __result = false;
-                    return false;
+                    if (!AbilityUtility.ValidateNoMentalState(pawn, throwMessages))
+                    {
+                        __result = false;
+                        return false;
+                    }
                 }
-                if (!AbilityUtility.ValidateNoMentalState(pawn, throwMessages))
-                {
-                    __result = false;
-                    return false;
-                }
+                __result = true;
+                return false;
             }
-            __result = true;
-            return false;
+            return true;
         }
     }
 
